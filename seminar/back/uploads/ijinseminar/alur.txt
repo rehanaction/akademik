@@ -1,0 +1,15 @@
+masuk pmb front
+daftar :
+1.gratis
+	isi biodata
+		login pakai yyyymmdd
+			edit data
+			cetak biodata
+			cetak kartu pendaftaran
+2.berbaya
+	masukan token dapat token dari mana
+
+bagian admin
+cari pendaftar 
+	lakukan seleksi
+		

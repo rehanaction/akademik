@@ -1,0 +1,18 @@
+#big_box{
+    width: 350px;
+    margin-top: 120px;
+    font-family: fantasy;
+}
+#notif{
+    width: 380px;
+    font-family: fantasy;
+    font-size: small;
+    background:#e3eded;
+    border:1px solid #e3eded;
+    color:#016868;
+    padding:5px;
+    border-radius: 4px;
+    margin-top:10px;
+    margin-bottom:10px;
+    text-align:center;
+}

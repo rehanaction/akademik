@@ -1,0 +1,75 @@
+Hasil Meeting tgl 2 agustud 2013
+# setting global admin
+  1. ditambahkan info utk proses setting (misal ada 2 tabel)bukan tooltip
+
+# Daftar mahasiswa
+  1. ditambahkan proses filter (model tree)
+  2. ditambahkan sks yang ditempuh + IPK
+  3. link di tampilkan di detail mhs (pop up)
+  4. pada pencarian mhs di detail mhs sebaiknya ditambahkan info/ keterangan
+  5. proses upload foto dibuat button 
+  6. di detail mhs ditampilkan jarak sks + dosen wali + jurnal
+  7. inputan pendapatan di tampilkan setelah pekerjaan
+  8. text input pada penanggung dana kurang panjang
+  9. pada tab beasiswa ditambahkan link
+
+# Pegawai
+  1. terdapat hal yang bisa search semua data dosen + 1 data dosen
+  2. dosen ->jumlah dosen yang belum isi nilai
+ 
+# tahun kurikulum
+  1. disertakan informasi tentang proses input thn kurikulum
+
+# mata kuliah
+  1. ditambahkan filter kurikulum dibuat tree
+  2. 
+  3. pagging atas bawah
+  4. nilai min --> sebaiknya dibuat 2.25-C atw dibalik
+  5. dosen pengampu --> auto complete
+
+# kur jurusan
+  1. proses salin kurikulum di ditampilkan ditempat yang berbeda jangan digabung dgn filter
+  2. header di tulisan data mata kuliah kurikulum baru diganti tambah data mata kuliah kurikulum baru
+  3. caption kurikulum
+  4. terdapat link untuk menampilkan prasyarat
+
+# ekivalensi
+  1. MK lama dan baru ditampilkan, kemudian prosesnya mencentang (per mhs)
+  2. menampilkan transkrip untuk MK campur dan MK baru
+
+# paket mata kuliah
+  1. membuat tampilan yang mempermudah proses paket mata kuliah
+  2. menampilkan data yang di inject (mana yang generate paket)
+  3. menampilkan informasi ke admin mana yang sudah di generate/ belum
+ 
+# skala penilaian
+  1. terdapat link ke tahun kurikulum (nempel ke kurikulum)
+
+# status SPP mhs
+  1. terdapat search nim mhs (yang menampilkan semua keuangan mhs)+ tgl sekian
+  2. rekap mhs yang bayar + belum
+
+# Data kelas (sebaran)
+  1. pengaturan letak kolom (kode,nama,kelas ) 
+  2. inputan untuk jadwal + pengajar + ruang di interface berbeda
+
+# monitoring ruang
+  1. terdapat filter jurusan (koordinator jurusan)
+
+# detail perkuliahan
+  1. isi nilai dibuat proses sendiri
+  2. terdapat grafik yang menampilkan info nilai mata kuliah
+  3. dijurnal perwalian di realisasi
+  4. pada jurnal di tambahkan upload file
+  5. bulan di tatap muka jangan angka misal 7/7 menjadi 7 jul
+  
+# TA
+  1. ditampilkan daftar mhs yang tdk mempunyai dosen wali
+  2. ditampilkan mhs yang dibimbing
+  3. ditampilkan mhs yang belum skripsi
+
+# laporan
+  1. report date
+  2. sum
+  3. tampilan untuk jenis laporan (tumbnail) tree untuk mempermudah user
+

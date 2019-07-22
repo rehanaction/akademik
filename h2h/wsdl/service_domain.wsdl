@@ -1,0 +1,208 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions name="BillingService"
+	targetNamespace="http://h2h.esaunggul.ac.id/wsdl/service.wsdl"
+	xmlns="http://schemas.xmlsoap.org/wsdl/"
+	xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+	xmlns:tns="http://h2h.esaunggul.ac.id/wsdl/service.wsdl"
+	xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+	xmlns:xsd1="http://h2h.esaunggul.ac.id/wsdl/schema">
+ 
+	<types>
+		<schema xmlns="http://www.w3.org/2001/XMLSchema"
+			targetNamespace="http://h2h.esaunggul.ac.id/wsdl/schema"
+			xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+			xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/">
+			
+			<complexType name="BillDetail">
+				<sequence>
+					<element minOccurs="0" maxOccurs="1" name="billID" type="string" />               
+					<element minOccurs="0" maxOccurs="1" name="billName" type="string" />
+					<element minOccurs="0" maxOccurs="1" name="billAmount" type="string" />
+					<element minOccurs="0" maxOccurs="1" name="periode" type="string" />
+					<element minOccurs="0" maxOccurs="1" name="currency" type="string" />
+				</sequence>
+			</complexType>
+			<complexType name="ArrayOfBillDetail">
+				<complexContent>
+					<restriction base="soapenc:Array">
+						<attribute ref="soapenc:arrayType"
+							wsdl:arrayType="xsd1:BillDetail[]"/>
+					</restriction>
+				</complexContent>
+			</complexType>
+			<complexType name="Status">
+				<sequence>
+					<element minOccurs="1" maxOccurs="1" name="isError" type="boolean" />
+					<element minOccurs="0" maxOccurs="1" name="errorCode" type="string" />
+					<element minOccurs="0" maxOccurs="1" name="statusDescription" type="string" />
+				</sequence>
+			</complexType>
+ 
+			<element name="InquiryRequest">
+				<complexType>
+					<all>
+						<element minOccurs="0" maxOccurs="1" name="nim" type="string"/>
+						<element minOccurs="0" maxOccurs="1" name="typeInq" type="string"/>
+						<element minOccurs="0" maxOccurs="1" name="trxDateTime" type="string" />
+						<element minOccurs="0" maxOccurs="1" name="transmissionDateTime" type="string" />
+						<element minOccurs="0" maxOccurs="1" name="companyCode" type="string" />
+						<element minOccurs="0" maxOccurs="1" name="channelID" type="string" />
+						<element minOccurs="0" maxOccurs="1" name="terminalID" type="string" />
+					</all>
+				</complexType>
+			</element>
+			<complexType name="InquiryResponse">
+				<sequence>
+					<element minOccurs="0" maxOccurs="1" name="billCode" type="string" />
+					<element minOccurs="0" maxOccurs="1" name="nim" type="string" />
+					<element minOccurs="0" maxOccurs="1" name="nama" type="string" />
+					<element minOccurs="0" maxOccurs="1" name="jurusan" type="string" />				
+					<element minOccurs="0" maxOccurs="1" name="gelombang" type="string" />
+					<element minOccurs="0" maxOccurs="1" name="jalur" type="string" />
+					<element minOccurs="0" maxOccurs="1" name="keterangan" type="string" />
+					<element minOccurs="0" maxOccurs="1" name="numBill" type="int" />
+					<element minOccurs="0" maxOccurs="1" name="billDetails" type="xsd1:ArrayOfBillDetail" />
+					<element minOccurs="0" maxOccurs="1" name="status" type="xsd1:Status" />
+				</sequence>
+			</complexType>
+			
+			<element name="PaymentRequest">
+				<complexType>
+					<all>                  
+						<element minOccurs="0" maxOccurs="1" name="nim" type="string"/>
+						<element minOccurs="0" maxOccurs="1" name="billCode" type="string" />
+						<element minOccurs="0" maxOccurs="1" name="transactionID" type="string" />
+						<element minOccurs="0" maxOccurs="1" name="paymentAmount" type="string" />
+						<element minOccurs="0" maxOccurs="1" name="companyCode" type="string" />
+						<element minOccurs="0" maxOccurs="1" name="channelID" type="string" />
+						<element minOccurs="0" maxOccurs="1" name="terminalID" type="string" />
+						<element minOccurs="0" maxOccurs="1" name="trxDateTime" type="string" />
+						<element minOccurs="0" maxOccurs="1" name="transmissionDateTime" type="string" />                    
+						<element minOccurs="0" maxOccurs="1" name="numBill" type="int" />
+						<element minOccurs="0" maxOccurs="1" name="billDetails" type="xsd1:ArrayOfBillDetail" />
+					</all>
+				</complexType>
+			</element>
+			<complexType name="PaymentResponse">
+				<sequence>
+					<element minOccurs="0" maxOccurs="1" name="nim" type="string" />
+					<element minOccurs="0" maxOccurs="1" name="notoken" type="string" />
+					<element minOccurs="0" maxOccurs="1" name="billCode" type="string" />
+					<element minOccurs="0" maxOccurs="1" name="billName" type="string" />
+					<element minOccurs="0" maxOccurs="1" name="transactionID" type="string" />				
+					<element minOccurs="0" maxOccurs="1" name="paymentAmount" type="string" />                
+					<element minOccurs="0" maxOccurs="1" name="billRemain" type="string" />
+					<element minOccurs="0" maxOccurs="1" name="status" type="xsd1:Status" />
+				</sequence>
+			</complexType>
+			
+			<element name="ReversalRequest">
+				<complexType>
+					<all>                   
+						<element minOccurs="0" maxOccurs="1" name="billCode" type="string" />
+						<element minOccurs="0" maxOccurs="1" name="nim" type="string"/>
+						<element minOccurs="0" maxOccurs="1" name="notoken" type="string"/>
+						<element minOccurs="0" maxOccurs="1" name="transactionID" type="string" />
+						<element minOccurs="0" maxOccurs="1" name="paymentAmount" type="string" />
+						<element minOccurs="0" maxOccurs="1" name="companyCode" type="string" />
+						<element minOccurs="0" maxOccurs="1" name="channelID" type="string" />
+						<element minOccurs="0" maxOccurs="1" name="terminalID" type="string" />
+						<element minOccurs="0" maxOccurs="1" name="trxDateTime" type="string" />
+						<element minOccurs="0" maxOccurs="1" name="transmissionDateTime" type="string" />
+						<element minOccurs="0" maxOccurs="1" name="currency" type="string"/>
+						<element minOccurs="0" maxOccurs="1" name="origTrxDateTime" type="string" />
+						<element minOccurs="0" maxOccurs="1" name="origTransmissionDateTime" type="string" />
+					</all>
+				</complexType>
+			</element>
+			<complexType name="ReversalResponse">
+				<sequence>
+					<element minOccurs="0" maxOccurs="1" name="billRemain" type="string" />
+					<element minOccurs="0" maxOccurs="1" name="status" type="xsd1:Status" />
+				</sequence>
+			</complexType>
+			
+		</schema>
+	</types>
+
+    <message name="InquiryRequest">
+        <part name="input" element="xsd1:InquiryRequest"/>
+    </message>
+    <message name="InquiryResponse">
+        <part name="return" type="xsd1:InquiryResponse"/>
+    </message>
+	
+	<message name="PaymentRequest">
+        <part name="input" element="xsd1:PaymentRequest"/>
+    </message>
+    <message name="PaymentResponse">
+        <part name="return" type="xsd1:PaymentResponse"/>
+    </message>
+	
+	<message name="ReversalRequest">
+        <part name="input" element="xsd1:ReversalRequest"/>
+    </message>
+    <message name="ReversalResponse">
+        <part name="return" type="xsd1:ReversalResponse"/>
+    </message>	
+
+    <portType name="ServicePortType">
+        <operation name="inquiry">
+           <input message="tns:InquiryRequest"/>
+           <output message="tns:InquiryResponse"/>
+        </operation>
+		<operation name="payment">
+           <input message="tns:PaymentRequest"/>
+           <output message="tns:PaymentResponse"/>
+        </operation>
+		<operation name="reversal">
+           <input message="tns:ReversalRequest"/>
+           <output message="tns:ReversalResponse"/>
+        </operation>
+		
+    </portType>
+ 
+    <binding name="ServiceBinding" type="tns:ServicePortType">
+        <soap:binding style="rpc" transport="http://schemas.xmlsoap.org/soap/http"/>
+        <operation name="inquiry">
+			<soap:operation soapAction="urn:examples:inquiryservice"/>
+			<input>
+				<soap:body use="encoded" namespace="urn:examples:inquiryservice"
+					encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+			</input>
+			<output>
+				<soap:body use="encoded" namespace="urn:examples:inquiryservice"
+					encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+			</output>
+        </operation>
+		<operation name="payment">
+			<soap:operation soapAction="urn:examples:paymentservice"/>
+			<input>
+				<soap:body use="encoded" namespace="urn:examples:paymentservice"
+					encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+			</input>
+			<output>
+				<soap:body use="encoded" namespace="urn:examples:paymentservice"
+					encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+			</output>
+        </operation>
+		<operation name="reversal">
+			<soap:operation soapAction="urn:examples:reversalservice"/>
+			<input>
+				<soap:body use="encoded" namespace="urn:examples:reversalservice"
+					encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+			</input>
+			<output>
+				<soap:body use="encoded" namespace="urn:examples:reversalservice"
+					encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+			</output>
+        </operation>		
+    </binding>
+ 
+    <service name="BillingService">
+        <documentation>Billing SOAP service</documentation>
+        <port name="ServicePort" binding="tns:ServiceBinding">
+			<soap:address location="http://h2h.esaunggul.ac.id/"/>
+        </port>
+    </service>
+</definitions>

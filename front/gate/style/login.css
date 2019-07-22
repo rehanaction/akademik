@@ -1,0 +1,202 @@
+body {
+
+	/*-------- background - FULL--------*/
+	/*--
+	background: url(../images/bg/full_01.jpg) no-repeat top center fixed; 
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+	overflow:hidden;
+	--*/
+	
+	/*-------- background - color only--------*/
+	/*-
+	background-color:#680202;
+	--*/
+	
+	/*-------- background - Pattern--------*/
+	/*-------pilih background pattern dari bg_01-xx----------*/
+	
+	background: url(../images/bg/bg_14.png) repeat; 
+	font-family: Helvetica, Tahoma, sans-serif;
+	font-size:12px;
+	color:#484848;
+}
+
+#main_cont{
+	min-height:400px !important;
+	height:100%;
+
+}
+.center-vertical {margin-top:auto;}
+
+#login {
+	background-color:#2b0009;
+	margin:0;
+	padding:0;
+}
+
+/*#logo {
+	background:url(../images/uwp-official.png) no-repeat top center;
+	width: 200px;
+	height: 200px;
+	float: right;
+	margin-right: 25px;
+	margin-top: 30px;
+	margin-bottom: 50px
+}*/
+
+#label {
+	background:url(../images/login_label.png) no-repeat top center;
+	height:25px;
+}
+
+input.usrname{background:url(../images/usrname_bg2.png) no-repeat 5px center #FFF;}
+input.pass{background:url(../images/pass_bg2.png) no-repeat 5px center #FFF;}
+input.usrname, input.pass{
+box-shadow: inset 3px 5px 3px #dddddd;
+min-width:130px !important;
+width: 100%;
+padding: 5px;
+padding-left: 25px;
+font-size: 14px;
+border: 1px solid #B6A161;
+border-bottom-color: #B6A161; /*--color id 02--*/
+border-radius: 4px;
+margin-bottom: 20px;
+height: 30px;
+float: left;
+color: #663A00;
+font-weight:bold;
+}
+div.title{border-right:1px dashed #FFF;  margin-bottom:20px;  font-family:"helvetica neue", Arial, Helvetica, sans-serif; color:#FFF; /*-- id colo 3--*/}
+.title h2 {letter-spacing: -1px;text-transform:uppercase; font-weight:100; font-family:"helvetica neue", Arial, Helvetica, sans-serif;}
+.margin-up20px{margin-top:20px;}
+label {display: inline-block;
+margin-bottom: 5px;
+font-weight: bold;}
+.color-divider{
+	min-height:25px !important;
+	/*--background:#0165FE; use color background--*/
+	background:#015593 url(../images/pattern/pat_02.png) repeat; /*--use pattern background--*/
+	padding:0;
+	margin:0;
+}
+#login_content{
+	background:#0071C4; /*--use color background--*/
+	background:#0071C4 url(../images/pattern/pat_02.png) repeat; /*--use pattern background--*/
+	padding:0;
+	margin:0; 
+	max-width:970px !important;
+
+}
+
+#login_content input[type="submit"]{
+	background-color: #FF4A02;
+	color:#FFFFFF;
+	border-color:#FF4A02;
+	border-radius: 4px 4px 4px 4px;
+	border-style: solid;
+	border-width: 1px;
+	box-shadow: 0 0 2px 0 rgba(57, 140, 255, 0.8) inset;
+	font: bold 12px "helvetica neue",helvetica,arial,sans-serif;
+	padding: 7px 0;
+	width: 100px;
+	margin-top:20px;
+}
+
+#login_content input[type="submit"]:hover {
+	background-color: #FFFFFF;
+	color:#0165FE;
+	text-shadow:none;
+	border:#f6dc00;
+	cursor: pointer;
+}
+
+#login_content input[type="submit"]:active {
+	border-color: #FFF;
+	border-style: solid;
+	border-width: 1px;
+	box-shadow: 0 0 5px 2px #DCA800 inset, 0 1px 0 #EEEEEE;
+}
+
+#login a {
+	float:left;
+	color:#ffae00;
+	font-style:italic;
+	font-size:11px;
+}
+
+.single_content {
+	
+}
+
+.single_left {
+	background:url(../images/pita_kiri.png) no-repeat left center;
+	height:184px;
+	width:118px;
+	float:left;
+}
+
+.single_center {
+	
+	
+
+}
+
+
+.single_right {
+	background:url(../images/pita_kanan.png) no-repeat left center;
+	height:184px;
+	width:118px;
+	float:left;
+}
+
+.clr {
+	clear:both;
+}
+
+.DivError {
+	background:#FFBABA;
+	border:1px solid #F93737;
+	color:#B43C01;
+	padding:5px;
+	border-radius: 4px;
+	margin-bottom:10px;
+	text-align:center;
+	float:left;
+	margin-left:55px;
+}
+
+.DivSuccess {
+	background:#BAFFBA;
+	border:1px solid #37F937;
+	color:#3C7401;
+	padding:5px;
+	border-radius: 4px;
+	margin-bottom:10px;
+	text-align:center;
+	float:left;
+	margin-left:55px;
+}
+
+/*---------Elemen Bawah-------*/
+.login-bottom{
+	background:url(../images/elba/elba_03.png) top no-repeat; display:block; height:35px; position:relative;
+	margin:0 auto;
+	padding:0 auto;
+}
+	
+	
+
+/*-----*/
+/*---------color id------------*/
+/*---color id 01 #0165FE---*/
+/*---color id 02 #0151CC---*/
+/*---color id 03 #FF4A02---*/
+/*--coloring--*/
+a{text-decoration:underline; color:#ffcc2a;}
+.teks-redscarlet {color:#0165FE;}
+.teks-yellow {color:#ffcc2a;}
+.teks-white {color:#FFF;}

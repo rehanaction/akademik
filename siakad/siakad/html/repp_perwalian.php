@@ -1,0 +1,27 @@
+<?php
+	// cek akses halaman
+	defined( '__VALID_ENTRANCE' ) or die( 'Akses terbatas' );
+	
+	// hak akses
+	Modul::getFileAuth();
+	
+	// include
+	require_once(Route::getUIPath('combo'));
+	require_once(Route::getUIPath('form'));
+	
+	// variabel request
+	$r_fakultas = Modul::setRequest($_POST['fakultas'],'FAKULTAS');
+	$r_unit = Modul::getRequest('UNIT');
+	// properti halaman
+	$p_title = 'Laporan Perwalian Mahasiswa';
+	$p_tbwidth = 400;
+	$p_aktivitas = 'LAPORAN';
+	
+	
+	$a_input = array();
+	//$a_input[] = array('label' => 'Prodi', 'input' => uCombo::jurusan($conn,$r_jurusan,$r_fakultas,'jurusan','',false));
+	$a_input[] = array('label' => 'Prodi', 'nameid' => 'jurusan', 'type' => 'S', 'option' => mCombo::unit($conn,false), 'default' => $r_unit);
+    $a_input[] = array('label' => 'Dosen Wali', 'input' => uCombo::dosen($conn,$r_dosen,$r_fakultas,'dosen','',false));
+	$a_input[] = array('label' => 'Periode', 'input' => uCombo::semester($r_semester,true,'semester','',false).' '.uCombo::tahun($r_tahun,true,'tahun','',false));
+	require_once($conf['view_dir'].'inc_repp.php');
+?>

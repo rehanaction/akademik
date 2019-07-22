@@ -1,0 +1,20 @@
+<?php
+	// cek akses halaman
+	defined( '__VALID_ENTRANCE' ) or die( 'Akses terbatas' );
+	
+	// include kelas dasar
+	require_once(__DIR__.'/pay.class.php');
+	
+	class Pay extends BasePay {
+		// setting sevimapay
+		const PAY_CLIENT_ID = '017';
+		const PAY_SECRET_ID = '21a599631d9c338d77d6fc82c41133e2';
+		const PAY_ADMIN_AMOUNT = 5000;
+		const PAY_DEVELOPMENT = true;
+		
+		// default datetime expired
+		protected static function getDefaultExpired() {
+			return date('c',mktime(date('H'),date('i'),date('s'),date('n'),date('j')+2,date('Y'))); // 2 x 24 jam
+		}
+	}
+?>

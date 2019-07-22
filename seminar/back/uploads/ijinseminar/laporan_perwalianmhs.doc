@@ -1,0 +1,1219 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>SIA Universitas Muhammadiyah Gresik - Laporan Daftar Status Mahasiswa Belum KRS </title>
+		<style>
+		body {
+	margin: 0 auto;
+}
+body, td, th {
+	font-family: 'Source Sans Pro', sans-serif;
+	font-size: 12px;
+}
+
+th {
+	text-align: center;
+}
+.font-normal th {
+	font-weight: normal;
+	vertical-align: middle;
+}
+.kop {
+	border-spacing: 0;
+	border-collapse: collapse;
+	margin-bottom:10px;
+}
+.kop td {
+	padding: 0;
+	text-align: left;
+}
+.kop-istitut td {
+	font-size: 20px;
+	line-height: 1.1;
+}
+.kop-univ td {
+	font-size: 27px;
+	line-height: 1.1;
+	font-weight:bold;
+}
+
+.kop-fak td {
+	font-size: 24px;
+	font-weight: bold;
+	line-height: 1.1;
+}
+.kop-prodi td {
+	font-size: 18px;
+	font-weight: bold;
+	line-height: 1.1;
+	padding-bottom: 5px;
+}
+.header td, .header th {
+	font-size: 16px;
+}
+.mid td, .mid th {
+	font-size: 14px;
+}
+.center td, .center th {
+	text-align: center;
+	vertical-align: middle;
+}
+table.border {
+	border-collapse: collapse;
+}
+table.border td, table.border th {
+	border: 1px solid black;
+	vertical-align: top;
+}
+tr.noborder td, tr.noborder th {
+	border: none;
+}
+hr {
+	margin: 10px auto;
+	border: 1px solid black;
+	border-width: 1px 0 0 0;
+}
+.text-center {
+	text-align: center;
+}
+.btn-flat {
+	-webkit-border-radius: 0;
+	-moz-border-radius: 0;
+	border-radius: 0;
+	-webkit-box-shadow: none;
+	-moz-box-shadow: none;
+	box-shadow: none;
+	border-width: 1px;
+}
+.bg-info {
+	background-color: #D9EDF7;
+}
+.bg-success {
+	background-color: #DFF0D8;
+}
+.title{
+	font-size:14px;
+	font-weight:bold;
+	margin-bottom:5px;
+}
+
+.tb_head{
+	margin-bottom:5px;
+}
+.tb_head td{
+	font-size:13px;
+	font-weight:bold;
+}
+.tb_data td {
+	font-size:12px;
+}
+.bold td{
+	font-weight:bold;
+}
+
+
+.watermark {
+    position: relative;
+    z-index: 1;
+}
+
+.watermark .bg {
+  position: absolute;
+    z-index: -1;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background:  url(img/header/logo.png) no-repeat center;
+    opacity: 0.1;
+  background-size: 400px 360px;
+}
+	</style>
+</head>
+<body>
+		<div align="center">
+		<div style="width:800px">
+			
+<div align="center">
+<table width="100%" class="kop">
+	<tr class="kop-istitut">
+		<td rowspan="3" width="120" style="text-align:center"><img src="http://114.6.57.153/unmuhgresikakad/siakad/img/header/logo.png" height="110" /></td>
+		<td colspan="4">  </td>
+	</tr>
+	<tr class="kop-univ">
+		<td colspan="4">UNIVERSITAS MUHAMMADIYAH GRESIK</td>
+	</tr>
+	<tr>
+		<td colspan="4">
+		Jl. Sumatera No. 101 Gresik 61121 Indonesia, Telp. (031) 395 1414 Fax. (031) 395 2585
+		</td>
+	</tr>
+	<tr>
+		<td><hr style="border-bottom:double"></td>
+		<td width="24%" style="font-size:16px;text-align:center"><b>TERAKREDITASI</b></td>
+		<td width="35%"><hr style="border-bottom:double"></td>
+		<td width="27%"> &nbsp; www.umg.ac.id</td>
+	</tr>
+	
+</table>
+<div class="title">
+	LAPORAN DAFTAR STATUS MAHASISWA BELUM KRS <br>
+	AGROTEKNOLOGI<br>
+</div>
+
+<table class="tb_data border" width="100%">
+	<tr>
+		<th  width="15">No</th>
+		<th  width="120">NIM</th>
+		<th >NAMA</th>
+		<th  width="200">PRODI</th>
+		<th  width="80">JUMLAH SKS</th>
+		<th  width="80">BATAS SKS</th>
+	</tr>
+	<tr>
+	<tr>
+		<td align="center">1</td>
+		<td align="center">10112005</td>
+		<td>DEBY CANDRA SETRIAWAN</td>
+		<td >Agroteknologi</td>
+		<td align="center">20</td>
+		<td align="center">0</td>
+	</tr>
+	<tr>
+		<td align="center">2</td>
+		<td align="center">11112002</td>
+		<td>QAMARUDDIN SHALIH</td>
+		<td >Agroteknologi</td>
+		<td align="center">10</td>
+		<td align="center">0</td>
+	</tr>
+	<tr>
+		<td align="center">3</td>
+		<td align="center">11112006</td>
+		<td>BAMBANG DANNY ARDYANSAH</td>
+		<td >Agroteknologi</td>
+		<td align="center">5</td>
+		<td align="center">0</td>
+	</tr>
+	<tr>
+		<td align="center">4</td>
+		<td align="center">11112012</td>
+		<td>EBON SIEBERENA SABILL</td>
+		<td >Agroteknologi</td>
+		<td align="center">5</td>
+		<td align="center">0</td>
+	</tr>
+	<tr>
+		<td align="center">5</td>
+		<td align="center">11112015</td>
+		<td>VAREN ELFRIDATIN NIMAH</td>
+		<td >Agroteknologi</td>
+		<td align="center">5</td>
+		<td align="center">0</td>
+	</tr>
+	<tr>
+		<td align="center">6</td>
+		<td align="center">11112016</td>
+		<td>MIRZALIA DIANITAMI</td>
+		<td >Agroteknologi</td>
+		<td align="center">5</td>
+		<td align="center">0</td>
+	</tr>
+	<tr>
+		<td align="center">7</td>
+		<td align="center">11112020</td>
+		<td>AHMAD NADHIR</td>
+		<td >Agroteknologi</td>
+		<td align="center">26</td>
+		<td align="center">0</td>
+	</tr>
+	<tr>
+		<td align="center">8</td>
+		<td align="center">12112001</td>
+		<td>PAMUJI</td>
+		<td >Agroteknologi</td>
+		<td align="center">9</td>
+		<td align="center">0</td>
+	</tr>
+	<tr>
+		<td align="center">9</td>
+		<td align="center">12112002</td>
+		<td>MOH ATOK ILLAH</td>
+		<td >Agroteknologi</td>
+		<td align="center">14</td>
+		<td align="center">0</td>
+	</tr>
+	<tr>
+		<td align="center">10</td>
+		<td align="center">12112005</td>
+		<td>SIMAK ENDY SAIRANA</td>
+		<td >Agroteknologi</td>
+		<td align="center">9</td>
+		<td align="center">0</td>
+	</tr>
+	<tr>
+		<td align="center">11</td>
+		<td align="center">12112006</td>
+		<td>NUR LAILIA ROSYIDA</td>
+		<td >Agroteknologi</td>
+		<td align="center">9</td>
+		<td align="center">0</td>
+	</tr>
+	<tr>
+		<td align="center">12</td>
+		<td align="center">12112007</td>
+		<td>SIDIQ YUDHI ANGGARA</td>
+		<td >Agroteknologi</td>
+		<td align="center">9</td>
+		<td align="center">0</td>
+	</tr>
+	<tr>
+		<td align="center">13</td>
+		<td align="center">12112008</td>
+		<td>FIRDY RAHMANA</td>
+		<td >Agroteknologi</td>
+		<td align="center">12</td>
+		<td align="center">0</td>
+	</tr>
+	<tr>
+		<td align="center">14</td>
+		<td align="center">12112010</td>
+		<td>ARIF SUYANTO</td>
+		<td >Agroteknologi</td>
+		<td align="center">8</td>
+		<td align="center">0</td>
+	</tr>
+	<tr>
+		<td align="center">15</td>
+		<td align="center">12112011</td>
+		<td>NOVRI PRASETYA</td>
+		<td >Agroteknologi</td>
+		<td align="center">12</td>
+		<td align="center">0</td>
+	</tr>
+	<tr>
+		<td align="center">16</td>
+		<td align="center">12112013</td>
+		<td>UNTUNG PRIYANTO</td>
+		<td >Agroteknologi</td>
+		<td align="center">8</td>
+		<td align="center">0</td>
+	</tr>
+	<tr>
+		<td align="center">17</td>
+		<td align="center">12112016</td>
+		<td>FONDRA</td>
+		<td >Agroteknologi</td>
+		<td align="center">8</td>
+		<td align="center">0</td>
+	</tr>
+	<tr>
+		<td align="center">18</td>
+		<td align="center">12112018</td>
+		<td>MUHAMMAD CHAIRUL</td>
+		<td >Agroteknologi</td>
+		<td align="center">14</td>
+		<td align="center">0</td>
+	</tr>
+	<tr>
+		<td align="center">19</td>
+		<td align="center">12112021</td>
+		<td>FAISAL ABDUL ROHMAN HAKIM</td>
+		<td >Agroteknologi</td>
+		<td align="center">14</td>
+		<td align="center">0</td>
+	</tr>
+	<tr>
+		<td align="center">20</td>
+		<td align="center">12112022</td>
+		<td>MOLISA WIJINING RAHAYU</td>
+		<td >Agroteknologi</td>
+		<td align="center">16</td>
+		<td align="center">0</td>
+	</tr>
+	<tr>
+		<td align="center">21</td>
+		<td align="center">12112025</td>
+		<td>PRASETYO</td>
+		<td >Agroteknologi</td>
+		<td align="center">13</td>
+		<td align="center">0</td>
+	</tr>
+	<tr>
+		<td align="center">22</td>
+		<td align="center">12112028</td>
+		<td>ARIEF BAKHTIAR LUTFI</td>
+		<td >Agroteknologi</td>
+		<td align="center">14</td>
+		<td align="center">0</td>
+	</tr>
+	<tr>
+		<td align="center">23</td>
+		<td align="center">12112034</td>
+		<td>AHMAD SUKARNO</td>
+		<td >Agroteknologi</td>
+		<td align="center">8</td>
+		<td align="center">0</td>
+	</tr>
+	<tr>
+		<td align="center">24</td>
+		<td align="center">12112035</td>
+		<td>BAMBANG BASUKI</td>
+		<td >Agroteknologi</td>
+		<td align="center">8</td>
+		<td align="center">0</td>
+	</tr>
+	<tr>
+		<td align="center">25</td>
+		<td align="center">12112039</td>
+		<td>MOH SAMSUL ARIFIN</td>
+		<td >Agroteknologi</td>
+		<td align="center">13</td>
+		<td align="center">0</td>
+	</tr>
+</table>
+<div style="page-break-after:always"></div>
+<table width="100%" class="kop">
+	<tr class="kop-istitut">
+		<td rowspan="3" width="120" style="text-align:center"><img src="http://114.6.57.153/unmuhgresikakad/siakad/img/header/logo.png" height="110" /></td>
+		<td colspan="4">  </td>
+	</tr>
+	<tr class="kop-univ">
+		<td colspan="4">UNIVERSITAS MUHAMMADIYAH GRESIK</td>
+	</tr>
+	<tr>
+		<td colspan="4">
+		Jl. Sumatera No. 101 Gresik 61121 Indonesia, Telp. (031) 395 1414 Fax. (031) 395 2585
+		</td>
+	</tr>
+	<tr>
+		<td><hr style="border-bottom:double"></td>
+		<td width="24%" style="font-size:16px;text-align:center"><b>TERAKREDITASI</b></td>
+		<td width="35%"><hr style="border-bottom:double"></td>
+		<td width="27%"> &nbsp; www.umg.ac.id</td>
+	</tr>
+	
+</table>
+<div class="title">
+	LAPORAN DAFTAR STATUS MAHASISWA BELUM KRS <br>
+	AGROTEKNOLOGI<br>
+</div>
+
+<table class="tb_data border" width="100%">
+	<tr>
+		<th  width="15">No</th>
+		<th  width="120">NIM</th>
+		<th >NAMA</th>
+		<th  width="200">PRODI</th>
+		<th  width="80">JUMLAH SKS</th>
+		<th  width="80">BATAS SKS</th>
+	</tr>
+	<tr>
+	<tr>
+		<td align="center">26</td>
+		<td align="center">13112001</td>
+		<td>MUHAMMAD PUTRA PRASTIYO</td>
+		<td >Agroteknologi</td>
+		<td align="center">19</td>
+		<td align="center">0</td>
+	</tr>
+	<tr>
+		<td align="center">27</td>
+		<td align="center">13112002</td>
+		<td>RENDY RAMADAN ZAKARIA</td>
+		<td >Agroteknologi</td>
+		<td align="center">22</td>
+		<td align="center">0</td>
+	</tr>
+	<tr>
+		<td align="center">28</td>
+		<td align="center">13112003</td>
+		<td>ABDUL MALIK</td>
+		<td >Agroteknologi</td>
+		<td align="center">22</td>
+		<td align="center">0</td>
+	</tr>
+	<tr>
+		<td align="center">29</td>
+		<td align="center">13112004</td>
+		<td>NURUL ILMI SANTOSO</td>
+		<td >Agroteknologi</td>
+		<td align="center">19</td>
+		<td align="center">0</td>
+	</tr>
+	<tr>
+		<td align="center">30</td>
+		<td align="center">13112006</td>
+		<td>DZARROTUN NAFISAH</td>
+		<td >Agroteknologi</td>
+		<td align="center">22</td>
+		<td align="center">0</td>
+	</tr>
+	<tr>
+		<td align="center">31</td>
+		<td align="center">13112013</td>
+		<td>NICKY NASTITI INTAN PERTIWI</td>
+		<td >Agroteknologi</td>
+		<td align="center">22</td>
+		<td align="center">0</td>
+	</tr>
+	<tr>
+		<td align="center">32</td>
+		<td align="center">13112014</td>
+		<td>ROBIN FAJAR HIMAWAN</td>
+		<td >Agroteknologi</td>
+		<td align="center">23</td>
+		<td align="center">0</td>
+	</tr>
+	<tr>
+		<td align="center">33</td>
+		<td align="center">13112015</td>
+		<td>ZUHROTUT THOYIBAH</td>
+		<td >Agroteknologi</td>
+		<td align="center">16</td>
+		<td align="center">0</td>
+	</tr>
+	<tr>
+		<td align="center">34</td>
+		<td align="center">13112016</td>
+		<td>SAEFUL UBAYD</td>
+		<td >Agroteknologi</td>
+		<td align="center">23</td>
+		<td align="center">0</td>
+	</tr>
+	<tr>
+		<td align="center">35</td>
+		<td align="center">13112017</td>
+		<td>DIAZ ZAHROTUS S</td>
+		<td >Agroteknologi</td>
+		<td align="center">21</td>
+		<td align="center">0</td>
+	</tr>
+	<tr>
+		<td align="center">36</td>
+		<td align="center">14111003</td>
+		<td>INDAH NURMAYANTI</td>
+		<td >Agroteknologi</td>
+		<td align="center">24</td>
+		<td align="center">0</td>
+	</tr>
+	<tr>
+		<td align="center">37</td>
+		<td align="center">14111004</td>
+		<td>FITRIA NUR AINI</td>
+		<td >Agroteknologi</td>
+		<td align="center">24</td>
+		<td align="center">0</td>
+	</tr>
+	<tr>
+		<td align="center">38</td>
+		<td align="center">14111005</td>
+		<td>NANDA KUSUMA ARUM</td>
+		<td >Agroteknologi</td>
+		<td align="center">24</td>
+		<td align="center">0</td>
+	</tr>
+	<tr>
+		<td align="center">39</td>
+		<td align="center">14111006</td>
+		<td>QURROTU AAYUNI</td>
+		<td >Agroteknologi</td>
+		<td align="center">24</td>
+		<td align="center">0</td>
+	</tr>
+	<tr>
+		<td align="center">40</td>
+		<td align="center">14111007</td>
+		<td>ANJAS DIAR SEPTIANSYAH</td>
+		<td >Agroteknologi</td>
+		<td align="center">24</td>
+		<td align="center">0</td>
+	</tr>
+	<tr>
+		<td align="center">41</td>
+		<td align="center">14111008</td>
+		<td>MUHAMMAD YUNUS ICHWAN</td>
+		<td >Agroteknologi</td>
+		<td align="center">24</td>
+		<td align="center">0</td>
+	</tr>
+	<tr>
+		<td align="center">42</td>
+		<td align="center">14111009</td>
+		<td>MIERZA ADITYA NOVA</td>
+		<td >Agroteknologi</td>
+		<td align="center">22</td>
+		<td align="center">0</td>
+	</tr>
+	<tr>
+		<td align="center">43</td>
+		<td align="center">14111010</td>
+		<td>CHUSNAN MUSLIKIN</td>
+		<td >Agroteknologi</td>
+		<td align="center">22</td>
+		<td align="center">0</td>
+	</tr>
+	<tr>
+		<td align="center">44</td>
+		<td align="center">14111011</td>
+		<td>LUKIANA NORITA</td>
+		<td >Agroteknologi</td>
+		<td align="center">24</td>
+		<td align="center">0</td>
+	</tr>
+	<tr>
+		<td align="center">45</td>
+		<td align="center">14111014</td>
+		<td>DEDDY KRISDIANTO</td>
+		<td >Agroteknologi</td>
+		<td align="center">20</td>
+		<td align="center">0</td>
+	</tr>
+	<tr>
+		<td align="center">46</td>
+		<td align="center">14112001</td>
+		<td>RACHMAD EDY RAFIANTO</td>
+		<td >Agroteknologi</td>
+		<td align="center">21</td>
+		<td align="center">0</td>
+	</tr>
+	<tr>
+		<td align="center">47</td>
+		<td align="center">14112003</td>
+		<td>AJENG EMBRI LEGAWATI</td>
+		<td >Agroteknologi</td>
+		<td align="center">24</td>
+		<td align="center">0</td>
+	</tr>
+	<tr>
+		<td align="center">48</td>
+		<td align="center">14112005</td>
+		<td>NUR AZIZAH</td>
+		<td >Agroteknologi</td>
+		<td align="center">24</td>
+		<td align="center">0</td>
+	</tr>
+	<tr>
+		<td align="center">49</td>
+		<td align="center">14112006</td>
+		<td>DONI ARU SUNGGORO</td>
+		<td >Agroteknologi</td>
+		<td align="center">16</td>
+		<td align="center">0</td>
+	</tr>
+	<tr>
+		<td align="center">50</td>
+		<td align="center">14112009</td>
+		<td>NUR FITRIANA</td>
+		<td >Agroteknologi</td>
+		<td align="center">22</td>
+		<td align="center">0</td>
+	</tr>
+</table>
+<div style="page-break-after:always"></div>
+<table width="100%" class="kop">
+	<tr class="kop-istitut">
+		<td rowspan="3" width="120" style="text-align:center"><img src="http://114.6.57.153/unmuhgresikakad/siakad/img/header/logo.png" height="110" /></td>
+		<td colspan="4">  </td>
+	</tr>
+	<tr class="kop-univ">
+		<td colspan="4">UNIVERSITAS MUHAMMADIYAH GRESIK</td>
+	</tr>
+	<tr>
+		<td colspan="4">
+		Jl. Sumatera No. 101 Gresik 61121 Indonesia, Telp. (031) 395 1414 Fax. (031) 395 2585
+		</td>
+	</tr>
+	<tr>
+		<td><hr style="border-bottom:double"></td>
+		<td width="24%" style="font-size:16px;text-align:center"><b>TERAKREDITASI</b></td>
+		<td width="35%"><hr style="border-bottom:double"></td>
+		<td width="27%"> &nbsp; www.umg.ac.id</td>
+	</tr>
+	
+</table>
+<div class="title">
+	LAPORAN DAFTAR STATUS MAHASISWA BELUM KRS <br>
+	AGROTEKNOLOGI<br>
+</div>
+
+<table class="tb_data border" width="100%">
+	<tr>
+		<th  width="15">No</th>
+		<th  width="120">NIM</th>
+		<th >NAMA</th>
+		<th  width="200">PRODI</th>
+		<th  width="80">JUMLAH SKS</th>
+		<th  width="80">BATAS SKS</th>
+	</tr>
+	<tr>
+	<tr>
+		<td align="center">51</td>
+		<td align="center">14112013</td>
+		<td>ACHMAD ROMADHAN</td>
+		<td >Agroteknologi</td>
+		<td align="center">24</td>
+		<td align="center">0</td>
+	</tr>
+	<tr>
+		<td align="center">52</td>
+		<td align="center">15111001</td>
+		<td>HENI AZIZATUL FAUZIYAH</td>
+		<td >Agroteknologi</td>
+		<td align="center">24</td>
+		<td align="center">0</td>
+	</tr>
+	<tr>
+		<td align="center">53</td>
+		<td align="center">15111003</td>
+		<td>MAULIDIYA HAMIDA</td>
+		<td >Agroteknologi</td>
+		<td align="center">24</td>
+		<td align="center">0</td>
+	</tr>
+	<tr>
+		<td align="center">54</td>
+		<td align="center">15111005</td>
+		<td>PUTRI KUSUMA DEWI</td>
+		<td >Agroteknologi</td>
+		<td align="center">24</td>
+		<td align="center">0</td>
+	</tr>
+	<tr>
+		<td align="center">55</td>
+		<td align="center">15111007</td>
+		<td>RETNO AYU SRI M</td>
+		<td >Agroteknologi</td>
+		<td align="center">24</td>
+		<td align="center">0</td>
+	</tr>
+	<tr>
+		<td align="center">56</td>
+		<td align="center">15111008</td>
+		<td>AN NISA RAHMANIA FIRDAUS</td>
+		<td >Agroteknologi</td>
+		<td align="center">24</td>
+		<td align="center">0</td>
+	</tr>
+	<tr>
+		<td align="center">57</td>
+		<td align="center">15111009</td>
+		<td>ACHMAD RIZAL RENALDHI</td>
+		<td >Agroteknologi</td>
+		<td align="center">24</td>
+		<td align="center">0</td>
+	</tr>
+	<tr>
+		<td align="center">58</td>
+		<td align="center">15111010</td>
+		<td>MUHAMMAD DWI FIRMANSYAH</td>
+		<td >Agroteknologi</td>
+		<td align="center">24</td>
+		<td align="center">0</td>
+	</tr>
+	<tr>
+		<td align="center">59</td>
+		<td align="center">15111011</td>
+		<td>SUKMA MUJAHID F</td>
+		<td >Agroteknologi</td>
+		<td align="center">24</td>
+		<td align="center">0</td>
+	</tr>
+	<tr>
+		<td align="center">60</td>
+		<td align="center">15111012</td>
+		<td>FIKRY BAGUS</td>
+		<td >Agroteknologi</td>
+		<td align="center">24</td>
+		<td align="center">0</td>
+	</tr>
+	<tr>
+		<td align="center">61</td>
+		<td align="center">15111013</td>
+		<td>SOFYAN TSAURI</td>
+		<td >Agroteknologi</td>
+		<td align="center">24</td>
+		<td align="center">0</td>
+	</tr>
+	<tr>
+		<td align="center">62</td>
+		<td align="center">15111017</td>
+		<td>AHMAD FERRY APRILIANSYAH</td>
+		<td >Agroteknologi</td>
+		<td align="center">22</td>
+		<td align="center">0</td>
+	</tr>
+	<tr>
+		<td align="center">63</td>
+		<td align="center">15111018</td>
+		<td>MUHAMMAD MAHFUD</td>
+		<td >Agroteknologi</td>
+		<td align="center">24</td>
+		<td align="center">0</td>
+	</tr>
+	<tr>
+		<td align="center">64</td>
+		<td align="center">15111019</td>
+		<td>MASYHURI</td>
+		<td >Agroteknologi</td>
+		<td align="center">22</td>
+		<td align="center">0</td>
+	</tr>
+	<tr>
+		<td align="center">65</td>
+		<td align="center">15111020</td>
+		<td>TIARA PUSPITASARI MUJIASTUTI</td>
+		<td >Agroteknologi</td>
+		<td align="center">24</td>
+		<td align="center">0</td>
+	</tr>
+	<tr>
+		<td align="center">66</td>
+		<td align="center">15111021</td>
+		<td>NADYA LAILATUL RAMADHANI</td>
+		<td >Agroteknologi</td>
+		<td align="center">24</td>
+		<td align="center">0</td>
+	</tr>
+	<tr>
+		<td align="center">67</td>
+		<td align="center">15111022</td>
+		<td>MAULIDYAH ANITA</td>
+		<td >Agroteknologi</td>
+		<td align="center">24</td>
+		<td align="center">0</td>
+	</tr>
+	<tr>
+		<td align="center">68</td>
+		<td align="center">15112001</td>
+		<td>ARIK SUGIAWAN</td>
+		<td >Agroteknologi</td>
+		<td align="center">18</td>
+		<td align="center">0</td>
+	</tr>
+	<tr>
+		<td align="center">69</td>
+		<td align="center">15112003</td>
+		<td>SHANDI AGUSTA RISTANTO</td>
+		<td >Agroteknologi</td>
+		<td align="center">24</td>
+		<td align="center">0</td>
+	</tr>
+	<tr>
+		<td align="center">70</td>
+		<td align="center">15112004</td>
+		<td>MOCH KHOLIS SYARIFUDDIN</td>
+		<td >Agroteknologi</td>
+		<td align="center">22</td>
+		<td align="center">0</td>
+	</tr>
+	<tr>
+		<td align="center">71</td>
+		<td align="center">15112006</td>
+		<td>MUHAMMAD GHOLIB AROSY</td>
+		<td >Agroteknologi</td>
+		<td align="center">20</td>
+		<td align="center">0</td>
+	</tr>
+	<tr>
+		<td align="center">72</td>
+		<td align="center">15112007</td>
+		<td>ANDI LUSDIONO</td>
+		<td >Agroteknologi</td>
+		<td align="center">24</td>
+		<td align="center">0</td>
+	</tr>
+	<tr>
+		<td align="center">73</td>
+		<td align="center">15112009</td>
+		<td>MIFTAH FARID FASHEH</td>
+		<td >Agroteknologi</td>
+		<td align="center">24</td>
+		<td align="center">0</td>
+	</tr>
+	<tr>
+		<td align="center">74</td>
+		<td align="center">15112010</td>
+		<td>RAHMAT ALDIANSYAH</td>
+		<td >Agroteknologi</td>
+		<td align="center">17</td>
+		<td align="center">0</td>
+	</tr>
+	<tr>
+		<td align="center">75</td>
+		<td align="center">16111001</td>
+		<td>AZRUL HAIFAN</td>
+		<td >Agroteknologi</td>
+		<td align="center">20</td>
+		<td align="center">0</td>
+	</tr>
+</table>
+<div style="page-break-after:always"></div>
+<table width="100%" class="kop">
+	<tr class="kop-istitut">
+		<td rowspan="3" width="120" style="text-align:center"><img src="http://114.6.57.153/unmuhgresikakad/siakad/img/header/logo.png" height="110" /></td>
+		<td colspan="4">  </td>
+	</tr>
+	<tr class="kop-univ">
+		<td colspan="4">UNIVERSITAS MUHAMMADIYAH GRESIK</td>
+	</tr>
+	<tr>
+		<td colspan="4">
+		Jl. Sumatera No. 101 Gresik 61121 Indonesia, Telp. (031) 395 1414 Fax. (031) 395 2585
+		</td>
+	</tr>
+	<tr>
+		<td><hr style="border-bottom:double"></td>
+		<td width="24%" style="font-size:16px;text-align:center"><b>TERAKREDITASI</b></td>
+		<td width="35%"><hr style="border-bottom:double"></td>
+		<td width="27%"> &nbsp; www.umg.ac.id</td>
+	</tr>
+	
+</table>
+<div class="title">
+	LAPORAN DAFTAR STATUS MAHASISWA BELUM KRS <br>
+	AGROTEKNOLOGI<br>
+</div>
+
+<table class="tb_data border" width="100%">
+	<tr>
+		<th  width="15">No</th>
+		<th  width="120">NIM</th>
+		<th >NAMA</th>
+		<th  width="200">PRODI</th>
+		<th  width="80">JUMLAH SKS</th>
+		<th  width="80">BATAS SKS</th>
+	</tr>
+	<tr>
+	<tr>
+		<td align="center">76</td>
+		<td align="center">16111002</td>
+		<td>NURUL QOMARIYAH</td>
+		<td >Agroteknologi</td>
+		<td align="center">20</td>
+		<td align="center">0</td>
+	</tr>
+	<tr>
+		<td align="center">77</td>
+		<td align="center">16111003</td>
+		<td>YUMIKO MALAYSIANA</td>
+		<td >Agroteknologi</td>
+		<td align="center">20</td>
+		<td align="center">0</td>
+	</tr>
+	<tr>
+		<td align="center">78</td>
+		<td align="center">16111004</td>
+		<td>LUFITA DWI KOMALA.S</td>
+		<td >Agroteknologi</td>
+		<td align="center">20</td>
+		<td align="center">0</td>
+	</tr>
+	<tr>
+		<td align="center">79</td>
+		<td align="center">16111005</td>
+		<td>FEBRIYANTI</td>
+		<td >Agroteknologi</td>
+		<td align="center">20</td>
+		<td align="center">0</td>
+	</tr>
+	<tr>
+		<td align="center">80</td>
+		<td align="center">16111007</td>
+		<td>SHOBRINA MAULIDIAH</td>
+		<td >Agroteknologi</td>
+		<td align="center">20</td>
+		<td align="center">0</td>
+	</tr>
+	<tr>
+		<td align="center">81</td>
+		<td align="center">16111008</td>
+		<td>IMAM YUHRI ALF</td>
+		<td >Agroteknologi</td>
+		<td align="center">20</td>
+		<td align="center">0</td>
+	</tr>
+	<tr>
+		<td align="center">82</td>
+		<td align="center">16111009</td>
+		<td>DIANA FITRIYAH R</td>
+		<td >Agroteknologi</td>
+		<td align="center">20</td>
+		<td align="center">0</td>
+	</tr>
+	<tr>
+		<td align="center">83</td>
+		<td align="center">16111010</td>
+		<td>KHOIRUL ANWAR</td>
+		<td >Agroteknologi</td>
+		<td align="center">20</td>
+		<td align="center">0</td>
+	</tr>
+	<tr>
+		<td align="center">84</td>
+		<td align="center">16111011</td>
+		<td>ASIFATUL KHANIFAH</td>
+		<td >Agroteknologi</td>
+		<td align="center">20</td>
+		<td align="center">0</td>
+	</tr>
+	<tr>
+		<td align="center">85</td>
+		<td align="center">16111012</td>
+		<td>SISKA ERMAWATI</td>
+		<td >Agroteknologi</td>
+		<td align="center">20</td>
+		<td align="center">0</td>
+	</tr>
+	<tr>
+		<td align="center">86</td>
+		<td align="center">16111013</td>
+		<td>NOLLA GLADISIA</td>
+		<td >Agroteknologi</td>
+		<td align="center">20</td>
+		<td align="center">0</td>
+	</tr>
+	<tr>
+		<td align="center">87</td>
+		<td align="center">16111014</td>
+		<td>NITA AZMIRA ARIF</td>
+		<td >Agroteknologi</td>
+		<td align="center">20</td>
+		<td align="center">0</td>
+	</tr>
+	<tr>
+		<td align="center">88</td>
+		<td align="center">16111015</td>
+		<td>KHUSNIA SYUKRIYAH</td>
+		<td >Agroteknologi</td>
+		<td align="center">20</td>
+		<td align="center">0</td>
+	</tr>
+	<tr>
+		<td align="center">89</td>
+		<td align="center">16111016</td>
+		<td>FINA ANDRIANI</td>
+		<td >Agroteknologi</td>
+		<td align="center">20</td>
+		<td align="center">0</td>
+	</tr>
+	<tr>
+		<td align="center">90</td>
+		<td align="center">16111017</td>
+		<td>GUNTUR SAHARA</td>
+		<td >Agroteknologi</td>
+		<td align="center">20</td>
+		<td align="center">0</td>
+	</tr>
+	<tr>
+		<td align="center">91</td>
+		<td align="center">16111018</td>
+		<td>NOVENDRA AYESHA Z</td>
+		<td >Agroteknologi</td>
+		<td align="center">20</td>
+		<td align="center">0</td>
+	</tr>
+	<tr>
+		<td align="center">92</td>
+		<td align="center">16111019</td>
+		<td>NUR CHAMDI</td>
+		<td >Agroteknologi</td>
+		<td align="center">20</td>
+		<td align="center">0</td>
+	</tr>
+	<tr>
+		<td align="center">93</td>
+		<td align="center">16111020</td>
+		<td>IRGI DWI RISMA J</td>
+		<td >Agroteknologi</td>
+		<td align="center">20</td>
+		<td align="center">0</td>
+	</tr>
+	<tr>
+		<td align="center">94</td>
+		<td align="center">16111021</td>
+		<td>WIBI PUGUH RAHARJO</td>
+		<td >Agroteknologi</td>
+		<td align="center">20</td>
+		<td align="center">0</td>
+	</tr>
+	<tr>
+		<td align="center">95</td>
+		<td align="center">16111022</td>
+		<td>FAJAR ADI SANTOSO</td>
+		<td >Agroteknologi</td>
+		<td align="center">20</td>
+		<td align="center">0</td>
+	</tr>
+	<tr>
+		<td align="center">96</td>
+		<td align="center">16111023</td>
+		<td>AHMAD EDO FIRNANDA</td>
+		<td >Agroteknologi</td>
+		<td align="center">20</td>
+		<td align="center">0</td>
+	</tr>
+	<tr>
+		<td align="center">97</td>
+		<td align="center">16111024</td>
+		<td>NUR HABIBAH</td>
+		<td >Agroteknologi</td>
+		<td align="center">20</td>
+		<td align="center">0</td>
+	</tr>
+	<tr>
+		<td align="center">98</td>
+		<td align="center">16111025</td>
+		<td>ADY SETYAWAN</td>
+		<td >Agroteknologi</td>
+		<td align="center">20</td>
+		<td align="center">0</td>
+	</tr>
+	<tr>
+		<td align="center">99</td>
+		<td align="center">16111026</td>
+		<td>AYU NUR FAIZAH</td>
+		<td >Agroteknologi</td>
+		<td align="center">20</td>
+		<td align="center">0</td>
+	</tr>
+	<tr>
+		<td align="center">100</td>
+		<td align="center">16111027</td>
+		<td>AGUNG SETYO BUDI</td>
+		<td >Agroteknologi</td>
+		<td align="center">20</td>
+		<td align="center">0</td>
+	</tr>
+</table>
+<div style="page-break-after:always"></div>
+<table width="100%" class="kop">
+	<tr class="kop-istitut">
+		<td rowspan="3" width="120" style="text-align:center"><img src="http://114.6.57.153/unmuhgresikakad/siakad/img/header/logo.png" height="110" /></td>
+		<td colspan="4">  </td>
+	</tr>
+	<tr class="kop-univ">
+		<td colspan="4">UNIVERSITAS MUHAMMADIYAH GRESIK</td>
+	</tr>
+	<tr>
+		<td colspan="4">
+		Jl. Sumatera No. 101 Gresik 61121 Indonesia, Telp. (031) 395 1414 Fax. (031) 395 2585
+		</td>
+	</tr>
+	<tr>
+		<td><hr style="border-bottom:double"></td>
+		<td width="24%" style="font-size:16px;text-align:center"><b>TERAKREDITASI</b></td>
+		<td width="35%"><hr style="border-bottom:double"></td>
+		<td width="27%"> &nbsp; www.umg.ac.id</td>
+	</tr>
+	
+</table>
+<div class="title">
+	LAPORAN DAFTAR STATUS MAHASISWA BELUM KRS <br>
+	AGROTEKNOLOGI<br>
+</div>
+
+<table class="tb_data border" width="100%">
+	<tr>
+		<th  width="15">No</th>
+		<th  width="120">NIM</th>
+		<th >NAMA</th>
+		<th  width="200">PRODI</th>
+		<th  width="80">JUMLAH SKS</th>
+		<th  width="80">BATAS SKS</th>
+	</tr>
+	<tr>
+	<tr>
+		<td align="center">101</td>
+		<td align="center">16111028</td>
+		<td>RINTIN ZULFI A</td>
+		<td >Agroteknologi</td>
+		<td align="center">20</td>
+		<td align="center">0</td>
+	</tr>
+	<tr>
+		<td align="center">102</td>
+		<td align="center">16111029</td>
+		<td>SURAHMAN HIDAYAT</td>
+		<td >Agroteknologi</td>
+		<td align="center">20</td>
+		<td align="center">0</td>
+	</tr>
+	<tr>
+		<td align="center">103</td>
+		<td align="center">16111030</td>
+		<td>WAHYU PURNAMA ADJI</td>
+		<td >Agroteknologi</td>
+		<td align="center">20</td>
+		<td align="center">0</td>
+	</tr>
+	<tr>
+		<td align="center">104</td>
+		<td align="center">16111031</td>
+		<td>AZIZUL AL ASFAHANY</td>
+		<td >Agroteknologi</td>
+		<td align="center">20</td>
+		<td align="center">0</td>
+	</tr>
+	<tr>
+		<td align="center">105</td>
+		<td align="center">16111032</td>
+		<td>MOH ALFAN R H</td>
+		<td >Agroteknologi</td>
+		<td align="center">20</td>
+		<td align="center">0</td>
+	</tr>
+	<tr>
+		<td align="center">106</td>
+		<td align="center">16111033</td>
+		<td>MOCH RIZAL SAIFUDIN</td>
+		<td >Agroteknologi</td>
+		<td align="center">20</td>
+		<td align="center">0</td>
+	</tr>
+	<tr>
+		<td align="center">107</td>
+		<td align="center">16111034</td>
+		<td>LIRZAKIR RAZAK</td>
+		<td >Agroteknologi</td>
+		<td align="center">20</td>
+		<td align="center">0</td>
+	</tr>
+	<tr>
+		<td align="center">108</td>
+		<td align="center">16112001</td>
+		<td>MOCH RIZAL SAIFUDIN</td>
+		<td >Agroteknologi</td>
+		<td align="center">0</td>
+		<td align="center">0</td>
+	</tr>
+	<tr>
+		<td align="center">109</td>
+		<td align="center">E31141415</td>
+		<td>ninanino</td>
+		<td >Agroteknologi</td>
+		<td align="center">0</td>
+		<td align="center">24</td>
+	</tr>
+	<tr>
+		<td align="center">110</td>
+		<td align="center">E31141416</td>
+		<td>indra</td>
+		<td >Agroteknologi</td>
+		<td align="center">20</td>
+		<td align="center">24</td>
+	</tr>
+</table>
+</div>
+		</div>
+	</div>
+	
+	<!-- tambahan -->
+	<script src="/unmuhgresikakad/siakad/js/forrep.js" type="text/javascript"></script>
+	
+	<script type="text/javascript">
+		var list = "/unmuhgresikakad/siakad/repp_belumkrs";
+	</script>
+</body>
+</html>

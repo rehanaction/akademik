@@ -1,0 +1,397 @@
+/* Content */
+.Darken {
+	background-color: rgb(0, 0, 0);
+	opacity: 0.4;
+	/* -moz-opacity: 0.40;
+	filter: alpha(opacity=40); */
+	z-index: 20;
+	height: 100%;
+	width: 100%;
+	background-repeat: repeat;
+	position: fixed;
+	top: 0px;
+	left: 0px;
+}
+
+.Lighten {
+	z-index: 50;
+	height: 100%;
+	width: 100%;
+	background-repeat: repeat;
+	position: fixed;
+	top: 0px;
+	left: 0px;
+}
+
+.AlternateBG {
+	background:#f4f4f4;
+}
+
+.AlternateBG2 {
+	background:#FCF4AA;
+}
+
+.Border {
+	border:1px solid #CCC;
+}
+
+.Break {
+	height:7px;
+}
+
+.BreakSmall {
+	height:3px;
+}
+
+.ControlStyle {
+	border:1px solid #999;
+	font-size:12px;
+}
+
+.acTrue {
+	border: 1px solid #005B58;
+}
+
+.acFalse {
+	border: 1px solid #f00;
+}
+
+
+.DivError {
+	background:#FFBABA;
+	border:1px solid #F93737;
+	padding:5px;
+}
+
+.DivSuccess {
+	background:#D3F5CD;
+	border:1px solid #55D83E;
+	padding:5px;
+}
+.DivWarning {
+	background:#ccedf7;
+	border:1px solid #36d8e0;
+	padding:5px;
+}
+
+.GridStyle {
+	border-collapse: collapse;
+}
+
+.GridStyle td {
+	border: 1px solid #CCC;
+}
+
+.GridStyle tr:hover:not(.NoHover):not(.DataBG) {
+	background-color: #FFDAB9;
+}
+
+.GridStyle tr:hover:not(.NoHover):not(.DataBG) td{
+	border-right:none;
+	border-left:none;
+}
+
+.GridStyle .HeaderBG {
+	background: #E5E5E5;
+	/* background: linear-gradient(top, #ffffff, #e5e5e5); */
+	border: 1px solid #CCC;
+	font-size: 11px;
+	font-weight: bold;
+	padding: 3px;
+	padding-top: 5px;
+	text-shadow: 0 1px 0 #ffffff;
+	vertical-align: middle;
+}
+
+.GridStyle .LiteHeaderBG {
+	background: #EBF2F9;
+	/* background: linear-gradient(top, #ffffff, #e5e5e5); */
+	border: 1px solid #CCC;
+	font-size: 11px;
+	font-weight: bold;
+	padding: 3px;
+	padding-top: 5px;
+	text-shadow: 0 1px 0 #ffffff;
+	vertical-align: middle;
+}
+
+.GreenBG {
+	background-color:#D2EDD0;
+}
+
+.RedBG {
+	background-color:#FCAAAA;
+}
+
+.YellowBG {
+	background-color:#FCF4AA;
+}
+
+.BlueBG {
+	background-color:#C3E5FD;
+}
+
+.GridStyle .GridStyleP {
+	background-color:#FCFCFC;
+	border:none;
+	padding:0;
+}
+
+.GridStyle .GridStyleP:hover {
+	background-color:#FCFCFC;
+}
+
+.GridStyle tr:hover .GridStyleP td {
+	border:1px solid #ccc;
+}
+
+.GridStyle .GridStyleP tr:hover td {
+	border-right:none;
+	border-left:none;
+}
+
+.LeftColumnBG {
+	background:#EDEDED;
+}
+
+.LeftColumnDiv {
+	float:left;
+}
+
+.MinPadding {
+	margin-top:-2px;
+	margin-bottom:-5px;
+}
+
+.PagerTitle {
+	border-bottom:1px solid #EE4037;
+	color:#647287;
+	font-size:14px;
+	font-weight:bold;
+	padding:9px 0;
+}
+
+.NormalBG {
+	background:#FFF;
+}
+
+.NotNullMark {
+	color:#F00;
+	float:right;
+}
+
+.TDButton {
+    background-color: #149DFE;
+    /*background-image: -moz-linear-gradient(center top , rgb(76, 164, 224), rgb(37, 126, 188));*/
+    border-color: #0182DE;
+    border-radius: 4px;
+    border-radius: 4px;
+    border-style: solid;
+    border-width: 1px;
+		/* box-shadow: 0 1px 0 0 #72B9EB inset, 0 1px 2px 0 #B3B3B3; */
+    color: #333;
+    color : #FFF;
+    font: 11px/1 "lucida grande",sans-serif;
+    padding: 3px 10px 8px;
+    text-align: center;
+    text-shadow: none;
+}
+/*
+.TDButton:active {
+    box-shadow: 1px 1px 0  #E08600 inset;
+    text-shadow: 0 1px 0 #E08600;
+}
+*/
+.TDButton:hover {
+    background-color: #45B2FE;
+    /*background-image: -moz-linear-gradient(center top , rgb(37, 126, 188), rgb(76, 164, 224));*/
+    border-color: #139DFE;
+    border-radius: 4px;
+    border-style: solid;
+    border-width: 1px;
+    cursor: pointer;
+}
+
+.TDButton img{
+	position:relative;
+	top:5px;
+}
+
+.Expand {
+	font-size:9px;
+	padding:0 3px 3px 3px;
+	white-space:nowrap;
+}
+
+.TRImportant .RightColumnBG {
+	font-weight:bold;
+}
+
+.ALink {
+	color:#0B7CED;
+	text-decoration:none;
+}
+
+.ULink {
+	color:#0B7CED;
+	cursor:pointer;
+}
+
+.ViewTitle {
+	color:#647287;
+	font-weight:bold;
+	font-size:18px;
+	border-bottom:1px solid #EE4037;
+}
+
+.ViewTitle span{
+	text-align: left;
+	display: block;
+}
+
+.ViewSubTitle {
+	color:#C00;
+}
+
+input[type="text"], input[type="password"] {
+    border-radius: 4px;
+    padding: 3px;
+    border: 1px solid #848484;
+    background: #fff;
+    width: 100%;
+    box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+}
+
+input[type="button"] {
+	border-radius:3px;
+	padding:2px 6px;
+	cursor:pointer;
+}
+
+.DataGridStyle {
+	border-collapse: collapse;
+}
+
+.DataGridStyle td {
+	border: none;
+}
+
+.DataGridStyle td.LeftColumnBG {
+	background:#7bc3a3;
+	border-bottom:2px solid #fff;
+}
+
+#div_autocomplete {
+	background-color:#FFFFFF;
+	position:absolute;
+	display:none;
+	border:1px solid #999999;
+	overflow:auto;
+	overflow-x:hidden;
+	z-index: 1000;
+}
+
+#tab_autocomplete {
+	background-color:#FFFFFF;
+}
+
+input.ControlRead {
+	background-color:#EBF2F9;
+	border:1px solid #999;
+	font-size:12px;
+}
+
+input.ControlErr, textarea.ControlErr {
+	background:#FF0;
+	border:1px solid #999;
+	color:#F00;
+	font-size:12px;
+}
+
+.DataBG {
+	padding-bottom: 7px;
+	background: url(../images/bg-pattern-line.png) bottom repeat-x;
+	background-color: #222;
+	color: #FFF;
+	font-weight: bold;
+}
+
+.LeftRibbon {
+	position: relative;
+	width: 230px;
+	font-weight: bold;
+	font-size: 18px;
+	padding: 6px 20px;
+	margin: 0 5px 15px -35px;
+	color: #FFF;
+	background-color: #149DFE; /*--color id 03--*/
+}
+
+.LeftRibbon img {
+	margin-right: 10px;
+	vertical-align: middle;
+}
+
+.LeftRibbon:after {
+	content: ' ';
+	position: absolute;
+	width: 0;
+	height: 0;
+	left: 0px;
+	top: 100%;
+	border-width: 5px 8px;
+	border-style: solid;
+	border-color: #666 #666 transparent transparent;
+}
+.dl{
+	cursor: pointer;
+}
+.dl img {
+	margin-right: 10px;
+	vertical-align: middle;
+}
+.dc{
+	cursor: pointer;
+	color: #6f6f6f;
+}
+.dc img {
+	margin-right: 10px;
+	vertical-align: middle;
+}
+#div_filtertree h3 {
+background-color: #ECECEC !important;
+padding: 8px 5px;
+margin: 0 !important;
+color: #015593;
+font-weight: 400;
+border-bottom: 1px dotted #A8A8A8;
+font-size: 13px;
+}
+
+.addButton.payButton {
+	background-color: rgb(255, 204, 42);
+	border-color: rgb(255, 204, 42);
+	color: rgb(1, 85, 147);
+	font-size: 14px;
+	padding: 5px 7px;
+	text-shadow: none;
+}
+.addButton.payButton:hover {
+	background-image: -moz-linear-gradient(center top , rgb(255, 230, 70), rgb(255, 230, 70));
+	background-color: rgb(255, 230, 70);
+	border-color: rgb(255, 230, 70);
+}
+input[type="button"].payButton {
+	font-size: 12px;
+	padding: 4px 6px;
+}
+input[type="button"].payButton, .TDButton.payButton {
+	background-color: rgb(255, 204, 42);
+	border-color: rgb(255, 204, 42);
+	color: rgb(1, 85, 147);
+}
+input[type="button"].payButton:hover, input[type="button"].payButton:active, .TDButton.payButton:hover {
+	background-color: rgb(255, 230, 70);
+	border-color: rgb(255, 230, 70);
+}

@@ -1,0 +1,91 @@
+.navbar{background: #0165FE url(../images/pattern/pat_02.png) repeat; border-bottom: 3px solid #FF4A02; color:#fff;}
+ul.nav li a{color:#fff; font-size:16px; text-align:center;}
+ul.nav li span{font-size:12px; padding-right: 5px;}
+th {text-align:left; vertical-align:middle !important;}
+.page-header{color:#015593; border:0 !important; margin:20px 0 !important;padding:0;}
+footer{font-size:12px; background:#DCDCDC; margin-top:100px; padding-top:20px;}
+footer h5{font-weight:bold; border-bottom:1px dashed #20915e; padding-bottom:10px; color:#015593;}
+footer ul{padding:0; margin:0;}
+footer ul li{list-style:none; padding:5px;}
+footer a{color:#000;}
+footer .footer-bottom{background:#21242C; margin-top:10px; padding:10px; color:#999;}
+footer span.modern{color: rgb(254, 210, 21);font-size: medium; font-weight:bold; font-style:italic;}
+.navbar-toggle:hover { background:#9C8748;}
+ul#myTab > li.active > a, ul#myTab > li.active > a:hover, ul#myTab > li.active > a:focus, ul#myTab > li >a:hover {
+color: #fff;
+cursor:pointer;
+background-color: #015593;
+border: 1px solid #2189d5;
+border-bottom-color: transparent;}
+ul#myTab li a{color:#015593;}
+.DataBG{background:#d9edf7 !important; font-weight:bold; color:#3a87ad;}
+input.ControlErr, select.ControlErr, textarea.ControlErr {
+	background:#FF0;
+	border:1px solid #999;
+	color:#F00;
+	font-size:12px;
+}
+/*tambahan css*/
+.box{
+	width:100%;
+	padding:20px;
+	background: #fff;
+	border:1px solid #0059E2;
+	color:#0165FE;
+	font-size:18px;
+	transition:.5s;
+	cursor:pointer;
+	border-radius: 3px;
+}
+.box:hover{
+	background:#0059E2;
+	color:#fff;
+	text-decoration:none;
+}
+.jalur-box{
+    background: #E5F6FF;
+    border: 1px solid #B5CEF5;
+    padding: 5px 15px;
+    border-radius: 3px;
+}
+a:hover{
+	text-decoration:none;
+}
+.box.blue{
+	background:#0165FE;
+	color:#fff;
+}
+.box.blue:hover{
+	background:#0059E2;
+}
+button.link{
+	  background: none;
+	  border: none;
+	  padding: 0;
+	  margin: 0;
+	  color: #00812E;
+}
+button.link:hover{
+	text-decoration:underline;
+}
+ul.pengumuman{
+	margin: 0;
+	padding: 0;
+}
+ul.pengumuman li{
+  list-style: none;
+  border-bottom: 1px dotted #BBBBBB;
+  padding-bottom: 10px;
+  margin-bottom: 10px;
+}
+div.info-wrapper{
+	padding:5px 15px 15px;
+	/*background:#f2f2f2;*/
+}
+.carousel {
+    margin-bottom: 20px;
+}
+.tgl-pendaftaran {
+    font-size: 13px;
+    font-weight: 600;
+}

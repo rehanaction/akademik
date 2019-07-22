@@ -1,0 +1,369 @@
+2016-11-19 10:49:44 ERROR  : Error connecting to the server: FATAL:  password authentication failed for user "postgres"
+
+2016-11-19 10:50:59 ERROR  : Error connecting to the server: fe_sendauth: no password supplied
+
+2016-11-19 10:57:34 ERROR  : ERROR:  syntax error at or near "akademik"
+LINE 1: select * akademik.ak_nilaitransfe
+                 ^
+2016-11-19 10:58:25 ERROR  : ERROR:  syntax error at or near "akademik"
+LINE 1: select * akademik.ak_nilaitransfer
+                 ^
+2016-11-19 11:03:38 ERROR  : ERROR:  unterminated quoted string at or near "'20141 "
+LINE 30: and       t.idperiode='20141 
+                               ^
+2016-11-19 11:10:13 ERROR  : ERROR:  syntax error at or near "akademik"
+LINE 27: join      akademik.ak_skalanilai sk
+                   ^
+2016-11-19 11:10:27 ERROR  : ERROR:  syntax error at or near "sk"
+LINE 28: on        sk.idkurikulum = k.idkurikulum
+                   ^
+2016-11-19 11:12:13 ERROR  : ERROR:  column n.idmkasal does not exist
+LINE 13:           n.idmkasal,n.idmk,
+                   ^
+2016-11-19 11:26:04 ERROR  : ERROR:  syntax error at or near "on"
+LINE 34: on        sk.idkurikulum = k.idkurikulum
+         ^
+2016-11-19 11:28:56 ERROR  : ERROR:  syntax error at or near "case"
+LINE 19:           case
+                   ^
+2016-11-19 11:29:07 ERROR  : ERROR:  column "mktujuan" does not exist
+LINE 35: on        mk.idmk = mktujuan 
+                             ^
+2016-11-19 11:31:58 ERROR  : ERROR:  relation "akademik.ak_nilai" does not exist
+LINE 1: select * from akademik.ak_nilai
+                      ^
+2016-11-19 11:32:05 ERROR  : ERROR:  relation "akademik.ak_nilaimhs" does not exist
+LINE 1: select * from akademik.ak_nilaimhs
+                      ^
+2016-11-19 11:32:26 ERROR  : ERROR:  syntax error at or near "when"
+LINE 22:                     when kls.namakelas='' then '01'
+                             ^
+2016-11-19 11:44:03 ERROR  : ERROR:  syntax error at or near "."
+LINE 19:           mk.namamk,
+                     ^
+2016-11-19 11:44:17 ERROR  : ERROR:  column n.sksmk does not exist
+LINE 19:           n.sksmk,
+                   ^
+2016-11-19 11:44:31 ERROR  : ERROR:  operator does not exist: akademik.ak_nilaitransfer * character varying
+LINE 19:           n*
+                    ^
+HINT:  No operator matches the given name and argument type(s). You might need to add explicit type casts.
+2016-11-19 11:44:38 ERROR  : ERROR:  syntax error at or near "."
+LINE 20:           mk.namamk,
+                     ^
+2016-11-19 11:46:13 ERROR  : ERROR:  column "t.idperiode" must appear in the GROUP BY clause or be used in an aggregate function
+LINE 1:  select    t.idperiode,
+                   ^
+2016-11-19 14:08:54 ERROR  : ERROR:  column "j.idunit" must appear in the GROUP BY clause or be used in an aggregate function
+LINE 1: select j.idunit,j.namaunit, sum(case when w.semmhs<8 then 1 ...
+               ^
+2016-11-21 11:04:42 ERROR  : ERROR:  syntax error at or near "ref"
+LINE 1: select * ref.m_universitas
+                 ^
+2016-11-21 11:04:48 ERROR  : ERROR:  syntax error at or near "ref"
+LINE 1: select * ref.ms_universitas
+                 ^
+2016-11-21 11:04:49 ERROR  : ERROR:  syntax error at or near "ref"
+LINE 1: select * ref.ms_universitas
+                 ^
+2016-11-21 11:04:49 ERROR  : ERROR:  syntax error at or near "ref"
+LINE 1: select * ref.ms_universitas
+                 ^
+2016-11-21 11:04:49 ERROR  : ERROR:  syntax error at or near "ref"
+LINE 1: select * ref.ms_universitas
+                 ^
+2016-11-21 11:04:58 ERROR  : server closed the connection unexpectedly
+	This probably means the server terminated abnormally
+	before or while processing the request.
+2016-11-21 14:14:47 ERROR  : ERROR:  syntax error at or near "order"
+LINE 1: ...(1) from pendaftaran.pd_pendaftar group by idunit,order by i...
+                                                             ^
+2016-11-21 14:14:53 ERROR  : ERROR:  column "idunit" does not exist
+LINE 1: select distinct (idunit), count(1) from pendaftaran.pd_penda...
+                         ^
+2016-11-21 14:15:22 ERROR  : ERROR:  column "idunit" does not exist
+LINE 1: select distinct (idunit), count(idunit) from pendaftaran.pd_...
+                         ^
+2016-11-21 14:15:36 ERROR  : ERROR:  column "idunit" does not exist
+LINE 1: select distinct (idunit) from pendaftaran.pd_pendaftar group...
+                         ^
+2016-11-22 10:46:02 ERROR  : ERROR:  relation "seminar.lv_seminar" does not exist
+LINE 1: select * from seminar.lv_seminar
+                      ^
+2016-11-22 10:51:26 ERROR  : ERROR:  permission denied for schema seminar
+LINE 1: SELECT 1 FROM ONLY "seminar"."ms_seminar" x WHERE $1 OPERATO...
+                           ^
+QUERY:  SELECT 1 FROM ONLY "seminar"."ms_seminar" x WHERE $1 OPERATOR(pg_catalog.=) "kodejenisseminar" FOR KEY SHARE OF x
+2016-11-22 10:53:41 ERROR  : ERROR:  permission denied for schema seminar
+LINE 1: SELECT 1 FROM ONLY "seminar"."ms_seminar" x WHERE $1 OPERATO...
+                           ^
+QUERY:  SELECT 1 FROM ONLY "seminar"."ms_seminar" x WHERE $1 OPERATOR(pg_catalog.=) "kodejenisseminar" FOR KEY SHARE OF x
+2016-11-22 11:02:38 ERROR  : ERROR:  permission denied for schema seminar
+LINE 1: SELECT 1 FROM ONLY "seminar"."ms_seminar" x WHERE $1 OPERATO...
+                           ^
+QUERY:  SELECT 1 FROM ONLY "seminar"."ms_seminar" x WHERE $1 OPERATOR(pg_catalog.=) "kodejenisseminar" FOR KEY SHARE OF x
+2016-11-22 11:24:59 ERROR  : ERROR:  null value in column "isvalid" violates not-null constraint
+DETAIL:  Failing row contains (1, hueq1oe, fhe1qofo, fo3, null, null, null, null, null, null, null, null, null, null, null).
+2016-11-22 11:39:29 ERROR  : ERROR:  null value in column "isvalid" violates not-null constraint
+DETAIL:  Failing row contains (1, hueq1oe, fhe1qofo, fo3, null, null, null, null, 1, null, null, null, null, null, null).
+2016-11-22 11:39:36 ERROR  : ERROR:  null value in column "isvalid" violates not-null constraint
+DETAIL:  Failing row contains (1, hueq1oe, fhe1qofo, fo3, null, null, null, null, 1, null, null, null, null, null, null).
+2016-11-22 11:40:16 ERROR  : ERROR:  date/time field value out of range: "22-01-02"
+LINE 1: ... 'fhe1qofo'::character varying(100), 'fo3'::text, '22-01-02'...
+                                                             ^
+HINT:  Perhaps you need a different "datestyle" setting.
+2016-11-22 11:40:28 ERROR  : ERROR:  date/time field value out of range: "22-01-02"
+LINE 1: ... 'fhe1qofo'::character varying(100), 'fo3'::text, '22-01-02'...
+                                                             ^
+HINT:  Perhaps you need a different "datestyle" setting.
+2016-11-22 11:40:33 ERROR  : ERROR:  date/time field value out of range: "22-01-02"
+LINE 1: ... 'fhe1qofo'::character varying(100), 'fo3'::text, '22-01-02'...
+                                                             ^
+HINT:  Perhaps you need a different "datestyle" setting.
+2016-11-22 11:40:36 ERROR  : ERROR:  date/time field value out of range: "22-01-02"
+LINE 1: ... 'fhe1qofo'::character varying(100), 'fo3'::text, '22-01-02'...
+                                                             ^
+HINT:  Perhaps you need a different "datestyle" setting.
+2016-11-22 11:40:41 ERROR  : ERROR:  date/time field value out of range: "22-01-02"
+LINE 1: ... 'fhe1qofo'::character varying(100), 'fo3'::text, '22-01-02'...
+                                                             ^
+HINT:  Perhaps you need a different "datestyle" setting.
+2016-11-22 11:40:57 ERROR  : ERROR:  date/time field value out of range: "22-01-02"
+LINE 1: ...cter varying(100), 'fo3'::text, '01-01-01'::date, '22-01-02'...
+                                                             ^
+HINT:  Perhaps you need a different "datestyle" setting.
+2016-11-22 11:41:18 ERROR  : ERROR:  date/time field value out of range: "22-01-02"
+LINE 1: ...g(100), 'fo3'::text, '2016-11-22 11:02:12'::date, '22-01-02'...
+                                                             ^
+HINT:  Perhaps you need a different "datestyle" setting.
+2016-11-23 09:11:50 ERROR  : ERROR:  column js.jammilai does not exist
+LINE 1: ... js.nojadwalseminar, js.idseminar , js.tgljadwal, js.jammila...
+                                                             ^
+2016-11-23 09:11:58 ERROR  : ERROR:  column js.jammlai does not exist
+LINE 1: ... js.nojadwalseminar, js.idseminar , js.tgljadwal, js.jammlai...
+                                                             ^
+2016-11-23 09:16:45 ERROR  : ERROR:  insert or update on table "sm_jadwalseminar" violates foreign key constraint "fk_jadwal_s_seminar_j_seminar"
+DETAIL:  Key (idseminar)=(2) is not present in table "ms_seminar".
+2016-11-23 09:16:58 ERROR  : ERROR:  insert or update on table "sm_jadwalseminar" violates foreign key constraint "fk_jadwal_s_seminar_j_seminar"
+DETAIL:  Key (idseminar)=(2) is not present in table "ms_seminar".
+2016-11-23 09:16:59 ERROR  : ERROR:  insert or update on table "sm_jadwalseminar" violates foreign key constraint "fk_jadwal_s_seminar_j_seminar"
+DETAIL:  Key (idseminar)=(2) is not present in table "ms_seminar".
+2016-11-23 09:17:25 ERROR  : ERROR:  insert or update on table "sm_jadwalseminar" violates foreign key constraint "fk_jadwal_s_seminar_j_seminar"
+DETAIL:  Key (idseminar)=(2) is not present in table "ms_seminar".
+2016-11-23 09:47:07 ERROR  : ERROR:  invalid input syntax for type date: "10"
+LINE 1: ...cter varying(100), '1'::text, '2016-11-17'::date, '10'::date...
+                                                             ^
+2016-11-23 09:47:41 ERROR  : ERROR:  invalid input syntax for type date: "2016"
+LINE 1: UPDATE seminar.sm_jadwalseminar SET tgljadwal='2016'::date, ...
+                                                      ^
+2016-11-23 11:30:28 ERROR  : ERROR:  relation "seminar.ms_jadwalseminar" does not exist
+LINE 6: from   seminar.ms_jadwalseminar js 
+               ^
+2016-11-23 11:31:19 ERROR  : ERROR:  invalid input syntax for type date: "2016"
+LINE 1: ...c(2,0), '1'::integer, '1'::character varying(20), '2016'::da...
+                                                             ^
+2016-11-23 11:31:21 ERROR  : ERROR:  invalid input syntax for type date: "2016"
+LINE 1: ...c(2,0), '1'::integer, '1'::character varying(20), '2016'::da...
+                                                             ^
+2016-11-23 14:06:19 ERROR  : server closed the connection unexpectedly
+	This probably means the server terminated abnormally
+	before or while processing the request.
+2016-11-23 14:07:09 ERROR  : server closed the connection unexpectedly
+	This probably means the server terminated abnormally
+	before or while processing the request.
+2016-11-23 14:07:36 ERROR  : ERROR:  invalid input syntax for type date: "2016-11"
+LINE 1: ...c(2,0), '1'::integer, '1'::character varying(20), '2016-11':...
+                                                             ^
+2016-11-23 14:07:43 ERROR  : ERROR:  duplicate key value violates unique constraint "pk_jadwal_seminar"
+DETAIL:  Key (nojadwalseminar)=(1) already exists.
+2016-11-23 14:07:50 ERROR  : ERROR:  duplicate key value violates unique constraint "pk_jadwal_seminar"
+DETAIL:  Key (nojadwalseminar)=(2) already exists.
+2016-11-23 14:07:53 ERROR  : ERROR:  duplicate key value violates unique constraint "pk_jadwal_seminar"
+DETAIL:  Key (nojadwalseminar)=(11) already exists.
+2016-11-23 14:36:16 ERROR  : ERROR:  value too long for type character(4)
+2016-11-23 16:00:23 ERROR  : ERROR:  column "idyudisium" does not exist
+LINE 1: select idyudisium, idyudisium||coalesce(' ('||to_char(tglyud...
+               ^
+2016-11-24 10:42:57 ERROR  : ERROR:  column "status" contains null values
+2016-11-24 10:44:01 ERROR  : ERROR:  column "status" of relation "ms_seminar" already exists
+2016-11-24 10:44:14 ERROR  : ERROR:  syntax error at or near "n1"
+LINE 2: drop column status n1 NOT NULL,
+                           ^
+2016-11-24 10:44:19 ERROR  : ERROR:  syntax error at or near "n1"
+LINE 2: drop column status n1
+                           ^
+2016-11-24 10:44:25 ERROR  : ERROR:  syntax error at or near "n1"
+LINE 2: drop column status n1
+                           ^
+2016-11-24 10:44:34 ERROR  : ERROR:  syntax error at end of input
+LINE 2: add column status n1 NOT NULL,
+                                      ^
+2016-11-24 10:44:38 ERROR  : ERROR:  column "status" contains null values
+2016-11-24 10:46:26 ERROR  : ERROR:  syntax error at or near "set"
+LINE 2: add column status n1 set NOT NULL
+                             ^
+2016-11-24 10:46:42 ERROR  : ERROR:  syntax error at or near "column"
+LINE 2: set column status NOT NULL
+            ^
+2016-11-24 10:47:10 ERROR  : ERROR:  column "status" contains null values
+2016-11-24 10:47:11 ERROR  : ERROR:  column "status" contains null values
+2016-11-24 10:47:11 ERROR  : ERROR:  column "status" contains null values
+2016-11-24 10:47:11 ERROR  : ERROR:  column "status" contains null values
+2016-11-24 10:47:12 ERROR  : ERROR:  column "status" contains null values
+2016-11-24 10:47:12 ERROR  : ERROR:  column "status" contains null values
+2016-11-24 10:47:12 ERROR  : ERROR:  column "status" contains null values
+2016-11-24 10:47:12 ERROR  : ERROR:  column "status" contains null values
+2016-11-24 10:47:12 ERROR  : ERROR:  column "status" contains null values
+2016-11-24 10:47:12 ERROR  : ERROR:  column "status" contains null values
+2016-11-24 10:47:13 ERROR  : ERROR:  column "status" contains null values
+2016-11-24 10:47:13 ERROR  : ERROR:  column "status" contains null values
+2016-11-24 10:47:13 ERROR  : ERROR:  column "status" contains null values
+2016-11-24 10:47:13 ERROR  : ERROR:  column "status" contains null values
+2016-11-24 13:19:22 ERROR  : ERROR:  syntax error at or near "character"
+LINE 2: alter column status set character varying(20)
+                                ^
+2016-11-25 18:01:02 ERROR  : server closed the connection unexpectedly
+	This probably means the server terminated abnormally
+	before or while processing the request.
+2016-11-28 15:17:35 ERROR  : server closed the connection unexpectedly
+	This probably means the server terminated abnormally
+	before or while processing the request.
+2016-11-28 15:20:48 ERROR  : server closed the connection unexpectedly
+	This probably means the server terminated abnormally
+	before or while processing the request.
+2016-11-28 15:26:13 ERROR  : ERROR:  cannot truncate a table referenced in a foreign key constraint
+DETAIL:  Table "sm_jadwalseminar" references "ms_seminar".
+HINT:  Truncate table "sm_jadwalseminar" at the same time, or use TRUNCATE ... CASCADE.
+2016-11-28 15:26:41 ERROR  : ERROR:  cannot truncate a table referenced in a foreign key constraint
+DETAIL:  Table "sm_jadwalseminar" references "ms_seminar".
+HINT:  Truncate table "sm_jadwalseminar" at the same time, or use TRUNCATE ... CASCADE.
+2016-11-28 15:33:22 ERROR  : server closed the connection unexpectedly
+	This probably means the server terminated abnormally
+	before or while processing the request.
+2016-11-28 15:35:06 ERROR  : server closed the connection unexpectedly
+	This probably means the server terminated abnormally
+	before or while processing the request.
+2016-11-29 15:27:26 ERROR  : ERROR:  column "isutama" of relation "ak_matakuliah" already exists
+2016-12-05 09:30:46 ERROR  : ERROR:  relation "seminar.sm_jadwalseminar" does not exist
+LINE 1: select * from seminar.sm_jadwalseminar
+                      ^
+2016-12-05 09:31:21 ERROR  : ERROR:  relation "sm_jadwalseminar" does not exist
+LINE 1: select * from sm_jadwalseminar
+                      ^
+2016-12-05 11:24:15 ERROR  : ERROR:  cannot truncate a table referenced in a foreign key constraint
+DETAIL:  Table "sm_jadwalseminar" references "ms_seminar".
+HINT:  Truncate table "sm_jadwalseminar" at the same time, or use TRUNCATE ... CASCADE.
+2016-12-05 11:24:24 ERROR  : ERROR:  cannot truncate a table referenced in a foreign key constraint
+DETAIL:  Table "ms_seminar" references "lv_jenisseminar".
+HINT:  Truncate table "ms_seminar" at the same time, or use TRUNCATE ... CASCADE.
+2016-12-05 11:24:44 ERROR  : ERROR:  null value in column "kodejenisseminar" violates not-null constraint
+DETAIL:  Failing row contains (15, null, Seminar 1, Isi Keterangan, 2016-11-15, 2016-11-01, 1, null, null, 21203000, 20161, admin, 2016-12-05 10:38:50, 192.168.1.150, u-data_seminar, {6}, Disetujui, null, null).
+2016-12-05 11:24:47 ERROR  : ERROR:  null value in column "kodejenisseminar" violates not-null constraint
+DETAIL:  Failing row contains (15, null, Seminar 1, Isi Keterangan, 2016-11-15, 2016-11-01, 1, null, null, 21203000, 20161, admin, 2016-12-05 10:38:50, 192.168.1.150, u-data_seminar, {6}, Disetujui, null, null).
+2016-12-05 11:24:49 ERROR  : ERROR:  null value in column "kodejenisseminar" violates not-null constraint
+DETAIL:  Failing row contains (15, null, Seminar 1, Isi Keterangan, 2016-11-15, 2016-11-01, 1, null, null, 21203000, 20161, admin, 2016-12-05 10:38:50, 192.168.1.150, u-data_seminar, {6}, Disetujui, null, null).
+2016-12-05 11:25:35 ERROR  : ERROR:  insert or update on table "sm_jadwalseminar" violates foreign key constraint "fk_jadwal_s_seminar_j_seminar"
+DETAIL:  Key (idseminar)=(0) is not present in table "ms_seminar".
+2016-12-05 11:25:37 ERROR  : ERROR:  insert or update on table "sm_jadwalseminar" violates foreign key constraint "fk_jadwal_s_seminar_j_seminar"
+DETAIL:  Key (idseminar)=(0) is not present in table "ms_seminar".
+2016-12-05 11:25:39 ERROR  : ERROR:  insert or update on table "sm_jadwalseminar" violates foreign key constraint "fk_jadwal_s_seminar_j_seminar"
+DETAIL:  Key (idseminar)=(0) is not present in table "ms_seminar".
+2016-12-05 15:32:03 ERROR  : ERROR:  insert or update on table "sm_tagihan" violates foreign key constraint "fk_ke_tagih_peserta"
+DETAIL:  Key (nopeserta)=(111) is not present in table "ms_peserta".
+2016-12-05 15:32:10 ERROR  : ERROR:  insert or update on table "sm_tagihan" violates foreign key constraint "fk_ke_tagih_peserta"
+DETAIL:  Key (nopeserta)=(111) is not present in table "ms_peserta".
+2016-12-05 15:32:15 ERROR  : ERROR:  insert or update on table "sm_tagihan" violates foreign key constraint "fk_ke_tagih_peserta"
+DETAIL:  Key (nopeserta)=(111) is not present in table "ms_peserta".
+2016-12-05 15:32:49 ERROR  : ERROR:  null value in column "nominaltagihan" violates not-null constraint
+DETAIL:  Failing row contains (10000, null, null, null, null, null, null, null, null, null, null, null, null, -1, 0).
+2016-12-05 15:33:07 ERROR  : ERROR:  insert or update on table "sm_tagihan" violates foreign key constraint "fk_ke_tagih_peserta"
+DETAIL:  Key (nopeserta)=(112) is not present in table "ms_peserta".
+2016-12-05 15:33:11 ERROR  : ERROR:  invalid input syntax for type date: ""
+LINE 2: ... '20161'::character varying(6), '1'::character varying(2), '
+                                                                      ^
+2016-12-05 15:33:16 ERROR  : ERROR:  invalid input syntax for type date: ""
+LINE 2: ... '20161'::character varying(6), '1'::character varying(2), '
+                                                                      ^
+2016-12-05 15:33:34 ERROR  : ERROR:  invalid input syntax for type date: ""
+LINE 2: ... '20162'::character varying(6), '1'::character varying(2), '
+                                                                      ^
+2016-12-05 15:33:39 ERROR  : ERROR:  invalid input syntax for type date: ""
+LINE 2: ... '20161'::character varying(6), '1'::character varying(2), '
+                                                                      ^
+2016-12-05 15:33:43 ERROR  : ERROR:  invalid input syntax for type date: ""
+LINE 2: ... '20161'::character varying(6), '1'::character varying(2), '
+                                                                      ^
+2016-12-05 15:33:49 ERROR  : ERROR:  invalid input syntax for type date: ""
+LINE 2: ... '20161'::character varying(6), '1'::character varying(2), '
+                                                                      ^
+2016-12-05 15:35:43 ERROR  : ERROR:  column "sm_tagihan.idtagihan" must appear in the GROUP BY clause or be used in an aggregate function
+LINE 1: select idtagihan , sum(nominaltagihan) from seminar.sm_tagih...
+               ^
+2016-12-05 15:42:00 ERROR  : ERROR:  aggregate functions are not allowed in GROUP BY
+LINE 1: select idtagihan , sum(DISTINCT nominaltagihan) as sum from ...
+                           ^
+2016-12-05 15:48:49 ERROR  : ERROR:  duplicate key value violates unique constraint "pk_ke_tagihan"
+DETAIL:  Key (idtagihan)=(10000) already exists.
+2016-12-05 15:52:44 ERROR  : ERROR:  duplicate key value violates unique constraint "pk_ke_tagihan"
+DETAIL:  Key (idtagihan)=(10000) already exists.
+2016-12-05 15:53:38 ERROR  : ERROR:  relation "seminar.sm_pendaftar" does not exist
+LINE 1: select * from seminar.sm_pendaftar
+                      ^
+2016-12-05 15:53:57 ERROR  : ERROR:  relation "seminar.sm_peserta" does not exist
+LINE 1: select * from seminar.sm_peserta
+                      ^
+2016-12-05 15:56:47 ERROR  : ERROR:  column "p.nopeserta" must appear in the GROUP BY clause or be used in an aggregate function
+LINE 2: select p.nopeserta, t.periode , sum(t.nominaltagihan) from s...
+               ^
+2016-12-05 16:04:14 ERROR  : ERROR:  syntax error at or near "where"
+LINE 6: where t.periode = '20161'
+        ^
+2016-12-05 16:05:31 ERROR  : ERROR:  duplicate key value violates unique constraint "pk_ke_tagihan"
+DETAIL:  Key (idtagihan)=(10000) already exists.
+2016-12-05 16:05:33 ERROR  : ERROR:  duplicate key value violates unique constraint "pk_ke_tagihan"
+DETAIL:  Key (idtagihan)=(10000) already exists.
+2016-12-05 16:05:57 ERROR  : ERROR:  insert or update on table "sm_tagihan" violates foreign key constraint "fk_ke_tagih_peserta"
+DETAIL:  Key (nopeserta)=(114) is not present in table "ms_peserta".
+2016-12-05 16:06:02 ERROR  : ERROR:  insert or update on table "sm_tagihan" violates foreign key constraint "fk_ke_tagih_peserta"
+DETAIL:  Key (nopeserta)=(114) is not present in table "ms_peserta".
+2016-12-05 16:06:15 ERROR  : ERROR:  insert or update on table "sm_tagihan" violates foreign key constraint "fk_ke_tagih_peserta"
+DETAIL:  Key (nopeserta)=(111) is not present in table "ms_peserta".
+2016-12-05 16:24:49 ERROR  : ERROR:  syntax error at or near "where"
+LINE 3: join seminar.ms_peserta p where t.nopeserta = p.nopeserta
+                                  ^
+2016-12-05 16:27:18 ERROR  : ERROR:  syntax error at or near "join"
+LINE 3: join seminar.ms_seminar s on p.idseminar = s.idseminar 
+        ^
+2016-12-05 16:28:29 ERROR  : ERROR:  column "s.idseminar" must appear in the GROUP BY clause or be used in an aggregate function
+LINE 1: select s.idseminar , sum(t.nominaltagihan) from seminar.sm_t...
+               ^
+2016-12-06 09:27:49 ERROR  : ERROR:  syntax error at or near "peserta"
+LINE 2: where id peserta = '20'
+                 ^
+2016-12-06 09:27:53 ERROR  : ERROR:  column "idpeserta" does not exist
+LINE 2: where idpeserta = '20'
+              ^
+2016-12-06 10:20:13 ERROR  : ERROR:  column "nopeserta" does not exist
+LINE 2: where nopeserta = '20161007001'
+              ^
+2016-12-06 14:44:03 ERROR  : server closed the connection unexpectedly
+	This probably means the server terminated abnormally
+	before or while processing the request.
+2016-12-06 14:44:19 ERROR  : server closed the connection unexpectedly
+	This probably means the server terminated abnormally
+	before or while processing the request.
+2016-12-06 15:43:19 ERROR  : ERROR:  column "p" does not exist
+LINE 1: select * , CASE WHEN 'typepengajuijin' = P THEN 'nippengajui...
+                                                 ^
+2016-12-06 15:44:27 ERROR  : ERROR:  column "p" does not exist
+LINE 3:          when 'typepengajuijin' = P then 'nippengajuijinsemi...
+                                          ^
+2016-12-06 15:44:40 ERROR  : ERROR:  column "p" does not exist
+LINE 3:          when typepengajuijin = P then nippengajuijinseminar...
+                                        ^
+2016-12-06 15:44:47 ERROR  : ERROR:  column "p" does not exist
+LINE 3:          when 'typepengajuijin' == P then 'nippengajuijinsem...
+                                           ^
+2016-12-06 15:45:30 ERROR  : ERROR:  column "p" does not exist
+LINE 3:          when P then 'nippengajuijinseminar' 
+                      ^

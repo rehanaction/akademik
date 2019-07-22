@@ -1,0 +1,90 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<hr>
+(mssql): select r.caninsert, r.canupdate, r.candelete, r.aksesmenu from gate.sc_menurole r
+					join gate.sc_menufile f on r.idmenu = f.idmenu and f.filemenu = 'rep_rehasilseleksi'
+					join gate.sc_menu m on r.idmenu = m.idmenu and m.kodemodul = 'SDM'
+					where r.koderole = 'A' &nbsp; 
+<hr>
+<hr>
+(mssql): select count(idrekrutmen) as jumlah,idrekrutmen 
+					from sdm.re_calon group by idrekrutmen &nbsp; 
+<hr>
+<hr>
+(mssql): select count(idrekrutmen) as jumlah,idrekrutmen 
+					from sdm.re_kandidat group by idrekrutmen &nbsp; 
+<hr>
+<hr>
+(mssql): select * from gate.ms_unit where kodeunit = '00000' &nbsp; 
+<hr>
+<hr>
+(mssql): select p.*, u.namaunit, j.jenispegawai
+					from sdm.re_rekrutmen p 
+					left join sdm.ms_unit u on u.idunit=p.unitperekrut
+					left join sdm.ms_jenispeg j on j.idjenispegawai=p.jnspegdirekrut
+					where datepart(year,tglrekrutmen) = '2013' and datepart(month,tglrekrutmen) = '5' and u.infoleft &gt;= 1 and u.inforight &lt;= 196 &nbsp; 
+<hr>
+<html>
+<head>
+<title>Rekapitulasi Hasil Seleksi Penerimaan Pegawai</title>
+<meta http-equiv="content-type" content="text/html;charset=iso-8859-1">
+<style>
+table { border-collapse:collapse }
+div,td,th {
+font-family:Verdana, Arial, Helvetica, sans-serif;
+font-size:12px;
+}
+td,th { border:1px solic black }
+</style>
+</head>
+<body>
+<div align="center">
+		<table width="900" style="border-bottom:1px  solid black">
+	<tr>
+	    <td rowspan="2" align= "center" width="100"><img src="images/logo_rep.png" width="70" height="70"></td>
+    		<td align= "center"><font size="5" style="font-family:Times New Roman">UNIVERSITAS ESA UNGGUL INDONESIA</font></td>
+    	</tr>
+  	<tr>
+    		<td align="center"><font size="2" style="font-family:Times New Roman">Jalan Arjuna Utara No.9, Kebon Jeruk - Jakarta Barat 11510. Telp (021) 5674223, (021) 5682510 , Fax  (021) 5674248</font></td>
+    	</tr>
+</table>
+</br>
+		<strong>Rekapitulasi Hasil Seleksi Penerimaan Pegawai</strong>
+		<br><br>
+		<table width="900" border="1" cellpadding="4" cellspacing="0">
+			<tr bgcolor = "gray">
+				<th rowspan="2" style = "color:#FFFFFF">No</th>
+				<th rowspan="2" style = "color:#FFFFFF">Unit</th>
+				<th rowspan="2" style = "color:#FFFFFF">Jenis Rekrutmen</th>
+				<th rowspan="2" style = "color:#FFFFFF">Jenis Pegawai</th>
+				<th rowspan="2" style = "color:#FFFFFF">Posisi</th>
+				<th rowspan="2" style = "color:#FFFFFF">Tgl Rekruitmen</th>
+				<th colspan="3" style = "color:#FFFFFF">Jumlah</th>
+			</tr>
+			<tr bgcolor ="gray">
+				<th style = "color:#FFFFFF">Kebutuhan</th>
+				<th style = "color:#FFFFFF">Kandidat</th>
+				<th style = "color:#FFFFFF">Diterima</th>
+			</tr>	
+						<tr>
+				<td>1</td>
+				<td>Departemen Kepegawaian Universitas</td>
+				<td>Rekrut Baru</td>
+				<td>Administrasi</td>
+				<td>Bag. Gaji</td>
+				<td>7 Mei 2013</td>
+				<td align="right">2</td>
+				<td align="right">2</td>
+			</tr>
+					</table>
+<br /><br /><br />
+<table width="900" style="border-top:1px  solid black">
+	<tr>
+		<td align="left"><font size="2" style="font-family:Times New Roman">Report User : sup3r</font></td>
+    	<td align="right"><font size="2" style="font-family:Times New Roman">Report Date : 14 Mei 2013</font></td>
+    </tr>
+</table>
+</br>
+</div>
+</body>
+ </html>
+ 

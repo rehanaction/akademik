@@ -1,0 +1,129 @@
+<?php
+	// model user
+	defined( '__VALID_ENTRANCE' ) or die( 'Akses terbatas' );
+	
+	require_once(Route::getModelPath('model'));
+	
+	class mMengajar extends mModel {
+		const schema = 'akademik';
+		const table = 'ak_mengajar';
+		const order = 'nohari,jammulai';
+		const key = 'thnkurikulum,kodemk,kodeunit,periode,kelasmk,jeniskul,kelompok,nipdosen';
+		const label = 'mengajar';
+		
+		// mendapatkan kueri list
+		function listQuery() {
+			global $r_key;
+			
+			$periode = Akademik::getPeriode();
+			
+			$sql = "select a.thnkurikulum,a.periode,a.kodeunit,a.kodemk,a.kelasmk,a.jeniskul,a.kelompok,akademik.f_namahari(b.nohari) AS namahari,
+					d.namamk,d.sks,d.semmk,b.jammulai,b.jamselesai,akademik.f_namahari(b.nohari2) AS namahari2,b.jammulai2,
+					b.jamselesai2,b.koderuang,coalesce(b.jumlahpeserta,0) as jmlpeserta,b.sistemkuliah from ".static::table('ak_mengajar')." a
+					join ".static::table('ak_kelas')." b on(a.periode=b.periode and a.kodeunit=b.kodeunit and a.thnkurikulum=b.thnkurikulum and a.kodemk=b.kodemk and a.kelasmk=b.kelasmk)
+					join ".static::table('ak_kurikulum')." d on(a.thnkurikulum=d.thnkurikulum and a.kodeunit=d.kodeunit and a.kodemk=d.kodemk)";
+			
+			return $sql;
+		}
+		
+		// mendapatkan potongan kueri filter list
+		function getListFilter($col,$key) {
+			switch($col) {
+				case 'periode': return "a.periode = '$key'";
+				case 'nipdosen': return "a.nipdosen = '$key'";
+				case 'semmk': return "m.semmk = '$key'";
+				case 'unit':
+					global $conn, $conf;
+					require_once(Route::getModelPath('unit'));
+					
+					$row = mUnit::getData($conn,$key);
+					
+					return "u.infoleft >= ".(int)$row['infoleft']." and u.inforight <= ".(int)$row['inforight'];
+			}
+		}
+		
+		
+		// cek ajar kelas
+		function isAjar($conn,$kelas,$nip='') {
+			require_once(Route::getModelPath('kelas'));
+			
+			if(empty($nip))
+				$nip = Modul::getUserName();
+			
+			$sql = "select 1 from ".static::table()." where nipdosen = '$nip' and ".mKelas::getCondition($kelas);
+			$cek = $conn->GetOne($sql);
+			
+			if(empty($cek))
+				return false;
+			else
+				return true;
+		}
+		
+		// mendapatkan data mengajar
+		function getDataAjarMingguan($conn,$a_kolom,$r_sort,$a_filter) {
+			/*$sql = "select * from ".static::table('v_jadwalmingguandosen')."
+					where nipdosen = '$nip' order by nohari, jammulai";*/
+			
+			$sql = "SELECT a.thnkurikulum,a.periode,a.nipdosen, k.kodeunit, k.kodemk, m.namamk, k.kelasmk, m.sks, 
+			k.koderuang,k.nohari,akademik.f_namahari(k.nohari) AS namahari, k.jammulai, k.jamselesai, 
+			k.koderuang2,k.nohari2, akademik.f_namahari(k.nohari2) AS namahari2, k.jammulai2, k.jamselesai2, 
+			k.koderuang3,k.nohari3, akademik.f_namahari(k.nohari3) AS namahari3, k.jammulai3, k.jamselesai3, 
+			k.koderuang4,k.nohari4, akademik.f_namahari(k.nohari4) AS namahari4, k.jammulai4, k.jamselesai4
+				   FROM akademik.ak_kelas k
+				   JOIN akademik.ak_matakuliah m ON k.thnkurikulum::text = m.thnkurikulum::text AND k.kodemk::text = m.kodemk::text
+				   JOIN akademik.ak_mengajar a ON a.thnkurikulum::text = k.thnkurikulum::text AND a.periode::text = k.periode::text AND a.kodeunit::text = k.kodeunit::text AND a.kodemk::text = k.kodemk::text AND a.kelasmk::text = k.kelasmk::text and a.jeniskul='K' and a.kelompok='1'";
+							
+			//return $conn->GetArray($sql);
+			//print_r($a_filter);
+			return static::getListData($conn,$a_kolom,$r_sort,$a_filter,$sql);
+		}
+		// mendapatkan data mengajar
+		function getDataAjarMingguanPrak($conn,$a_kolom,$r_sort,$a_filter) {
+			/*$sql = "select * from ".static::table('v_jadwalmingguandosen')."
+					where nipdosen = '$nip' order by nohari, jammulai";*/
+			
+			$sql = "SELECT a.nipdosen, k.kodeunit, k.kodemk, m.namamk, k.kelasmk, m.sks, 
+					k.koderuang,k.nohari,akademik.f_namahari(k.nohari) AS namahari, k.jammulai, k.jamselesai,k.kelompok
+				   FROM akademik.ak_kelaspraktikum k
+				   JOIN akademik.ak_matakuliah m ON k.thnkurikulum::text = m.thnkurikulum::text AND k.kodemk::text = m.kodemk::text
+				   JOIN akademik.ak_mengajar a ON a.thnkurikulum::text = k.thnkurikulum::text AND a.periode::text = k.periode::text AND a.kodeunit::text = k.kodeunit::text AND a.kodemk::text = k.kodemk::text AND a.kelasmk::text = k.kelasmk::text and a.jeniskul=k.jeniskul and a.kelompok=k.kelompok";
+							
+			//return $conn->GetArray($sql);
+			return static::getListData($conn,$a_kolom,$r_sort,$a_filter,$sql);
+		}
+		// mendapatkan data mengajar
+		function getDataAjarMingguanSpa($conn,$nip) {
+			/*$sql = "select * from ".static::table('v_jadwalmingguandosen')."
+					where nipdosen = '$nip' order by nohari, jammulai";*/
+			$periode = Akademik::getPeriodeSpa();
+			$sql = "SELECT a.nipdosen, k.kodeunit, k.kodemk, m.namamk, k.kelasmk, m.sks, 
+			k.koderuang,k.nohari,akademik.f_namahari(k.nohari) AS namahari, k.jammulai, k.jamselesai, 
+			k.koderuang2,k.nohari2, akademik.f_namahari(k.nohari2) AS namahari2, k.jammulai2, k.jamselesai2, 
+			k.koderuang3,k.nohari3, akademik.f_namahari(k.nohari3) AS namahari3, k.jammulai3, k.jamselesai3, 
+			k.koderuang4,k.nohari4, akademik.f_namahari(k.nohari4) AS namahari4, k.jammulai4, k.jamselesai4
+				   FROM akademik.ak_kelas k
+				   JOIN akademik.ak_matakuliah m ON k.thnkurikulum::text = m.thnkurikulum::text AND k.kodemk::text = m.kodemk::text
+				   JOIN akademik.ak_mengajar a ON a.thnkurikulum::text = k.thnkurikulum::text AND a.periode::text = k.periode::text AND a.kodeunit::text = k.kodeunit::text AND a.kodemk::text = k.kodemk::text AND a.kelasmk::text = k.kelasmk::text
+				   where a.nipdosen = '$nip' and a.periode='$periode' order by nohari, jammulai";
+							
+			return $conn->GetArray($sql);
+		}
+		
+		function getDataAjarHarian($conn,$nip) {
+			$sql = "select * from ".static::table('v_jadwalhariandosen')."
+					where nipjadwal = '$nip' order by tglkuliah, nohari, waktumulai";
+			
+			return $conn->GetArray($sql);
+		}
+		function getTugasMengajar($conn,$kolom,$sort,$filter){
+			$sql = "SELECT a.periode , a.thnkurikulum , a.kodeunit , a.kodemk , a.kelasmk , a.nipdosen , a.jeniskul , a.kelompok ,a.tugasmengajar,m.namamk,m.sks,m.semmk,
+					akademik.f_namalengkap(p.gelardepan, p.namadepan, p.namatengah, p.namabelakang, p.gelarbelakang) as namapengajar,
+					a.jeniskul,a.kelompok,a.nipdosen
+				   FROM akademik.ak_mengajar a
+				   JOIN akademik.ak_kurikulum m ON a.thnkurikulum = m.thnkurikulum AND a.kodemk = m.kodemk and a.kodeunit=m.kodeunit
+				   JOIN sdm.ms_pegawai p ON a.nipdosen = p.idpegawai::text
+				   join gate.ms_unit u on u.kodeunit=a.kodeunit";
+			return static::getListData($conn,$kolom,$sort,$filter,$sql);
+		}
+	}
+?>

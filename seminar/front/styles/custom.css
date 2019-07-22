@@ -1,0 +1,30 @@
+.custom-font {
+	font-size: 12px;
+}
+.custom-font ul {
+	padding-left: 12px;
+}
+.custom-form > tbody > tr > td {
+	vertical-align: middle;
+}
+.custom-input {
+	font-size: 14px;
+	height: 30px;
+	padding: 5px 10px;
+	width: 400px;
+}
+.box.custom-red {
+	background-color: #D9534F;
+	border-color: #D43F3A;
+	color: #fff;
+}
+.box.custom-red:hover {
+	background-color: #D2322D;
+	border-color: #AC2925;
+}
+.custom-date {
+	width: 55px;
+}
+.custom-header, .custom-header h4 {
+	margin-top: 0 !important;
+}

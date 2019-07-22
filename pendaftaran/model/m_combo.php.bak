@@ -1,0 +1,707 @@
+<?php
+	// model combo box
+	defined( '__VALID_ENTRANCE' ) or die( 'Akses terbatas' );
+	
+	class mCombo {
+		
+		function jurusan($conn,$fakultas='') {
+			$sql = "select kodeunit, namaunit from gate.ms_unit where level = 2 and isakad=-1";
+			if(!empty($fakultas))
+				$sql .= " and kodeunitparent = '$fakultas'";
+			$sql .= " order by infoleft";
+			
+			return Query::arrQuery($conn,$sql);
+		}
+		function fakultas($conn) {
+			$sql = "select kodeunit, namaunit from gate.ms_unit where level = 1 and isakad=-1";
+			$sql .= " order by namaunit";
+			
+			return Query::arrQuery($conn,$sql);
+		}
+		
+		function fakJur($conn) {
+			$sql = "select level,kodeunit, namaunit from gate.ms_unit where level >= 1 and isakad=-1 order by infoleft";
+			$data=$conn->GetArray($sql);
+			foreach($data as $row){
+				if($row['level']=='1')
+					$arr[$row['kodeunit']] = $row['namaunit'];
+				else if($row['level']=='2')
+					$arr[$row['kodeunit']] = "&nbsp;&nbsp;&nbsp;".$row['namaunit'];
+			}
+			return $arr;
+		}
+		function unit($conn) {
+			$sql = "select level,kodeunit, namaunit from gate.ms_unit where isakad=-1 order by infoleft";
+			$data=$conn->GetArray($sql);
+			foreach($data as $row){
+				if($row['level']=='0')
+					$arr[$row['kodeunit']] = $row['namaunit'];
+				else if($row['level']=='1')
+					$arr[$row['kodeunit']] = "&nbsp;&nbsp;".$row['namaunit'];
+				else if($row['level']=='2')
+					$arr[$row['kodeunit']] = "&nbsp;&nbsp;&nbsp;&nbsp;".$row['namaunit'];
+			}
+			return $arr;
+		}
+		function unitProdi($conn) {
+			$sql = "select u.kodeunit, u.namaunit, p.kodenim from gate.ms_unit u left join akademik.ak_prodi p on p.kodeunit=u.kodeunit where level = 2 and isakad=-1";
+			$sql .= " order by infoleft";
+			
+			$rs = $conn->Execute($sql);
+			$data = array();
+			while ($row = $rs->fetchRow()){
+				$data[$row['kodeunit']] = $row;
+				}
+			
+			return $data;
+		}
+		
+		function unitakademik($conn) {
+			$sql = "select level,kodeunit, namaunit from gate.ms_unit where isakad=-1 and ispamu=0 order by infoleft";
+			$data=$conn->GetArray($sql);
+			foreach($data as $row){
+				if($row['level']=='0')
+					$arr[$row['kodeunit']] = $row['namaunit'];
+				else if($row['level']=='1')
+					$arr[$row['kodeunit']] = "&nbsp;&nbsp;".$row['namaunit'];
+				else if($row['level']=='2')
+					$arr[$row['kodeunit']] = "&nbsp;&nbsp;&nbsp;&nbsp;".$row['namaunit'];
+				else if($row['level']=='3')
+					$arr[$row['kodeunit']] = "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;".$row['namaunit'];
+			}
+			return $arr;
+		}
+		
+		function jurusan_spmb($conn,$jalur,$periode,$idgelombang){
+			
+			$sqlpagu="select kodeunit,pagu from pendaftaran.pd_paguunit where jalurpenerimaan='$jalur' 
+						and periodedaftar='$periode' and idgelombang='$idgelombang'";
+			$arr_pagu=Query::arrQuery($conn,$sqlpagu);
+			
+			$sqljurusan="select pilihanditerima,coalesce(sum(1),0) as jumlah from pendaftaran.pd_pendaftar
+						where jalurpenerimaan='$jalur' and periodedaftar='$periode' and idgelombang='$idgelombang' and isdaftarulang=-1
+						group by pilihanditerima";
+			$arr_jurusan=Query::arrQuery($conn,$sqljurusan);
+			
+			$arr_unit=array();
+			foreach($arr_pagu as $kodeunit=>$pagu){
+					$sisa=(int)$pagu-(int)$arr_jurusan[$kodeunit];
+					if($sisa>0)
+						$arr_unit[]=$kodeunit;
+				
+			}	
+			$inunit = implode("','",$arr_unit);
+			/*$sql = "select kodeunit, namaunit from gate.ms_unit where level = 2 and isakad=-1 and 
+					kodeunit in (select kodeunit from pendaftaran.lv_prodijalurpenerimaan where jalurpenerimaan='$jalur')";	*/
+			$sql = "select kodeunit, namaunit from gate.ms_unit where level = 2 and isakad=-1 ";						
+			if(!empty($inunit))
+				$sql.=" AND kodeunit in ('$inunit')";
+			$sql.=" order by infoleft";
+			$data =  Query::arrQuery($conn,$sql);
+			
+			return $data;
+		}
+		
+		function periode($conn) {
+			$sql = "select periodedaftar from pendaftaran.ms_periodedaftar order by periodedaftar DESC";
+			
+			return Query::arrQuery($conn,$sql);
+		}
+		function ruang($conn) {
+			$sql = "select kodelokasiujian from pendaftaran.lv_lokasiujian ORDER BY kodelokasiujian";
+			
+			return Query::arrQuery($conn,$sql);
+		}
+				
+		function gelombang($conn) {
+			$sql = "select idgelombang, namagelombang from pendaftaran.lv_gelombang order by namagelombang";
+			
+			return Query::arrQuery($conn,$sql);
+		}
+		function propinsi($conn) {
+			$sql = "select kodepropinsi, namapropinsi from akademik.ms_propinsi order by namapropinsi";
+			
+			return Query::arrQuery($conn,$sql);
+		}
+		function getsKota($propinsi){
+			global $conn;
+			$sql = "select kodekota, namakota from akademik.ms_kota where kodepropinsi='$propinsi' order by namakota";
+			
+			return $conn->SelectLimit($sql);
+		}
+		function getKota(){
+			global $conn;
+			$sql = "select kodekota,namakota from akademik.ms_kota ORDER BY namakota";
+			
+			return Query::arrQuery($conn,$sql);
+		}
+		function getKotaFilter($prop){
+			global $conn;
+			$sql = "select kodekota,namakota from akademik.ms_kota where kodepropinsi='$prop' order by namakota";
+			
+			return Query::arrQuery($conn,$sql);
+		}	
+		function getKotaUjian(){
+			global $conn;
+			$sql = "select kodekota,namakota from akademik.ms_kota where kodekota in (select kodekota from pendaftaran.pd_jadwaldetail where kodekota is not null group by kodekota)
+					order by namakota";
+			
+			return Query::arrQuery($conn,$sql);
+		}	
+		function getKotaSmu(){
+			global $conn;
+			$sql = "select kodekota,namakota from akademik.ms_kota ORDER BY KODEPROPINSI";
+			
+			return $conn->SelectLimit($sql);
+		}
+		function kota($propinsi) {
+			global $conn;
+			$sql = "select kodekota, namakota from akademik.ms_kota where kodepropinsi='$propinsi' order by namakota";
+			//return Query::arrQuery($conn,$sql);
+			return $conn->SelectLimit($sql);
+		}
+		function getArrkota($conn,$propinsi) {
+			$sql = "select kodekota, namakota from akademik.ms_kota where kodepropinsi='$propinsi' order by namakota";
+			return Query::arrQuery($conn,$sql);
+		}
+		function getArrsmu($conn,$kota,$idsmu='') {
+			$sql = "select idsmu, namasmu from pendaftaran.lv_smu where kodekota='$kota' ";
+			
+			if (!empty($idsmu))
+				$sql.=" and idsmu = '$idsmu'";
+			
+			$sql.=" order by kodekota";
+			return Query::arrQuery($conn,$sql);
+		}
+		
+		function jalur($conn) {
+			$sql = "select jalurpenerimaan from akademik.lv_jalurpenerimaan order by jalurpenerimaan";
+			
+			return Query::arrQuery($conn,$sql);
+		}
+		function jalurTPA($conn) {
+			$sql = "select jalurpenerimaan from akademik.lv_jalurpenerimaan where istpa=-1 order by jalurpenerimaan";
+			
+			return Query::arrQuery($conn,$sql);
+		}
+		function jalurWawancara($conn) {
+			$sql = "select jalurpenerimaan from akademik.lv_jalurpenerimaan where iswawancara=-1 order by jalurpenerimaan";
+			
+			return Query::arrQuery($conn,$sql);
+		}
+		function jalurNilaiRaport($conn) {
+			$sql = "select jalurpenerimaan from akademik.lv_jalurpenerimaan where israport=-1 order by jalurpenerimaan";
+			
+			return Query::arrQuery($conn,$sql);
+		}
+		function jalurTesKesehatan($conn) {
+			$sql = "select jalurpenerimaan from akademik.lv_jalurpenerimaan where iskesehatan=-1 order by jalurpenerimaan";
+			
+			return Query::arrQuery($conn,$sql);
+		}
+		function jalurMapel($conn) {
+			$sql = "select jalurpenerimaan from akademik.lv_jalurpenerimaan where ismatpel=-1 order by jalurpenerimaan";
+			
+			return Query::arrQuery($conn,$sql);
+		}
+		function jalurKompetensi($conn) {
+			$sql = "select jalurpenerimaan from akademik.lv_jalurpenerimaan where iskompetensi=-1 order by jalurpenerimaan";
+			
+			return Query::arrQuery($conn,$sql);
+		}
+		function jalurpenerimaan($conn) {
+			$sql = "select jalurpenerimaan||'-'||idgelombang||'-'||periodedaftar as jalurpenerimaan from pendaftaran.pd_gelombangdaftar where isaktif='true' order by jalurpenerimaan";
+			
+			return Query::arrQuery($conn,$sql);
+		}
+		// jenis instansi
+		function jenisInstansi() {
+			$data = array('BUMN' => 'BUMN', 'SWASTA' => 'SWASTA');
+			
+			return $data;
+		}
+		
+		// pekerjaan
+		function pekerjaan($conn) {
+			$sql = "select kodepekerjaan, namapekerjaan from akademik.lv_pekerjaan order by kodepekerjaan";
+			
+			return Query::arrQuery($conn,$sql);
+		}
+		
+		// pendapatan
+		function pendapatan($conn) {
+			$sql = "select kodependapatan, namapendapatan from akademik.lv_pendapatan order by kodependapatan";
+			
+			return Query::arrQuery($conn,$sql);
+		}
+		
+		// apakah pernah ponpes
+		function pernahPonpes() {
+			$data = array('1' => 'Ya', '0' => 'Tidak');
+			
+			return $data;
+		}
+		function punyaKartanu() {
+			$data = array('-1' => 'Ya', '0' => 'Tidak');
+			
+			return $data;
+		}
+		
+		// apakah one day service
+		function onedayservice() {
+			$data = array('-1' => 'Ya', '0' => 'Tidak');
+			
+			return $data;
+		}
+		
+		// apakah termasuk tes nilai raport
+		function tesRaport() {
+			$data = array('-1' => 'Ya', '0' => 'Tidak');
+			
+			return $data;
+		}
+		
+		// apakah termasuk tes tpa
+		function tesTPA() {
+			$data = array('-1' => 'Ya', '0' => 'Tidak');
+			
+			return $data;
+		}
+		
+		// apakah termasuk tes wawancara
+		function tesWawancara() {
+			$data = array('-1' => 'Ya', '0' => 'Tidak');
+			
+			return $data;
+		}
+		
+		// apakah termasuk tes kompetensi
+		function tesKompetensi() {
+			$data = array('-1' => 'Ya', '0' => 'Tidak');
+			
+			return $data;
+		}
+		
+		// apakah termasuk tes kesehatan
+		function tesKesehatan() {
+			$data = array('-1' => 'Ya', '0' => 'Tidak');
+			
+			return $data;
+		}
+		
+		// apakah termasuk tes mata pelajaran
+		function tesMapel() {
+			$data = array('-1' => 'Ya', '0' => 'Tidak');
+			
+			return $data;
+		}
+		
+		// sistem kuliah
+		function sistemKuliah($conn) {
+			// $sql = "select sistemkuliah, namasistem||' - '||tipeprogram from lv_sistem order by sistemkuliah";
+			$sql = "select sistemkuliah,namasistem||' - '||coalesce(tipeprogram,'') from akademik.ak_sistem order by sistemkuliah";
+			
+			return Query::arrQuery($conn,$sql);
+		}
+		
+		// status kerja
+		function statusKerja() {
+			$data = array('0' => 'Belum Kerja', '1' => 'Sudah Kerja');
+			
+			return $data;
+		}
+		function agama($conn) {
+			$sql = "select kodeagama, namaagama from akademik.lv_agama order by kodeagama";
+			
+			return Query::arrQuery($conn,$sql);
+		}
+		
+		// golongan darah
+		function golonganDarah() {
+			$data = array('A' => 'A', 'B' => 'B', 'AB' => 'AB', 'O' => 'O');
+			
+			return $data;
+		}
+		
+		// jenis kelamin
+		function jenisKelamin() {
+			$data = array('L' => 'Laki-Laki', 'P' => 'Perempuan');
+			
+			return $data;
+		}
+		
+		// pendidikan
+		function pendidikan($conn) {
+			$sql = "select kodependidikan, namapendidikan from akademik.lv_pendidikan order by kodependidikan";
+			
+			return Query::arrQuery($conn,$sql);
+		}
+		//status nikah
+		function statusNikah(){
+			global $conn;
+			$sql = "select statusnikah, namastatus from akademik.lv_statusnikah order by namastatus";
+						
+			return Query::arrQuery($conn,$sql);
+		}
+		function namaStatus($status){
+			global $conn;
+			$sql = "select statusnikah, namastatus from akademik.lv_statusnikah where statusnikah='$status'";
+			$ok=Query::arrQuery($conn,$sql);
+			return $ok[$status];
+		}
+		
+		// tingkat keahlian
+		function tingkatKeahlian() {
+			$data = array('1' => 'Tidak Bisa', '2' => 'Pasif', '3' => 'Aktif', '4' => 'Mahir');
+			
+			return $data;
+		}
+		
+		// apsi aktivasi
+		function opsiAktif() {
+			$data = array('true' => 'Aktif', 'false' => 'Non-Aktif');
+			
+			return $data;
+		}
+		// apsi pernah?
+		function opsiPernah() {
+			$data = array('0' => 'Ya', '1' => 'Tidak');
+			
+			return $data;
+		}
+		
+		//combo propinsi
+		function kodePropinsi(){
+			global $conn;
+			$sql = "select kodepropinsi from akademik.ms_propinsi";
+						
+			return Query::arrQuery($conn,$sql);
+		}
+		function namaPropinsi($kodepropinsi){
+			global $conn;
+			$sql = "select kodepropinsi, namapropinsi from akademik.ms_propinsi where kodepropinsi='$kodepropinsi'";
+			$ok=Query::arrQuery($conn,$sql);
+			return $ok[$kodepropinsi];
+		}
+		function getPropinsi(){
+			global $conn;
+			$sql = "select * from akademik.ms_propinsi order by namapropinsi";
+			
+			return $conn->SelectLimit($sql);
+		}
+		
+		//combo kewarganegaraan
+		function wargaNegara(){
+			global $conn;
+			$sql = "select kodewn from akademik.lv_warganegara order by kodewn";
+						
+			return Query::arrQuery($conn,$sql);
+		}
+		function namaWarga($wn){
+			global $conn;
+			$sql = "select kodewn, namawn from akademik.lv_warganegara where kodewn='$wn' order by namawn";
+			$ok=Query::arrQuery($conn,$sql);
+			return $ok[$wn];
+		}
+		//combo pekerjaan
+		function kodeKerja(){
+			global $conn;
+			$sql = "select kodepekerjaan from akademik.lv_pekerjaan order by kodepekerjaan";
+						
+			return Query::arrQuery($conn,$sql);
+		}
+		function namaKerja($kodekerja){
+			global $conn;
+			$sql = "select kodepekerjaan, namapekerjaan from akademik.lv_pekerjaan where kodepekerjaan='$kodekerja'";
+			$ok=Query::arrQuery($conn,$sql);
+			return $ok[$kodekerja];
+		}
+		//combo pendidikan
+		function kodePendidikan(){
+			global $conn;
+			$sql = "select kodependidikan from akademik.lv_pendidikan";
+						
+			return Query::arrQuery($conn,$sql);
+		}
+		function namaPendidikan($kodependidikan){
+			global $conn;
+			$sql = "select kodependidikan, namapendidikan from akademik.lv_pendidikan where kodependidikan='$kodependidikan' order by namapendidikan";
+			$ok=Query::arrQuery($conn,$sql);
+			return $ok[$kodependidikan];
+		}
+		//combo pendapatan
+		function kodePendapatan(){
+			global $conn;
+			$sql = "select kodependapatan from akademik.lv_pendapatan";
+						
+			return Query::arrQuery($conn,$sql);
+		}
+		function namaPendapatan($kodependapatan){
+			global $conn;
+			$sql = "select kodependapatan, namapendapatan from akademik.lv_pendapatan where kodependapatan='$kodependapatan' order by namapendapatan";
+			$ok=Query::arrQuery($conn,$sql);
+			return $ok[$kodependapatan];
+		}
+		//combo pilihan jurusan
+		function kodeJurusan(){
+			global $conn;
+			$sql = "select * from gate.ms_unit where level=2 order by infoleft";
+						
+			return $conn->SelectLimit($sql);
+		}
+		function namaUnit($kodeunit){
+			global $conn;
+			$sql = "select kodeunit, namaunit from gate.ms_unit where kodeunit='$kodeunit'";
+			$ok=Query::arrQuery($conn,$sql);
+			return $ok[$kodeunit];
+		}
+		//combo ponpes
+		function idPonpes(){
+			global $conn;
+			$sql = "select idponpes from pendaftaran.lv_ponpes";
+						
+			return Query::arrQuery($conn,$sql);
+		}
+		function namaPonpes($idPonpes){
+			global $conn;
+			$sql = "select idponpes, namaponpes from pendaftaran.lv_ponpes where idponpes='$idPonpes' order by namaponpes";
+			$ok=Query::arrQuery($conn,$sql);
+			return $ok[$idPonpes];
+		}
+		function getPonpes($kota){
+			global $conn;
+			if($kota=="none" || $kota=='none'){
+				return null;
+			}else{
+				$sql = "select kodekota, idponpes from pendaftaran.lv_ponpes where kodekota='$kota'";
+				$ok=Query::arrQuery($conn,$sql);
+				return $ok[$kota];
+			}
+		}
+		//combo PT
+		function idPTAsal(){
+			global $conn;
+			$sql = "select idptasal from pendaftaran.lv_ptasal";
+						
+			return Query::arrQuery($conn,$sql);
+		}		
+		function namaPTAsal($idPTAsal){
+			global $conn;
+			$sql = "select idptasal, namaptasal from pendaftaran.lv_ptasal where idptasal='$idPTAsal'";
+			$ok=Query::arrQuery($conn,$sql);
+			return $ok[$idPTAsal];
+		}
+		function kotaPTAsal($idPTAsal){
+			global $conn;
+			$sql = "select idptasal, kodekota from pendaftaran.lv_ptasal where idptasal='$idPTAsal'";
+			$ok=Query::arrQuery($conn,$sql);
+			return $ok[$idPTAsal];
+		}
+		function getPTAsal($kota){
+			global $conn;
+			$sql = "select * from pendaftaran.lv_ptasal where kodekota='$kota'";
+			
+			return $conn->SelectLimit($sql);
+		}
+		//combo SMU
+		function idSmu(){
+			global $conn;
+			$sql = "select idsmu from pendaftaran.lv_smu";
+						
+			return Query::arrQuery($conn,$sql);
+		}
+		function namaSmu($idSmu){
+			global $conn;
+			$sql = "select idsmu, namasmu from pendaftaran.lv_smu where idsmu='$idSmu'";
+			if($idSmu!='*'){
+			$ok=Query::arrQuery($conn,$sql);
+			return $ok[$idSmu];
+		}
+			//print_r($ok);die();
+		}
+		function getSmu($kota){
+			global $conn;
+			$sql = "select * from pendaftaran.lv_smu where kodekota='$kota' order by namasmu";
+			
+			return $conn->SelectLimit($sql);
+		}
+		function getSmuAll(){
+			global $conn;
+			$sql = "select * from pendaftaran.lv_smu order by namasmu";
+			
+			return Query::arrQuery($conn,$sql);
+		}
+		
+		function ukuranJas() {
+			$data = array('S' => 'S', 'M' => 'M', 'L' => 'L', 'XL' => 'XL');
+			return $data; 
+		}
+		
+		function tkpelatihan() {
+			$data = array('1' => 'Internasional', '2' => 'Regional', '3' => 'Nasional', '4' => 'Propinsi', '5' => 'Kabupaten','6' => 'Lain-Lain');
+			return $data; 
+		}
+		
+		function statusKeluarga(){
+			$data = array('1' => 'Kandung', '2' => 'Tiri');
+			return $data;
+		}
+		
+		function getTglUjian(){
+			global $conn;
+			$sql = "select idjadwal,tgltes from pendaftaran.pd_jadwal where isaktif=-1 order by idjadwal";
+			return $conn->SelectLimit($sql);
+			// return Query::arrQuery($conn,$sql);
+		}
+		function tglUjian($idkota,$periode='',$jalur='',$gelombang=''){
+			
+			global $conn;
+			//$conn->debug=true;
+			$now=date('Y-m-d');
+			$datajalur=$conn->GetRow("select tglujian,tglujian2 from pendaftaran.pd_gelombangdaftar where 
+								jalurpenerimaan='$jalur' and periodedaftar='$periode' and idgelombang='$gelombang'");
+			
+			$sql = "select j.idjadwal, tgltes from pendaftaran.pd_jadwal j left join pendaftaran.pd_jadwaldetail jd on jd.idjadwal=j.idjadwal
+					where kodekota='$idkota' and j.isaktif=-1 and tgltes >= '$now' ";
+			if(!empty($datajalur['tglujian']) and !empty($datajalur['tglujian2']))
+				$sql.=" and (tgltes between '".$datajalur['tglujian']."' and '".$datajalur['tglujian2']."')";
+			if(!empty($jalur))
+				$sql.=" and jd.jalurpenerimaan='$jalur'";
+			$sql.="  group by tgltes,j.idjadwal order by tgltes";
+			return $conn->SelectLimit($sql);
+			// return Query::arrQuery($conn,$sql);
+		}
+		
+		
+		function getTglJamUjian($idjadwaldetail){
+			global $conn;
+			$sql = "select idjadwaldetail,j.tgltes,r.koderuang||'-'||coalesce(r.lokasi,'') as ruang,jammulai,jamselesai from pendaftaran.pd_jadwaldetail pj
+					left join akademik.ms_ruang r on r.koderuang=pj.koderuang 
+					left join pendaftaran.pd_jadwal j on pj.idjadwal=j.idjadwal
+					where idjadwaldetail='$idjadwaldetail' order by j.tgltes";
+			return $conn->GetRow($sql);
+		}
+		
+		function getJamUjian($idjadwal){
+			global $conn;
+			$sql = "select r.koderuang||'-'||coalesce(r.lokasi,'') as ruang,idjadwaldetail,jammulai,jamselesai from pendaftaran.pd_jadwaldetail pj
+					left join akademik.ms_ruang r on r.koderuang=pj.koderuang 
+					where idjadwal='$idjadwal' order by jammulai";
+			return $conn->SelectLimit($sql);
+		}
+		
+		function getProdi($conn){
+			$sql = "select kodeunit, namaunit from gate.ms_unit where level = 2 and isakad=-1 order by infoleft";			
+			return Query::arrQuery($conn,$sql);
+		}
+		
+		// one day service
+		function getOneDayService() {
+			$data = array('-1' => 'One Day Service', '0' => 'Bukan One Day Service');
+			
+			return $data;
+		}
+		
+		function getGelombang($conn) {
+			$sql = "select idgelombang from pendaftaran.lv_gelombang";
+			
+			return Query::arrQuery($conn,$sql);
+		}
+		
+		function getJadwal(){
+			global $conn;
+			$now=date('Y-m-d');
+			$sql = "select *,coalesce(jumlahpeserta,0) as jumlahpeserta from pendaftaran.pd_jadwal j left join pendaftaran.pd_jadwaldetail jd on j.idjadwal=jd.idjadwal 
+			left join akademik.ms_ruang mr on mr.koderuang=jd.koderuang left join pendaftaran.lv_lokasiujian lu on lu.namalokasi=jd.koderuang where isaktif=-1 and j.tgltes>='$now'
+			order by tgltes asc ";
+			return $conn->SelectLimit($sql);
+		}
+		
+		function getJmlPeserta($id){
+			global $conn;
+			// $rs = $conn->GetRow("select * from pendaftaran.pd_jadwaldetail where idjadwaldetail='".$id."'");
+			$hasil = $conn->GetOne("select count(*) from pendaftaran.pd_pendaftar where idjadwaldetail='".$id."'");
+		 
+			return $hasil['jumlahpeserta'];
+		}
+		// one day service
+		function getMonth() {
+			$data = array(
+						'1' => 'Januari', 
+						'2' => 'Pebruari',
+						'3' => 'Maret',
+						'4' => 'April',
+						'5' => 'Mei',
+						'6' => 'Juni',
+						'7' => 'Juli',
+						'8' => 'Agustus',
+						'9' => 'September',
+						'10' => 'Oktober',
+						'11' => 'Nopember',
+						'12' => 'Desember',
+						);
+			
+			return $data;
+		}
+		function tahun($singkat=true,$min=1996) {
+			$data = array();
+			for($i=date('Y')+1;$i>=$min;$i--)
+				$data[$i] = ($singkat ? $i : $i.' - '.($i+1));
+			
+			return $data;
+		}
+		function getTahapUjian() {
+			$data = array(
+						'lulustpa' => 'Lulus TPA', 
+						'luluswawancara' => 'Lulus Wawancara',
+						'lulusteskesehatan' => 'Lulus Tes Kesehatan',
+						'lulusnilairaport' => 'Lulus Nilai Raport',
+						'lulustespelajaran' => 'Lulus tes Bidang Mata Pelajaran',
+						'luluskompetensi' => 'Lulus Uji Kompetensi',
+						'lulusujian' => 'Lulus Final',
+						);
+			
+			return $data;
+		}
+		function getTahapSeleksi() {
+			$data = array(
+						'tpa' => 'Seleksi TPA', 
+						'wawancara' => 'Seleksi Wawancara',
+						'tes kesehatan' => 'Seleksi Tes Kesehatan',
+						'nilai raport' => 'Seleksi Nilai Raport',
+						'tes bidang mata pelajaran' => 'Seleksi tes Bidang Mata Pelajaran',
+						'kompetensi' => 'Seleksi Uji Kompetensi',
+						);
+			
+			return $data;
+		}
+		function getWeek() {
+			$data = array('1' => '1', '2' => '2','3'=>'3','4'=>'4','5'=>'5');
+			
+			return $data;
+		}
+		function pilihan2($conn,$pil1,$sistemkuliah){			
+			$cek=$conn->getOne("select 1 from pendaftaran.pd_settingprodi where kodeunit = '".$pil1."'");
+			if (!$cek){
+				$sql = "select p.kodeunit, u.namaunit from pendaftaran.pd_settingprodi p join gate.ms_unit u using (kodeunit)
+						where coalesce(isbuka,'0')<> '0' and  sistemkuliah = '".$sistemkuliah."'";
+				$data = Query::arrQuery($conn,$sql);
+			}
+			else
+				$data = array();
+				
+			return $data;
+			
+			
+		}
+		
+		function getProdiBuka($conn,$sistemkuliah,$pil1=null) {
+			$sql = "select p.kodeunit, u.namaunit from pendaftaran.pd_settingprodi p join gate.ms_unit u using (kodeunit)
+						where coalesce(isbuka,'0')<> '0' and  sistemkuliah = '".$sistemkuliah."' ";
+			if(!empty($pil1))
+				$sql .= " and p.kodeunit != '$pil1' ";
+			return Query::arrQuery($conn,$sql);
+		}
+	}
+	
+?>

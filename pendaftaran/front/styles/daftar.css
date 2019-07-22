@@ -1,0 +1,38 @@
+
+#global_typo{
+    font-family : fantasy;
+    font-size   : small;
+    color       : #000;    
+}
+input{
+    border-radius: 4px;
+    height: 20px;
+    width: 200px;
+    border: 1px solid #bbb;
+}
+#box{
+    width: 540px;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    background: #000;
+    padding: 5px;
+    float: left;
+}
+#keterangan{
+    font-size: xx-small;
+    color: #000;
+    text-align: center;
+}
+#judul{
+    background: #000;
+    border-radius: 5px;
+    font-size: 18px;
+    color: #FFF;
+    padding: 7px;
+    text-align: center;
+}
+@font-face
+{
+font-family: bar;
+src: url('../fonts/BarcodeFont.ttf');
+}

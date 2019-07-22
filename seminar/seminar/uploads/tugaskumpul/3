@@ -1,0 +1,4 @@
+adl file.xml
+
+adt -certificate -cn mycertificate 1024-RSA mycertificatefile.p12 mysecretpass
+adt -package -storetype pkcs12 -keystore mycertificatefile.p12 installer.air file.xml [file lain]

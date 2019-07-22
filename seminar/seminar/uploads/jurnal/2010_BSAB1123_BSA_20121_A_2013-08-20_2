@@ -1,0 +1,202 @@
+<html>
+<head>
+<title>Laporan Distribusi Dosen Wali</title>
+	<meta http-equiv="content-type" content="text/html;charset=iso-8859-1">
+	<link rel="icon" type="image/x-icon" href="images/favicon.png">
+	<style>
+		.tab_header { border-bottom: 1px solid black; margin-bottom: 5px }
+		.div_headeritem { float: left }
+		.div_preheader, .div_header { font-family: "Times New Roman" }
+		.div_preheader { font-size: 15px; font-weight: bold }
+		.div_header { font-size: 15px }
+		.div_headertext { font-size: 12px; font-style: italic }
+		
+		.tb_head td, .div_head, .div_subhead { font-family: "Times New Roman" }
+		.tb_head { border-bottom: 1px solid black }
+		.tb_head td { font-size: 10px }
+		.tb_head .mark { font-size: 11px }
+		.div_head { font-size: 16px; text-decoration: underline }
+		.div_subhead { font-size: 14px; margin-bottom: 5px }
+		.div_head, .div_subhead { font-weight: bold }
+		
+		.tb_data { border: 1px solid black; border-collapse: collapse }
+		.tb_data th, .tb_data td { border: 1px solid black; font-family: "Times New Roman"; padding: 1px }
+		.tb_data th { background-color: #CFC; font-size: 11px }
+		.tb_data td { font-size: 20px }
+		.tb_data .noborder th { border-left: none; border-right: none }
+		
+		.tb_subfoot, .tb_foot { font-family: "Times New Roman" }
+		.tb_subfoot { font-size: 11px; border-top: 1px solid black }
+		.tb_foot { font-size: 10px; font-weight: bold; margin-top: 10px }
+		.tb_foot .mark { font-size: 15px; font-weight: normal }
+		.tb_foot .pad { padding-left: 30px }
+	</style>
+</head>
+<body>
+<div align="center">
+<br>
+<table class="tab_header" width="600">
+<thead>
+	<tr>
+		<td width="70" align="center">
+			<img src="images/iain.gif" width="65">
+		</td>
+		<td valign="top">
+			<div class="div_preheader">KEMENTERIAN AGAMA</div>
+			<div class="div_header">INSTITUT AGAMA ISLAM NEGERI - SUNAN AMPEL</div>
+						<div class="div_headertext">Jl. Ahmad Yani 117 Surabaya. Telp. 031-8410298 Fax. 031-8413300. website: www.sunan-ampel.ac.id, email: info@sunan-ampel.ac.id</div>
+		</td>
+	</tr>
+	</thead>
+</table><div class="div_head">LAPORAN DISTRIBUSI DOSEN WALI</div>
+</br>
+ <table  border ="0" width="600">
+ <tr valign ="top">
+     <td width="75">Jurusan</td>
+     <td align="center" width="10">:</td>
+	 <td width="310" class="mark">Bahasa dan Sastra Arab</td>
+	 </tr>
+	  <tr valign ="top">
+	 <td>Periode Semester</td>
+     <td align="center" width="10">:</td>	
+     <td>  
+	 Gasal	 /2012</td>
+   </tr></table>
+   <br>
+<table width="600" border="1" cellpadding="4" cellspacing="0">
+
+<tr bgcolor = "green">
+	<th style="color:#FFFFFF">No</th>
+	<th style="color:#FFFFFF">NIP</th>
+	<th style="color:#FFFFFF">Nama Dosen Wali</th>
+	<th style="color:#FFFFFF">Jumlah Anak Wali</th>
+	
+</tr>	
+	<tr>
+	<td>1</td>
+	<td>196210021992031001</td>
+	<td>Agus Aditoni</td>
+	<td>15</td>
+	</tr>
+		<tr>
+	<td>2</td>
+	<td>195408291979032001</td>
+	<td>Juwairiyah Dahlan</td>
+	<td>1</td>
+	</tr>
+		<tr>
+	<td>3</td>
+	<td>196307291998031001</td>
+	<td>Asep Abbas Abdullah</td>
+	<td>33</td>
+	</tr>
+		<tr>
+	<td>4</td>
+	<td>196605071997031003</td>
+	<td>Abdulloh Ubet</td>
+	<td>2</td>
+	</tr>
+		<tr>
+	<td>5</td>
+	<td>DL029</td>
+	<td>Abd. Qohhar</td>
+	<td>1</td>
+	</tr>
+		<tr>
+	<td>6</td>
+	<td>197605142005011002</td>
+	<td>Fathin Masyhud</td>
+	<td>2</td>
+	</tr>
+		<tr>
+	<td>7</td>
+	<td>196712211995031001</td>
+	<td>Atiq M. Romdlon</td>
+	<td>6</td>
+	</tr>
+		<tr>
+	<td>8</td>
+	<td>197509091998031002</td>
+	<td>Nasaruddin</td>
+	<td>13</td>
+	</tr>
+		<tr>
+	<td>9</td>
+	<td>198006012005011005</td>
+	<td>Abdur Rohman</td>
+	<td>34</td>
+	</tr>
+		<tr>
+	<td>10</td>
+	<td>197810062005012004</td>
+	<td>Roudlotul Jannah</td>
+	<td>3</td>
+	</tr>
+		<tr>
+	<td>11</td>
+	<td>196406201991031002</td>
+	<td>Nur Mufid</td>
+	<td>3</td>
+	</tr>
+		<tr>
+	<td>12</td>
+	<td>197608022003121001</td>
+	<td>Achmad Faizur Rosyad</td>
+	<td>4</td>
+	</tr>
+		<tr>
+	<td>13</td>
+	<td>195412251988031001</td>
+	<td>Misbahul Munir</td>
+	<td>2</td>
+	</tr>
+		<tr>
+	<td>14</td>
+	<td>195806091987031004</td>
+	<td>Ahmad Zaidun</td>
+	<td>26</td>
+	</tr>
+		<tr>
+	<td>15</td>
+	<td>196807171993031007</td>
+	<td>Kharisudin</td>
+	<td>28</td>
+	</tr>
+		<tr>
+	<td>16</td>
+	<td>195907121990031002</td>
+	<td>Muntaha</td>
+	<td>38</td>
+	</tr>
+		<tr>
+	<td>17</td>
+	<td>195709051988031002</td>
+	<td>Abdul Ala</td>
+	<td>1</td>
+	</tr>
+		<tr>
+	<td>18</td>
+	<td>195512121982031005</td>
+	<td>Masan Hamid</td>
+	<td>2</td>
+	</tr>
+		<tr>
+	<td>19</td>
+	<td>195512211982031002</td>
+	<td>Burhan Djamaluddin</td>
+	<td>1</td>
+	</tr>
+		<tr>
+	<td>20</td>
+	<td>198204182009011012</td>
+	<td>Haris Shofiyuddin</td>
+	<td>6</td>
+	</tr>
+		</table>
+	<table>
+	<tr>
+		<td width="450">&nbsp;</td>
+		<td class="mark">21 Agustus 2013</td>
+	</tr>
+    </table>
+ </body></html>

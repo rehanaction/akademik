@@ -1,0 +1,55 @@
+<?php
+	// cek akses halaman
+	defined( '__VALID_ENTRANCE' ) or die( 'Akses terbatas' );
+	
+	// hak akses
+	$a_auth = Modul::getFileAuth();
+	
+	$c_insert = $a_auth['caninsert'];
+	$c_edit = $a_auth['canupdate'];
+	$c_delete = $a_auth['candelete'];
+	
+	// include
+	require_once(Route::getModelPath('berita'));
+	require_once(Route::getUIPath('combo'));
+	
+	// properti halaman
+	$p_title = 'Data Informasi';
+	$p_tbwidth = 780;
+	$p_aktivitas = 'KULIAH';
+	$p_detailpage = Route::getDetailPage();
+	
+	$p_model = mBerita;
+	
+	// struktur view
+	$a_kolom = array();	
+	$a_kolom[] = array('kolom' => 'judul', 'label' => 'Judul');
+	//$a_kolom[] = array('kolom' => 'pengumuman', 'label' => 'Isi');
+	$a_kolom[] = array('kolom' => 'isaktif', 'label' => 'Aktif', 'type'=>'S', 'option'=>array(0=>'Tidak', -1 => 'Tampil'));
+	
+	// ada aksi
+	$r_act = $_REQUEST['act'];
+	if($r_act == 'delete' and $c_delete) {
+		$r_key = CStr::removeSpecial($_POST['key']);
+		
+		list($p_posterr,$p_postmsg) = $p_model::delete($conn,$r_key);
+	}
+	else if($r_act == 'refresh')
+		Modul::refreshList();
+	
+	// mendapatkan data ex
+	$r_page = Page::setPage($_POST['page']);
+	$r_row = Page::setRow($_POST['row']);
+	$r_sort = Page::setSort($_POST['sort']);
+	$a_filter = Page::setFilter($_POST['filter']);
+	$a_datafilter = Page::getFilter($a_kolom);
+	
+	$a_data = $p_model::getPagerData($conn,$a_kolom,$r_row,$r_page,$r_sort,$a_filter);
+	
+	$p_lastpage = Page::getLastPage();
+	$p_time = Page::getListTime();
+	$p_rownum = Page::getRowNum();
+	$p_pagenum = ceil($p_rownum/$r_row);
+	
+	require_once(Route::getViewPath('inc_list'));
+?>

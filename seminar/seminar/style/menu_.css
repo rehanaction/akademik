@@ -1,0 +1,94 @@
+ul.topnav {  
+    list-style: none;
+    margin: 0;
+    font-size: 12px;
+	padding-top:12px;
+	padding-left:0px;
+	z-index:10;
+}
+ul.topnav li {
+    float: left;
+    margin: 0;
+    padding: 0 10px 0 0;
+    position: relative; /* Deklarasi x dan y untuk subnav */
+}
+ul.topnav li a {
+    color: #e0e0e0;
+	font-weight:bold;
+    float: left;
+    padding: 1px 5px 5px;
+    text-decoration: none;
+}
+ul.topnav li a:hover{  
+	color:#fff;
+    border-bottom: 3px solid #FFBF00;
+}
+ul.topnav li a span {
+    width: 14px;
+    height: 14px;
+    float: right;
+    margin-left: 5px;
+    margin-top: 2px;
+    background: url('../images/pg-down2.png') no-repeat center top;
+}
+ul.subnav, div.subnav {
+    list-style: none;
+    position: absolute;
+    top: 25px;
+    background: #015593; /*--color id 01--*/
+   /*--	background:rgba(34, 34, 34, 0.9); --*/
+    margin: 0;
+    padding: 0;
+    display: none;
+    border: 1px solid #015C9B; /*--color id 04--*/;
+    z-index:5;
+}
+ul.subnav li {
+    padding: 0;
+}
+ul.subnav li a {
+	color:#fff;
+	font-weight:normal;
+    padding: 5px;
+    width: 170px;
+}
+ul.subnav li a:hover {
+    background-color: #20915E; /*-- color id 03--*/
+    border-bottom: none;
+	color:#FFFFFF;
+}
+ul.subnav li a span {
+    width: 14px;
+    height: 14px;
+    float: right;
+    margin-top: 2px;
+    background: url('../images/pg-right2.png') no-repeat center top;
+}
+ul.subnav li hr {
+	padding: 0;
+    width: 180px;
+	border: none;
+	border-top: 1px solid #ccc;
+}
+ul.leafnav {
+    list-style: none;
+    position: absolute;
+    top: -1px;
+    left: 181px;
+    background: #015593; /*--color id 01--*/
+   /*--	background:rgba(34, 34, 34, 0.9); --*/
+    margin: 0;
+    padding: 0;
+    display: none;
+    border: 1px solid #015C9B; /*--color id 04--*/;
+    z-index:5;
+}
+ul.leafnav li a {
+    width: 180px;
+}
+ul.leafnav li hr {
+	width: 200px;
+}
+.borderbottom {
+	border-bottom: 3px solid #FFBF00;
+}

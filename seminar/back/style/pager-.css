@@ -1,0 +1,496 @@
+/* Content */
+.Darken {
+	background-color: rgb(0, 0, 0);
+	opacity: 0.4;
+	/* -moz-opacity: 0.40;
+	filter: alpha(opacity=40); */
+	z-index: 20;
+	height: 100%;
+	width: 100%;
+	background-repeat: repeat;
+	position: fixed;
+	top: 0px;
+	left: 0px;
+}
+
+.Lighten {
+	z-index: 50;
+	height: 100%;
+	width: 100%;
+	background-repeat: repeat;
+	position: fixed;
+	top: 0px;
+	left: 0px;
+}
+
+.AlternateBG {
+	background:#f4f4f4;
+}
+
+.AlternateBG2 {
+	background:#FCF4AA;
+}
+
+.Border {
+	border:1px solid #CCC;
+}
+
+.Break {
+	height:7px;
+}
+
+.BreakSmall {
+	height:3px;
+}
+
+.ControlStyle {
+	border:1px solid #999;
+	font-size:12px;
+}
+
+.acTrue {
+	border: 1px solid #005B58;
+}
+
+.acFalse {
+	border: 1px solid #f00;
+}
+
+
+.DivError {
+	background:#FFBABA;
+	border:1px solid #F93737;
+	padding:5px;
+}
+
+.DivSuccess {
+	background:#D3F5CD;
+	border:1px solid #55D83E;
+	padding:5px;
+}
+
+
+.GridStyle {
+	border-collapse: collapse;
+}
+
+.GridStyle td {
+	border: 1px solid #CCC;
+}
+
+.GridStyle tr:hover:not(.NoHover):not(.DataBG) {
+	background-color: #FFDAB9;
+}
+
+.GridStyle tr:hover:not(.NoHover):not(.DataBG) td{
+	border-right:none;
+	border-left:none;
+}
+
+.GridStyle .HeaderBG {
+	background: #E5E5E5;
+	/* background: linear-gradient(top, #ffffff, #e5e5e5); */
+	border: 1px solid #CCC;
+	font-size: 11px;
+	font-weight: bold;
+	padding: 3px;
+	padding-top: 5px;
+	text-shadow: 0 1px 0 #ffffff;
+	vertical-align: middle;
+}
+
+.GridStyle .LiteHeaderBG {
+	background: #EBF2F9;
+	/* background: linear-gradient(top, #ffffff, #e5e5e5); */
+	border: 1px solid #CCC;
+	font-size: 11px;
+	font-weight: bold;
+	padding: 3px;
+	padding-top: 5px;
+	text-shadow: 0 1px 0 #ffffff;
+	vertical-align: middle;
+}
+
+.NormalBG {
+	background:#FFF;
+}
+
+.GreenBG {
+	background-color:#D2EDD0;
+}
+
+.RedBG {
+	background-color:#FCAAAA;
+}
+
+.YellowBG {
+	background-color:#FCF4AA;
+}
+
+.GreyBG {
+	background-color:#DDD;
+}
+
+.RedFont {
+	color:red;
+}
+
+.GridStyle .GridStyleP {
+	background-color:#FCFCFC;
+	border:none;
+	padding:0;
+}
+
+.GridStyle .GridStyleP:hover {
+	background-color:#FCFCFC;
+}
+
+.GridStyle tr:hover .GridStyleP td {
+	border:1px solid #ccc;
+}
+
+.GridStyle .GridStyleP tr:hover td {
+	border-right:none;
+	border-left:none;
+}
+
+.LeftColumnBG {
+	background:#EBF2F9;
+}
+
+.LeftColumnDiv {
+	float:left;
+}
+
+.MinPadding {
+	margin-top:-2px;
+	margin-bottom:-5px;
+}
+
+.PagerTitle {
+	border-bottom:1px solid #EE4037;
+	color:#647287;
+	font-size:14px;
+	font-weight:bold;
+	padding:9px 0;
+}
+
+.NotNullMark {
+	color:#F00;
+	float:right;
+}
+
+.TDButton {
+    /*background-color: #4CE0A4;
+    background-image: -moz-linear-gradient(center top , #4CE0A4, #25bc7e);*/
+    background-color: #abd130;
+    background-image: -moz-linear-gradient(center top , #abd130, #84a90e);
+    border-color: #40AF81 #2EA369 #209A55;
+    border-radius: 4px;
+    border-style: solid;
+    border-width: 1px;
+/*    box-shadow: 0 1px 0 0 #72EBB9 inset, 0 1px 2px 0 #B3B3B3;*/
+    color: #FFFFFF;
+    font: 11px/1 "lucida grande",sans-serif;
+    padding: 3px 10px 8px;
+    text-align: center;
+    text-shadow: 0 -1px 1px #32BC75;
+}
+.TDButton img{
+	position:relative;
+	top:5px;
+}
+
+.Expand {
+	font-size:9px;
+	padding:0 3px 3px 3px;
+	white-space:nowrap;
+}
+
+.TRImportant .RightColumnBG {
+	font-weight:bold;
+}
+
+.ViewTitle {
+	color:#647287;
+	font-weight:bold;
+	font-size:18px;
+	border-bottom:1px solid #EE4037;
+}
+
+.ViewTitle span{
+	text-align: left;
+	display: block;
+}
+
+.ViewSubTitle {
+	color:#71FCB6;
+}
+
+input[type="text"], input[type="password"]{
+	border-radius:4px;
+	padding:3px;
+	border:1px solid #848484;
+	background:#fff;
+}
+
+input[type="button"] {
+	border-radius:3px;
+	padding:2px 6px;
+	cursor:pointer;
+}
+
+.DataGridStyle {
+	border-collapse: collapse;
+}
+
+.DataGridStyle td {
+	border: none;
+}
+
+.DataGridStyle td.LeftColumnBG {
+	background:#ededed;
+	border-bottom:2px solid #fff;
+}
+
+#div_autocomplete {
+	background-color:#FFFFFF;
+	position:absolute;
+	display:none;
+	border:1px solid #999999;
+	overflow:auto;
+	overflow-x:hidden;
+	z-index: 1000;
+}
+
+#tab_autocomplete {
+	background-color:#FFFFFF;
+}
+
+input.ControlRead {
+	background-color:#EBF2F9;
+	border:1px solid #999;
+	font-size:12px;
+}
+
+input.ControlAuto {
+	border:1px solid #34DC97;
+	font-size:12px;
+}
+
+input.ControlErr, select.ControlErr, textarea.ControlErr {
+	background:#FF0;
+	border:1px solid #999;
+	color:#F00;
+	font-size:12px;
+}
+
+.DataBG {
+	padding-bottom: 7px;
+	background: url(../images/bg-pattern-line.png) bottom repeat-x;
+	background-color: #222;
+	color: #FFF;
+	font-weight: bold;
+}
+
+.LeftRibbon {
+	position: relative;
+	width: 230px;
+	font-weight: bold;
+	font-size: 18px;
+	padding: 6px 20px;
+	margin: 0 5px 15px -30px;
+	color: #FFF;
+	background-color: #218A8A;
+}
+
+.LeftRibbon img {
+	margin-right: 10px;
+	vertical-align: middle;
+}
+
+.LeftRibbon:after {
+	content: ' ';
+	position: absolute;
+	width: 0;
+	height: 0;
+	left: 0px;
+	top: 100%;
+	border-width: 5px 8px;
+	border-style: solid;
+	border-color: #666 #666 transparent transparent;
+}
+
+.SideTitle {
+	color: #647287;
+	font-weight: bold;
+	font-size: 16px;
+}
+
+.SideSubTitle {
+	color: #647287;
+	font-weight: bold;
+	font-size: 11px;
+}
+
+.ULink {
+	color:#218A8A;
+	cursor:pointer;
+	text-decoration: none;
+}
+
+.ULink:hover {
+	text-decoration: underline;
+}
+
+.SmallText {
+	font-size: 10px;
+}
+
+.NewsList td {
+	padding: 3px 0;
+}
+
+.NewsContent {
+	text-align: justify;
+	line-height: 1.5;
+}
+
+.GridNormal {
+	border-collapse: collapse;
+}
+
+.GridNormal td {
+	border: 1px solid #CCC;
+}
+
+.GridNormal th {
+  background: #E5E5E5;
+  padding: 3px;
+  font-size: 11px;
+  border: 1px solid #ccc;
+  vertical-align: middle;
+  text-align: center;
+  padding-top: 5px;
+  text-shadow: 0 1px 0 #ffffff;
+}
+
+.NoGrid td {
+	border:none;
+}
+
+.ForumCrumbs {
+	font-size: 18px;
+	font-weight: bold;
+	padding: 0;
+}
+
+.ForumCrumbsSmall {
+	font-size: 14px;
+	font-weight: bold;
+	padding: 0;
+}
+
+.ForumLink {
+	color: #218A8A;
+	font-weight: bold;
+	cursor: pointer;
+	text-decoration: none;
+}
+
+.ForumLink:hover {
+	text-decoration: underline;
+}
+
+.ForumTopic {
+	font-weight: bold;
+}
+
+.ForumItem {
+	padding: 0;
+}
+
+.ForumItemHead {
+	color: #999;
+	padding: 5px;
+	border-bottom: 1px dotted #aaa;
+}
+
+.ForumItemFoot {
+	color: #999;
+	padding: 5px;
+	border-top: 1px dotted #aaa;
+}
+
+.ForumItemContent {
+	padding: 0 5px;
+	height: auto;
+	min-height: 85px;
+	height: auto !important;	/* for IE as it does not support min-height */
+	height: 85px;				/* for IE as it does not support min-height */
+}
+
+.PagePaginate {
+	float: left;
+	margin-left: 20px;
+	padding: 0;
+}
+
+.PagePaginate table {
+	border-collapse: collapse;
+}
+
+.PagePaginate table td {
+	cursor: pointer;
+	padding: 4px 10px;
+	text-align: center;
+	border: 1px solid #CCC;
+	border-top: none;
+}
+
+.PagePaginate table td span {
+	color: #218A8A;
+}
+
+.PagePaginate table td:hover {
+	background-color: #34DC97;
+}
+
+.PagePaginate table td:hover span {
+	color: #FFF;
+}
+
+.PMProfil {
+	width: 130px;
+	padding: 15px 10px;
+}
+
+.PMProfil table td {
+	color: #218A8A;
+	cursor: pointer;
+}
+
+.PMProfil table td.Selected {
+	background-color: #FFA;
+}
+
+.PMProfil table td:hover {
+	color: #FFF;
+	background-color: #34DC97;
+}
+
+.PMRecipient {
+	background-color: #E6F2E6;
+	border: 1px solid #CCC;
+	cursor: pointer;
+	margin-top: 5px;
+	padding: 3px;
+	width: 400px;
+}
+
+.PMMessage {
+	background-color: #E6F2E6;
+	border: 1px solid #CCC;
+	margin-top: 10px;
+	padding: 10px;
+}

@@ -1,0 +1,21 @@
+.tab_header { border-bottom: 1px solid black; margin-bottom: 5px }
+.div_headeritem { float: left }
+.div_preheader, .div_header { font-family: Arial }
+.div_preheader { font-size: 11px; font-weight: bold }
+.div_header { font-size: 14px; font-weight: bold }
+.div_headertext { font-size: 9px; font-style: italic }
+
+.tb_head td, .div_head, .div_subhead { font-family: Arial }
+.tb_head td, .div_head { font-size: 13px }
+.div_subhead { font-size: 11px; margin-bottom: 5px }
+.div_head { font-size: 18px; }
+.div_head, .div_subhead { font-weight: bold }
+
+
+.tb_data { border-collapse: collapse }
+.tb_data th, .tb_data td { border: 1px solid black; font-size: 11px; padding: 1px }
+.tb_data th { font-family: Arial; font-weight: bold; height:25px; }
+.tb_data td { font-family: Tahoma, Arial }
+
+.tb_foot { font-family: Arial; font-size: 12px }
+.highlight { font-weight: bold; font-style:italic; text-decoration: underline; }

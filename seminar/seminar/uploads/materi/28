@@ -1,0 +1,25 @@
+mysqldump -h 192.168.1.10 -u root -p -e --routines unairfin > unairfin.sql
+
+mysql -h 192.168.1.2 -u root -p unairfin < unairfin.sql
+
+--------------------------------------------------------------------------
+
+pg_dump --host localhost --port 5432 --username postgres --format custom --blobs --verbose --file "/home/unair/Update/unairaset.backup" unairaset
+
+pg_restore --host localhost --port 5432 --username postgres --dbname unairaset --no-owner --verbose "/home/unair/Update/unairaset.backup"
+
+--------------------------------------------------------------------------
+
+create database iain owner iain encoding 'SQL-ASCII' template template0
+
+--------------------------------------------------------------------------
+
+pg_dump --host localhost --port 5432 --username postgres --format plain --no-owner --inserts --column-inserts --verbose --file "/home/sevima/update/ubayasdm.sql" ubayasdm
+
+--------------------------------------------------------------------------
+
+pg_dump --host localhost --port 5432 --username postgres --format plain --data-only --column-inserts --file "/home/sevima/update/pe_rwtgaji.sql" --table "\"public\".\"pe_rwtgaji\"" ubayasdm
+
+--------------------------------------------------------------------------
+
+pg_dump --format tar --inserts --verbose --file "/var/www/petraakad.tar" petraakad

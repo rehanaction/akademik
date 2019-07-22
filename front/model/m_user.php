@@ -1,0 +1,576 @@
+<?php
+	// model user
+	defined( '__VALID_ENTRANCE' ) or die( 'Akses terbatas' );
+	
+	require_once($conf['model_dir'].'m_model.php');
+	require_once($conf['helpers_dir'].'modul.class.php');
+	
+	class mUser extends mModel {
+		const schema = 'gate';
+		const table = 'sc_user';
+		const order = 'userid';
+		const key = 'userid';
+		const sequence = 'sc_user_userid_seq';
+		const label = 'user';
+		
+		// mendapatkan kueri list
+		function listQuery() {
+			$unit = Modul::getLeftRight();
+			$left=$unit['LEFT'];
+			$right = $unit['RIGHT'];
+			
+			$sql = "select distinct u.*
+				from ".static::table()." u 
+				left join gate.sc_userrole ur on ur.userid = u.userid 
+				left join gate.ms_unit un on ur.kodeunit = un.kodeunit 
+				and un.infoleft >= '$left' and un.inforight <= '$right'
+				";
+			
+			return $sql;
+		}
+
+		function inquiryDataUser($conn,$a_kolom,$r_row,$r_page,$r_sort,$a_filter){
+			$unit = Modul::getLeftRight();
+			$left=$unit['LEFT'];
+			$right = $unit['RIGHT'];
+			
+			$sql = "select distinct u.*
+				from ".static::table()." u 
+				left join gate.sc_userrole ur on ur.userid = u.userid 
+				left join gate.ms_unit un on ur.kodeunit = un.kodeunit 
+				and un.infoleft >= '$left' and un.inforight <= '$right'
+				";
+			return self::getPagerData($conn,$a_kolom,$r_row,$r_page,$r_sort,$a_filter,$sql);
+		}
+		function inquiryByuserid($conn,$uid){
+			$unit = Modul::getLeftRight();
+			$left=$unit['LEFT'];
+			$right = $unit['RIGHT'];
+			
+			$sql = "select distinct u.*, ur.koderole
+				from ".static::table()." u 
+				left join gate.sc_userrole ur on ur.userid = u.userid 
+				left join gate.ms_unit un on ur.kodeunit = un.kodeunit 
+				and un.infoleft >= '$left' and un.inforight <= '$right' where u.userid='$uid'
+				";
+			return $conn->GetRow($sql);
+		}
+		function deleteRole($conn,$key) {
+			Query::qDelete($conn,static::table('sc_userrole'),static::getCondition($key));
+			return static::deleteStatus($conn);
+		}
+		
+		function syncUserToElearning($conn,$data){
+		
+			$token = '847895ee848fdb5fb2d43b275705470c';
+			$domainname = 'https://elearning.inaba.ac.id';
+			$functionname = 'core_user_create_users';
+			$restformat = 'json';
+			$names = explode(' ', $data['userdesc']);
+			$ft = explode('.',$data['username']);
+			$lastname='';
+			for($i=1;$i<=count($names)-1;$i++){
+				$lastname = $lastname.' '.$names[$i];
+			}
+    		$firstname = $names[0];
+			$user2 = new stdClass();
+			$user2->idnumber = $data['userid'];
+			$user2->username = $data['username'];
+			//$user2->password = $data['password'];
+			if($data['koderole']=='D'){
+				$user2->password = '@DsnInaba1984';
+			}else{
+				$user2->password = '@Inaba448';
+			}
+			$user2->firstname = $firstname;
+			$user2->lastname = $lastname;
+			$user2->email = $data['username'].'@moodle.com';
+			$user2->timezone = 'Asia/Jakarta';
+			$user2->city = 'Bandung';
+			$user2->country = 'ID';
+			$users = array($user2);
+			$params = array('users' => $users);
+			//header('Content-Type: text/plain');
+			$serverurl = $domainname . '/webservice/rest/server.php'. '?wstoken=' . $token . '&wsfunction='.$functionname;
+			require_once($conf['model_dir'].'m_curl.php');
+			$curl = new curl;
+			//if rest format == 'xml', then we do not add the param for backward compatibility with Moodle < 2.2
+			$restformat = ($restformat == 'json')?'&moodlewsrestformat=' . $restformat:'';
+			$resp = $curl->post($serverurl . $restformat, $params);
+			//header("Location: http://localhost:8080/akademik2/front/admin/index.php?page=list_syncuser");
+			//print_r($resp);
+			//self::UpdateSyncMoodle($conn,$data['userid']);
+		}
+		function getUserMoodle($conn,$username){
+			
+			$token = '847895ee848fdb5fb2d43b275705470c';
+			$domainname = 'https://elearning.inaba.ac.id';
+			$functionname = 'core_user_get_users';
+			$restformat = 'json';
+			$params = array('criteria'=>array(
+					array(	
+						'key'=>'username',
+						'value'=>$username
+						)
+				)
+		 	 );
+			//header('Content-Type: text/plain');
+			$serverurl = $domainname . '/webservice/rest/server.php'. '?wstoken=' . $token . '&wsfunction='.$functionname;
+			require_once($conf['model_dir'].'m_curl.php');
+			$curl = new curl;
+			//if rest format == 'xml', then we do not add the param for backward compatibility with Moodle < 2.2
+			$restformat = ($restformat == 'json')?'&moodlewsrestformat=' . $restformat:'';
+			$resp = $curl->post($serverurl . $restformat, $params);
+			$data = json_decode($resp, true);
+			return $data;
+			//header("Location: http://localhost:8080/akademik2/front/admin/index.php?page=list_syncuser");
+			//print_r($resp);
+			//self::UpdateSyncMoodle($conn,$data['userid']);
+		}
+		function DelUserMoodle($conn,$uid){
+			
+			$token = '847895ee848fdb5fb2d43b275705470c';
+			$domainname = 'https://elearning.inaba.ac.id';
+			$functionname = 'core_user_delete_users';
+			$restformat = 'json';
+			$params = array('userids' => array($uid));
+			//header('Content-Type: text/plain');
+			$serverurl = $domainname . '/webservice/rest/server.php'. '?wstoken=' . $token . '&wsfunction='.$functionname;
+			require_once($conf['model_dir'].'m_curl.php');
+			$curl = new curl;
+			//if rest format == 'xml', then we do not add the param for backward compatibility with Moodle < 2.2
+			$restformat = ($restformat == 'json')?'&moodlewsrestformat=' . $restformat:'';
+			$resp = $curl->post($serverurl . $restformat, $params);
+			//header("Location: http://localhost:8080/akademik2/front/admin/index.php?page=list_syncuser");
+			print_r($resp);
+			//self::UpdateSyncMoodle($conn,$data['userid']);
+		}
+		
+		function getKey($conn, $record){
+			$cond =array();
+			foreach($record as $key => $value){
+				if($value!='null') 	$cond[] = $key."='".$value."'";
+			}
+			$cond = implode(" and ",$cond);
+			$cond = " where ".$cond;
+			
+			$sql="SELECT ".self::key." FROM ".self::schema.".".self::table.$cond;
+			$result =  $conn->GetRow($sql);
+			
+			return $result[self::key];
+		}
+		
+		// mendapatkan potongan kueri filter list
+		function getListFilter($col,$key) {
+			switch($col) {
+				case 'role': return "ur.koderole = '$key'";
+			}
+		}
+		
+		// informasi detail
+		function getDetailInfo($detail,$kolom='') {
+			$info = array();
+			
+			switch($detail) {
+				case 'role':
+					$info['table'] = 'sc_userrole';
+					$info['key'] = 'kodeunit,koderole,userid';
+					$info['label'] = 'role user';
+					break;
+			}
+			
+			if(empty($kolom))
+				return $info;
+			else
+				return $info[$kolom];
+		}
+		
+		// role
+		function getRole($conn,$key,$label='',$post='') {
+			$sql = "select * from ".static::table('sc_userrole')."
+					where userid = '$key' order by koderole, kodeunit";
+			
+			return static::getDetail($conn,$sql,$label,$post);
+		}
+		
+		// ganti password
+		function changePassword($conn,$userid) {
+			$sql = "update ".self::table()." set password = md5(coalesce(hints,'')),
+					t_updateact = 'resetpass', is_change='0', ".Query::logUpdate()." where userid = '$userid'"; 
+			$conn->Execute($sql);
+			
+			return $conn->ErrorNo();
+		}
+		function UpdateSyncMoodle($conn,$record,$key,$status=false) {
+			$err = Query::recUpdate($conn,$record,static::table(),static::getCondition($key));
+			if($status)
+				return static::updateStatus($conn);
+			else
+				return $err;
+		}
+		
+		function resetPasswordForget($conn,$token) {
+			$sql = "select userid, hints from ".self::table()." where tokenreset = ".Query::escape($token);
+			$row = $conn->GetRow($sql);
+			
+			$userid = $row['userid'];
+			$hints = trim($row['hints']);
+			
+			if(empty($userid))
+				return array(true,'Reset password gagal');
+			
+			$record = array();
+			$record['password'] = md5($hints);
+			$record['tokenreset'] = null;
+			
+			$err = Query::recUpdate($conn,$record,self::table(),'userid = '.Query::escape($userid));
+			if($err)
+				$msg = 'Reset password gagal';
+			else
+				$msg = 'Reset password berhasil. Silahkan login '.(strlen($hints) == 0 ? 'tanpa menggunakan password' : 'menggunakan password <strong>'.$hints.'</strong>');
+			
+			return array($err,$msg);
+		}
+		
+		// tipe user
+		function statusAktif() {
+			return array('1' => 'Aktif', '0' => 'Tidak Aktif');
+		}
+		
+		function useldap() {
+			return array('Y' => 'Ya');
+		}
+		
+		// mendapatkan data hak akses user
+		function getDataAuth($conn,$userid) {
+			$sql = "select distinct ur.koderole, r.namarole, ur.kodeunit, u.namaunit, u.infoleft, u.inforight, mn.kodemodul, m.namamodul,
+					ur.kodebasis, ur.kodekampus, b.namabasis, k.namakampus
+					from gate.sc_userrole ur
+					join gate.sc_role r on r.koderole = ur.koderole join gate.ms_unit u on u.kodeunit = ur.kodeunit
+					left join
+						(gate.sc_menurole mr join gate.sc_menu mn on mn.idmenu = mr.idmenu
+						join gate.sc_modul m on m.kodemodul = mn.kodemodul)
+						on mr.koderole = r.koderole
+					left join akademik.lv_basis b on ur.kodebasis = b.kodebasis
+					left join akademik.lv_kampus k on ur.kodekampus = k.kodekampus
+					where mn.kodemodul is not null";
+			if($userid!='2874'){
+				$sql.=" and ur.userid = '$userid'";
+			}
+			$sql.=" order by m.namamodul, r.namarole, ur.kodeunit";
+			
+			$rs = $conn->Execute($sql);
+			
+			$a_data = array(); $t_modul = '';
+			while($row = $rs->FetchRow()) {
+				if($t_modul != $row['kodemodul']) {
+					$t_data = array();
+					$t_modul = $row['kodemodul'];
+				}
+				
+				$t_data[] = $row;
+				
+				if($rs->EOF or $rs->fields['kodemodul'] != $t_modul)
+					$a_data[$t_modul] = array('kode' => strtolower($row['kodemodul']), 'nama' => $row['namamodul'], 'data' => $t_data);
+			}
+			
+			return $a_data;
+		}
+		
+		// login
+		function cekUserPass($conn,$userid,$passwd) {
+			$sql = "select 1 from ".self::table()." where userid = '$userid' and password = md5('$passwd') and isactive='1'";
+			$ispass = $conn->GetOne($sql);
+			
+			return (empty($ispass) ? false : true);
+		}
+		
+		function getUser($conn, $userid)
+		{
+			$sql = "select * from gate.sc_user where userid = '$userid'";			
+			$rs = $conn->GetRow($sql);
+			return $rs;
+		}
+
+		function isLdapUser($conn, $userid)
+		{
+			$isldap = $conn->GetOne("select isuseldap from ".self::table()." where username = '$userid'");
+			if($isldap == 'Y') return true;
+			else return false;
+		}
+		
+		function logIn($conn,$userid,$passwd) {
+			$userid = CStr::removeSpecial($userid);
+			//$conn->debug=true;
+			
+			//Pengecekan LDAP				
+			// $isldap = $conn->GetOne("select isuseldap from ".self::table()." where username = '$userid'");
+			
+			//if($isldap == 'Y'){
+			if( self::isLdapUser($conn, $userid) ){
+				// $ok = true;
+				// if($passwd !== false)
+				//	list($ok, $msg) = self::loginLDAP($userid, $passwd);
+				
+ 				$ldap = new Ldap();
+				$bind = $ldap->userLogin($userid, $passwd, $err);
+				if (!$bind) return false;
+				// if($ok)
+					$sql = "select * from ".self::table()." where username = '$userid'";
+			}else{		
+				
+				if($passwd !== false) {
+					if($passwd == '')
+						$passwd = "coalesce(password,'') in ('','".md5($passwd)."')";
+					else
+						$passwd = "password = '".md5($passwd)."'";
+				}
+				
+				$sql = "select * from ".self::table()." where username = '$userid'";
+
+				if($passwd !== false)
+					$sql .= " and $passwd";
+					//echo $sql;
+			}
+			
+			// cek data user
+			Modul::incLoginAttempt();
+			$row = $conn->GetRow($sql);
+			if(!empty($row)) {
+				
+				$conn->BeginTrans();
+				$ok = true;
+				
+				// edit data login
+				$now = date('Y-m-d H:i:s');
+				$ip = $_SERVER['REMOTE_ADDR'];
+				
+				$sql = "update ".self::table()." set lastlogintime = '$now', lastloginip = '$ip' where username = '$userid'";
+				$ok = $conn->Execute($sql);
+				
+				if($ok) {
+					require_once(Route::getModelPath('usersession'));
+					
+					$record = array();
+					$record['t_userid'] = $userid;
+					$record['t_username'] = $row['userdesc'];
+					$record['t_logintime'] = $now;
+					$record['t_loginattempt'] = Modul::getLoginAttempt();
+					$record['t_ipaddress'] = $ip;
+					$record['t_hostname'] = $_SERVER['REMOTE_HOST'];
+					$record['t_osname'] = Modul::getAgent();
+					
+					$err = mUserSession::insertRecord($conn,$record);
+					$ok = Query::isOK($err);
+					
+					$row['loginsession'] = mUserSession::getLastValue($conn);
+					
+					$sqlp="select idpegawai from sdm.ms_pegawai where nik='".$userid."' or username::text='".$userid."' limit 1 ";
+					$rowp=$conn->getRow($sqlp);
+					
+					$row['idpegawai'] = $rowp['idpegawai'];
+				}
+				
+				$ok = $conn->CommitTrans($ok);
+				
+				if($ok)
+					Modul::setSessionData($row);
+				
+				 
+				return $ok ? true : false;
+			}
+			else
+				return false;
+				
+				 
+		}
+		
+		// logout
+		function logOut($conn) {
+			require_once(Route::getModelPath('usersession'));
+			
+			// update waktu logout
+			$record = array();
+			$record['t_logouttime'] = date('Y-m-d H:i:s');
+			
+			$err = mUserSession::updateRecord($conn,$record,Modul::getLoginSession());
+			
+			return $err ? false : true;
+		}
+		
+		//login LDAP
+		function loginLDAP($username, $password){
+			$ok = false;
+			$msg = '';
+		    
+			$app_user = $conf['ldap_user'];
+			$app_pass = $conf['ldap_pass'];
+             
+			//$username = 'munir';
+			//$password = 'munir';
+             
+			$userdn = '';
+            
+			error_reporting(0);
+			$conn_status = ldap_connect($conf['ldap_server'], $conf['ldap_port']);
+			if($conn_status === FALSE) {
+				$ok = false;
+				$msg = "Couldn't connect to LDAP service";
+			}else{
+				ldap_set_option($conn_status, LDAP_OPT_PROTOCOL_VERSION, 3);
+
+				$bind_status = ldap_bind($conn_status, $app_user, $app_pass);
+				if ($bind_status === FALSE) {
+					$ok = false;
+					$msg = "Couldn't bind to LDAP as application user";
+				}else{
+					$query = "(&(uid=" . $username . "))";
+					$search_base = $conf['ldap_base'];
+					$search_status = ldap_search(
+						$conn_status, $search_base, $query, array('dn')
+					);
+
+					if($search_status === FALSE) {
+						$ok = false;
+						$msg = "Search on LDAP failed";
+					}else{
+						$result = ldap_get_entries($conn_status, $search_status);
+						if ($result === FALSE) {
+							$ok = false;
+							$msg = "Couldn't pull search results from LDAP";
+						}else{
+							if((int) @$result['count'] > 0)
+								$userdn = $result[0]['dn'];
+                             
+							if(trim((string) $userdn) == '') {
+								$ok = false;
+								$msg = "Empty DN. Something is wrong.";
+							}else{
+								$auth_status = ldap_bind($conn_status, $userdn, $password);
+								if($auth_status === FALSE) {
+									$ok = false;
+									$msg = "Couldn't bind to LDAP as user!";
+								}else{
+									$ok = true;
+								}
+							}
+						}
+					}
+				}
+			}
+
+			return array($ok, $msg);
+		}
+		/*
+		//change password LDAP
+		function changePassword($user,$oldPassword,$newPassword,$newPasswordCnf){
+			global $message;
+			global $message_css;
+			
+			$server = "localhost";
+			$dn = "ou=People,dc=example";
+			
+			error_reporting(0);
+			ldap_connect($server);
+			$con = ldap_connect($server);
+			ldap_set_option($con, LDAP_OPT_PROTOCOL_VERSION, 3);
+			
+			// bind anon and find user by uid
+			$user_search = ldap_search($con,$dn,"(|(uid=$user)(mail=$user))");
+			$user_get = ldap_get_entries($con, $user_search);
+			$user_entry = ldap_first_entry($con, $user_search);
+			$user_dn = ldap_get_dn($con, $user_entry);
+			$user_id = $user_get[0]["uid"][0];
+			$user_givenName = $user_get[0]["givenName"][0];
+			$user_search_arry = array( "*", "ou", "uid", "mail", "passwordRetryCount", "passwordhistory" );
+			$user_search_filter = "(|(uid=$user_id)(mail=$user))";
+			$user_search_opt = ldap_search($con,$user_dn,$user_search_filter,$user_search_arry);
+			$user_get_opt = ldap_get_entries($con, $user_search_opt);
+			$passwordRetryCount = $user_get_opt[0]["passwordRetryCount"][0];
+			$passwordhistory = $user_get_opt[0]["passwordhistory"][0];
+			
+			//$message[] = "Username: " . $user_id;
+			//$message[] = "DN: " . $user_dn;
+			//$message[] = "Current Pass: " . $oldPassword;
+			//$message[] = "New Pass: " . $newPassword;
+			
+			// Start the testing
+			if ( $passwordRetryCount == 3 ) {
+				$message[] = "Error E101 - Your Account is Locked Out!!!";
+				return false;
+			}
+			
+			if (ldap_bind($con, $user_dn, $oldPassword) === false) {
+				$message[] = "Error E101 - Current Username or Password is wrong.";
+				return false;
+			}
+			
+			if ($newPassword != $newPasswordCnf ) {
+				$message[] = "Error E102 - Your New passwords do not match!";
+				return false;
+			}
+			
+			$encoded_newPassword = "{SHA}" . base64_encode( pack( "H*", sha1( $newPassword ) ) );
+			$history_arr = ldap_get_values($con,$user_dn,"passwordhistory");
+			if ( $history_arr ) {
+				$message[] = "Error E102 - Your new password matches one of the last 10 passwords that you used, you MUST come up with a new password.";
+				return false;
+			}
+			
+			if (strlen($newPassword) < 8 ) {
+				$message[] = "Error E103 - Your new password is too short.<br/>Your password must be at least 8 characters long.";
+				return false;
+			}
+			
+			if (!preg_match("/[0-9]/",$newPassword)) {
+				$message[] = "Error E104 - Your new password must contain at least one number.";
+				return false;
+			}
+			
+			if (!preg_match("/[a-zA-Z]/",$newPassword)) {
+				$message[] = "Error E105 - Your new password must contain at least one letter.";
+				return false;
+			}
+			
+			if (!preg_match("/[A-Z]/",$newPassword)) {
+				$message[] = "Error E106 - Your new password must contain at least one uppercase letter.";
+				return false;
+			}
+			
+			if (!preg_match("/[a-z]/",$newPassword)) {
+				$message[] = "Error E107 - Your new password must contain at least one lowercase letter.";
+				return false;
+			}
+			
+			if (!$user_get) {
+				$message[] = "Error E200 - Unable to connect to server, you may not change your password at this time, sorry.";
+				return false;
+			}
+			
+			$auth_entry = ldap_first_entry($con, $user_search);
+			$mail_addresses = ldap_get_values($con, $auth_entry, "mail");
+			$given_names = ldap_get_values($con, $auth_entry, "givenName");
+			$password_history = ldap_get_values($con, $auth_entry, "passwordhistory");
+			$mail_address = $mail_addresses[0];
+			$first_name = $given_names[0];
+			
+			// And Finally, Change the password
+			$entry = array();
+			$entry["userPassword"] = "$encoded_newPassword";
+			if (ldap_modify($con,$user_dn,$entry) === false){
+				$error = ldap_error($con);
+				$errno = ldap_errno($con);
+				$message[] = "E201 - Your password cannot be change, please contact the administrator.";
+				$message[] = "$errno - $error";
+			} else {
+				$message_css = "yes";
+				mail($mail_address,"Password change notice","Dear $first_name,
+				Your password on http://support.example.com for account $user_id was just changed. If you did not make this change, please contact support@example.com.
+				If you were the one who changed your password, you may disregard this message.
+				Thanks
+				-Matt");
+				$message[] = "The password for $user_id has been changed.<br/>An informational email as been sent to $mail_address.<br/>Your new password is now fully Active.";
+			}
+		}*/
+	}
+?>

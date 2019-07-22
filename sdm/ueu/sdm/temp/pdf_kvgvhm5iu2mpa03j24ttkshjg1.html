@@ -1,0 +1,327 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<hr>
+(postgres7): select r.caninsert, r.canupdate, r.candelete, r.aksesmenu from gate.sc_menurole r
+					join gate.sc_menufile f on r.idmenu = f.idmenu and f.filemenu = 'rep_painput'
+					join gate.sc_menu m on r.idmenu = m.idmenu and m.kodemodul = 'SDM'
+					where r.koderole = 'A' &nbsp; 
+<hr>
+<hr>
+(postgres7): select d.idpegawai,sdm.f_namalengkap(d.gelardepan,d.namadepan,d.namatengah,d.namabelakang,d.gelarbelakang) as namadinilai,
+					sdm.f_namalengkap(p.gelardepan,p.namadepan,p.namatengah,p.namabelakang,p.gelarbelakang) as namapenilai,nilaiakhir,isselesai,h.tglpenilaian,
+					sp.jabatanstruktural as jabatandinilai, sn.jabatanstruktural as jabatanpenilai,du.namaunit as unitdinilai,pu.namaunit as unitpenilai,pr.kodeperiodebobot,pr.kodeperiodepa
+					from sdm.pa_hasilpenilaian h 
+					left join sdm.ms_pegawai d on d.idpegawai=h.idpegawai
+					left join sdm.ms_pegawai p on p.idpegawai=h.idpenilai
+					left join sdm.ms_struktural sp on sp.idjstruktural=d.idjstruktural
+					left join sdm.ms_struktural sn on sn.idjstruktural=p.idjstruktural
+					left join sdm.pa_periodepa pr on pr.kodeperiodepa=h.kodeperiodepa
+					left join sdm.ms_unit du on du.idunit=d.idunit
+					left join sdm.ms_unit pu on pu.idunit=p.idunit
+					where h.kodeperiodepa = '201401' and h.isselesai='Y' &nbsp; 
+<hr>
+<hr>
+(postgres7): select kodeperiodebobot from sdm.pa_periodepa where kodeperiodepa='201401' &nbsp; 
+<hr>
+<hr>
+(postgres7): select jmlskala from sdm.pa_periodebobot where kodeperiodebobot='201311' &nbsp; 
+<hr>
+<html>
+<head>
+	<title>Penilaian Kinerja</title>
+	<meta http-equiv="content-type" content="text/html;charset=iso-8859-1">
+	<style>
+	table { border-collapse:collapse }
+	div,td,th {
+	font-family:Verdana, Arial, Helvetica, sans-serif;
+	font-size:12px;
+	}
+	td,th { border:1px solic black }
+	</style>
+</head>
+<body>
+<hr>
+(postgres7): select s.*,nilai from sdm.pa_soal s
+					left join sdm.pa_penilaian p on p.kodesoal=s.kodesoal and p.idpegawai = 150
+					where s.kodeperiodebobot='201311' order by s.urutan &nbsp; 
+<hr>
+	<div align="center" style="page-break-after:always">
+		<table width="900" style="border-bottom:1px  solid black">
+	<tr>
+	    <td rowspan="2" align= "center" width="100"><img src="http://192.168.1.8/yarsis/www/sdm/sdm/images/logo_rep.png" width="70" height="70"></td>
+    		<td align= "center"><font size="5" style="font-family:Times New Roman">UNIVERSITAS NAHDLATUL ULAMA SURABAYA (UNUSA)</font></td>
+    	</tr>
+  	<tr>
+    		<td align="center"><font size="2" style="font-family:Times New Roman">Jl. SMEA No. 57. Telp 8291920, 8284508 , Fax </font></td>
+    	</tr>
+</table>
+</br>
+		<strong><font size="4" style="font-family:Times New Roman">Penilaian SDM <br />Tanggal Penilaian 13 Februari 2014</font></strong>
+		<br><br>
+				<table width="900" style="border:1px solid" cellpadding="4" cellspacing="0">
+			<tr bgcolor = "gray" style="border-bottom: 1px solid black; color:#FFFFFF">
+				<td colspan="2" style="border-right: 1px solid black"><strong>Yang dinilai</strong></td>
+				<td colspan="2"><strong>Yang menilai</strong></td>
+			</tr>
+			<tr>
+				<td width="100"><strong>Nama</strong></td>
+				<td style="border-right: 1px solid black"><strong>:</strong> ABDUL HARIS DWI PRASETIYO, A.Md.</td>
+				<td width="100"><strong>Nama</strong></td>
+				<td><strong>:</strong> Prof. Dr. PEGAWAI UJI COBA, ST., MT. </td>
+			</tr>
+			<tr>
+				<td width="100"><strong>Jabatan</strong></td>
+				<td style="border-right: 1px solid black"><strong>: </strong></td>
+				<td width="100"><strong>Jabatan</strong></td>
+				<td><strong>:</strong>  </td>
+			</tr>
+			<tr>
+				<td width="100"><strong>Unit</strong></td>
+				<td style="border-right: 1px solid black"><strong>:</strong> Prodi D4 Analis Kesehatan</td>
+				<td width="100"><strong>Unit</strong></td>
+				<td><strong>:</strong> Rektorat</td>
+			</tr>
+		</table>
+		<br>
+		<table width="900" border="1" cellpadding="4" cellspacing="0" style="border-collapse:collapse 1px">
+				<tr bgcolor = "gray">
+					<th style="color:#FFFFFF">No</th>
+					<th style="color:#FFFFFF">Aspek Penilaian</th>
+					<th style="color:#FFFFFF"> 1 </th><th style="color:#FFFFFF"> 2 </th><th style="color:#FFFFFF"> 3 </th><th style="color:#FFFFFF"> 4 </th><th style="color:#FFFFFF"> 5 </th><th style="color:#FFFFFF"> 6 </th>				</tr>
+								<tr id="s1" class="AlternateBG">
+						<td align="center">1</td>
+						<td>Tanggung jawab dan komitmen terhadap tugas dan institusi UNUSA</td>
+												<td align="center">
+																&nbsp;<img src="http://192.168.1.8/yarsis/www/sdm/sdm/images/check.png">&nbsp;
+													</td>
+												<td align="center">
+													</td>
+												<td align="center">
+													</td>
+												<td align="center">
+													</td>
+												<td align="center">
+													</td>
+												<td align="center">
+													</td>
+												<input type="hidden" name="soal[]" id="soal[]" value="KS1" />
+				</tr>
+								<tr id="s2" class="NormalBG">
+						<td align="center">2</td>
+						<td>Kearifan dalam mengambil keputusan</td>
+												<td align="center">
+																&nbsp;<img src="http://192.168.1.8/yarsis/www/sdm/sdm/images/check.png">&nbsp;
+													</td>
+												<td align="center">
+													</td>
+												<td align="center">
+													</td>
+												<td align="center">
+													</td>
+												<td align="center">
+													</td>
+												<td align="center">
+													</td>
+												<input type="hidden" name="soal[]" id="soal[]" value="KS2" />
+				</tr>
+								<tr id="s3" class="AlternateBG">
+						<td align="center">3</td>
+						<td>Menjadi contoh dalam bersikap dan berperilaku</td>
+												<td align="center">
+													</td>
+												<td align="center">
+													</td>
+												<td align="center">
+													</td>
+												<td align="center">
+													</td>
+												<td align="center">
+													</td>
+												<td align="center">
+																&nbsp;<img src="http://192.168.1.8/yarsis/www/sdm/sdm/images/check.png">&nbsp;
+													</td>
+												<input type="hidden" name="soal[]" id="soal[]" value="KS3" />
+				</tr>
+								<tr id="s4" class="NormalBG">
+						<td align="center">4</td>
+						<td>Satunya kata dan tindakan</td>
+												<td align="center">
+													</td>
+												<td align="center">
+													</td>
+												<td align="center">
+													</td>
+												<td align="center">
+													</td>
+												<td align="center">
+													</td>
+												<td align="center">
+																&nbsp;<img src="http://192.168.1.8/yarsis/www/sdm/sdm/images/check.png">&nbsp;
+													</td>
+												<input type="hidden" name="soal[]" id="soal[]" value="KS4" />
+				</tr>
+								<tr id="s5" class="AlternateBG">
+						<td align="center">5</td>
+						<td>Kemampuan mengendalikan diri dalam berbagai situasi dan kondisi</td>
+												<td align="center">
+													</td>
+												<td align="center">
+													</td>
+												<td align="center">
+																&nbsp;<img src="http://192.168.1.8/yarsis/www/sdm/sdm/images/check.png">&nbsp;
+													</td>
+												<td align="center">
+													</td>
+												<td align="center">
+													</td>
+												<td align="center">
+													</td>
+												<input type="hidden" name="soal[]" id="soal[]" value="KS5" />
+				</tr>
+								<tr id="s6" class="NormalBG">
+						<td align="center">6</td>
+						<td>Adil dan santun dalam memperlakukan orang lain</td>
+												<td align="center">
+																&nbsp;<img src="http://192.168.1.8/yarsis/www/sdm/sdm/images/check.png">&nbsp;
+													</td>
+												<td align="center">
+													</td>
+												<td align="center">
+													</td>
+												<td align="center">
+													</td>
+												<td align="center">
+													</td>
+												<td align="center">
+													</td>
+												<input type="hidden" name="soal[]" id="soal[]" value="KS6" />
+				</tr>
+								<tr id="s7" class="AlternateBG">
+						<td align="center">7</td>
+						<td>Kemampuan menyampaikan pendapat</td>
+												<td align="center">
+													</td>
+												<td align="center">
+													</td>
+												<td align="center">
+													</td>
+												<td align="center">
+																&nbsp;<img src="http://192.168.1.8/yarsis/www/sdm/sdm/images/check.png">&nbsp;
+													</td>
+												<td align="center">
+													</td>
+												<td align="center">
+													</td>
+												<input type="hidden" name="soal[]" id="soal[]" value="KS7" />
+				</tr>
+								<tr id="s8" class="NormalBG">
+						<td align="center">8</td>
+						<td>Menerima nasihat, saran dan kritik orang lain dan menjalankannya</td>
+												<td align="center">
+													</td>
+												<td align="center">
+													</td>
+												<td align="center">
+																&nbsp;<img src="http://192.168.1.8/yarsis/www/sdm/sdm/images/check.png">&nbsp;
+													</td>
+												<td align="center">
+													</td>
+												<td align="center">
+													</td>
+												<td align="center">
+													</td>
+												<input type="hidden" name="soal[]" id="soal[]" value="KS8" />
+				</tr>
+								<tr id="s9" class="AlternateBG">
+						<td align="center">9</td>
+						<td>Mudah bergaul di kalangan sejawat, karyawan dan mahasiswa</td>
+												<td align="center">
+													</td>
+												<td align="center">
+													</td>
+												<td align="center">
+													</td>
+												<td align="center">
+													</td>
+												<td align="center">
+																&nbsp;<img src="http://192.168.1.8/yarsis/www/sdm/sdm/images/check.png">&nbsp;
+													</td>
+												<td align="center">
+													</td>
+												<input type="hidden" name="soal[]" id="soal[]" value="KS9" />
+				</tr>
+								<tr id="s10" class="NormalBG">
+						<td align="center">10</td>
+						<td>Merawat, memelihara dan menjaga fasilitas UNUSA (sense of belonging)</td>
+												<td align="center">
+													</td>
+												<td align="center">
+													</td>
+												<td align="center">
+													</td>
+												<td align="center">
+																&nbsp;<img src="http://192.168.1.8/yarsis/www/sdm/sdm/images/check.png">&nbsp;
+													</td>
+												<td align="center">
+													</td>
+												<td align="center">
+													</td>
+												<input type="hidden" name="soal[]" id="soal[]" value="KS10" />
+				</tr>
+								<tr id="s11" class="AlternateBG">
+						<td align="center">11</td>
+						<td>Senantiasa aktif dalam kegiatan yang diadakan UNUSA</td>
+												<td align="center">
+													</td>
+												<td align="center">
+													</td>
+												<td align="center">
+																&nbsp;<img src="http://192.168.1.8/yarsis/www/sdm/sdm/images/check.png">&nbsp;
+													</td>
+												<td align="center">
+													</td>
+												<td align="center">
+													</td>
+												<td align="center">
+													</td>
+												<input type="hidden" name="soal[]" id="soal[]" value="KS11" />
+				</tr>
+								<tr id="s12" class="NormalBG">
+						<td align="center">12</td>
+						<td>Penerapan nilai-nilai ASWAJA</td>
+												<td align="center">
+													</td>
+												<td align="center">
+																&nbsp;<img src="http://192.168.1.8/yarsis/www/sdm/sdm/images/check.png">&nbsp;
+													</td>
+												<td align="center">
+													</td>
+												<td align="center">
+													</td>
+												<td align="center">
+													</td>
+												<td align="center">
+													</td>
+												<input type="hidden" name="soal[]" id="soal[]" value="KS12" />
+				</tr>
+								<tr>
+					<td colspan="2" align="center"><strong>Total Nilai</strong></td>
+					<td colspan="6" align="center"><strong>39</strong></td>
+				</tr>
+							</tbody>
+		</table>
+		<br>
+		<table width="900" border="1" cellpadding="4" cellspacing="0" style="border-collapse:collapse 1px">
+			
+		</table>
+	<br /><br /><br />
+<table width="900" style="border-top:1px  solid black">
+	<tr>
+		<td align="left"><font size="2" style="font-family:Times New Roman">Report User : admin</font></td>
+    	<td align="right"><font size="2" style="font-family:Times New Roman">Report Date : 17 Februari 2014</font></td>
+    </tr>
+</table>
+</br>
+	</div>
+</body>
+ </html>
+ 

@@ -1,0 +1,9 @@
+bikin routing
+templating
+
+bikin controller
+angular service ($http)
+
+
+var x = 13314 ;
+var x = "njnrwbqejb"

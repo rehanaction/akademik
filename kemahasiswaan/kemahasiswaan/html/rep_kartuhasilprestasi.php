@@ -1,0 +1,131 @@
+<?php
+	// cek akses halaman
+	defined( '__VALID_ENTRANCE' ) or die( 'Akses terbatas' );
+
+	// hak akses
+	Modul::getFileAuth();
+	
+	// variabel request
+	$r_nim = CStr::removeSpecial($_REQUEST['nim']);
+	$r_format = CStr::removeSpecial($_REQUEST['format']);
+
+	require_once(Route::getModelPath('unit'));
+	require_once(Route::getModelPath('laporan'));
+	require_once(Route::getModelPath('mahasiswa'));
+
+	// properti halaman
+	$p_title = 'Kartu Hasil Prestasi';
+	$p_tbwidth = 800;
+	$p_namafile = 'mahasiswa_prestasi'.$r_kodeunit;
+
+	$a_info = mMahasiswa::getDataSingkat($conn,$r_nim);
+	$a_data = mLaporan::getPrestasiByMhs($conn,$r_nim);
+
+	$r_namakabiro = mUnit::getNamaKaBiro($conn);
+
+	// header
+	Page::setHeaderFormat($r_format,$p_namafile);
+?>
+<html>
+<head>
+<title><?= $p_title ?></title>
+	<meta http-equiv="content-type" content="text/html;charset=iso-8859-1">
+	<link rel="icon" type="image/x-icon" href="images/favicon.png">
+	<style>
+		.tab_header { border-bottom: 1px solid black; margin-bottom: 5px }
+		.div_headeritem { float: left }
+		.div_preheader, .div_header { font-family: "Times New Roman" }
+		.div_preheader { font-size: 15px; font-weight: bold }
+		.div_header { font-size: 15px }
+		.div_headertext { font-size: 12px; font-style: italic }
+
+		.tb_head td, .div_head, .div_subhead { font-family: "Times New Roman" }
+		.tb_head { border-bottom: 1px solid black }
+		.tb_head td { font-size: 10px }
+		.tb_head .mark { font-size: 11px }
+		.div_head { font-size: 16px; text-decoration: underline }
+		.div_subhead { font-size: 14px; margin-bottom: 5px }
+		.div_head, .div_subhead { font-weight: bold }
+
+		.tb_data { border: 1px solid black; border-collapse: collapse }
+		.tb_data th, .tb_data td { border: 1px solid black; font-family: "Times New Roman"; padding: 1px }
+		.tb_data th { background-color: #CFC; font-size: 13px }
+		.tb_data td { font-size: 13px }
+		.tb_data .noborder th { border-left: none; border-right: none }
+
+		.tb_subfoot, .tb_foot { font-family: "Times New Roman" }
+		.tb_subfoot { font-size: 11px; border-top: 1px solid black }
+		.tb_foot { font-size: 10px; font-weight: bold; margin-top: 10px }
+		.tb_foot .mark { font-size: 15px; font-weight: normal }
+		.tb_foot .pad { padding-left: 30px }
+	</style>
+</head>
+<body>
+<div align="center">
+<?php
+	include('inc_headerlap.php');
+?>
+<div class="div_head">KARTU HASIL PRESTASI</div>
+</br>
+	<table class="tb_head" width="<?= $p_tbwidth ?>">
+		<tr>
+			<td width="70">Nim</td>
+			<td>:</td>
+			<td><?=$a_info['nim']?></td>
+		</tr>
+		<tr>
+			<td>Nama Mahasiswa</td>
+			<td>:</td>
+			<td><?=$a_info['nama']?></td>
+		</tr>
+		<tr>
+			<td>Unit</td>
+			<td>:</td>
+			<td><?=$a_info['jurusan']?></td>
+		</tr>
+   </table>
+   <br>
+	<table class="tb_data" width="<?= $p_tbwidth ?>">
+		<tr>
+			<th>No</th>
+			<th>Nama Kegiatan</th>
+			<th>Tempat Kegiatan</th>
+			<th>Tanggal Kegiatan</th>
+			<th>Tingkat Prestasi</th>
+			<th>Prestasi</th>
+			<th>Validasi</th>
+			<th>Poin</th>
+		</tr>
+		<?php
+		$no = 0 ;
+		foreach($a_data as $row){
+		?>
+		<tr>
+			<td><?= ++$no ?></td>
+			<td><?=$row['namaprestasi']?></td>
+			<td align="center"><?= $row['lokasi']?></td>
+			<td align="center"><?= Cstr::FormatDateInd($row['tglprestasi']);?></td>
+			<td><?=$row['namatingkatprestasi']?></td>
+			<td><?=$row['namakategoriprestasi']?></td>
+			<td><?=(!empty($row['isvalid']))?'valid' : '' ?></td>
+			<td><?=$row['poin'] ?></td>
+
+		</tr>
+		<?php } ?>
+   </table>
+  <table width="<?= $p_tbwidth ?>">
+		<tr>
+			<td width="50%"></td>
+			<td align="center">
+				<p>Kepala Biro Kemahasiswaan,</p>
+
+			<br><br><br>
+			<p><u> <?= $r_namakabiro ?></u></p>
+			</td>
+		</tr>
+		</table>
+<br>
+    <div style="page-break-after:always"></div>
+    </div>
+	</div>
+ </body></html>

@@ -1,0 +1,186 @@
+<?php
+	// cek akses halaman
+	defined( '__VALID_ENTRANCE' ) or die( 'Akses terbatas' );
+	
+	// hak akses
+	$a_auth = Modul::getFileAuth();
+	
+	$c_update = $a_auth['canupdate'];
+	
+	// include
+	require_once(Route::getModelPath('settingpenilaian'));
+	require_once(Route::getModelPath('unit'));
+	require_once(Route::getModelPath('perwalian'));
+	
+	// properti halaman
+	$p_title = 'Setting KRS';
+	$p_subtitle = 'Setting Penilaian Kelas';
+	//$p_tbwidth = 900;
+	$p_model = mSettingPenilaian;
+	$r_periode = mSettingGlobal::getData($conn);
+	$periode = $r_periode['idperiodeberlaku'];
+	// mengambil data
+	$a_unit = mUnit::getList($conn);
+	$rows = $p_model::getByPeriode($conn,$periode);
+	
+	$a_setting = array();
+	foreach($rows as $row)
+		$a_setting[$row['idunit']] = $row;
+	
+	// ada aksi
+	$r_act = $_POST['act'];
+	$r_key = $_POST['key'];
+	//var_dump($a_setting);
+	if(($r_act == 'statusnilai') and $c_update) {
+		list($t_key,$t_set) = explode('/',$r_key);
+		
+		$conn->BeginTrans();
+		
+		$a_desc = mUnit::getListDescendant($conn,$t_key);
+		
+		foreach($a_desc as $row) {
+			// hanya untuk prodi
+			if($row['levelunit'] == mUnit::levelprodi) {
+				$record = array();
+				$record['statusnilai'] = $t_set;
+				$record['idperiode'] = $periode;
+				
+				if(isset($a_setting[$row['idunit']])) {
+					if((empty($t_set) and !empty($a_setting[$row['idunit']]['statusnilai'])) or (!empty($t_set) and empty($a_setting[$row['idunit']]['statusnilai']))){
+						
+						$p_posterr = $p_model::updateRecord($conn,$record,$row['idunit'].'/'.$periode);
+
+						$record2 = $record;
+						$record2['tglnilaimasuk'] = date('Y-m-d');
+						$record2['usernilaimasuk'] = Auth::getUserName();
+						$record2['nilaimasuk'] = $t_set;
+						$p_model::kunciByPeriode($conn,$row['idunit'],$periode,$record2);
+					}
+				}
+				else {
+					$record['idunit'] = $row['idunit'];
+					
+					$p_posterr = $p_model::insertRecord($conn,$record);
+				}
+				
+				if($p_posterr)
+					break;
+			}
+		}
+		
+		$conn->CommitTrans(Query::isOK($p_posterr));
+		
+		$p_postmsg = $p_model::getErrorMessage($p_posterr);
+		
+		if(empty($p_posterr)) {
+			$a_flash = array();
+			$a_flash['p_posterr'] = $p_posterr;
+			$a_flash['p_postmsg'] = $p_postmsg;
+			
+			Route::setFlashData($a_flash);
+		}
+	}
+	
+	// tanda centang untuk non prodi
+	$a_parent = array();
+	foreach($a_unit as $row) {
+		if($row['levelunit'] < mUnit::levelprodi) {
+			$a_parent[$row['levelunit']] = $row['idunit'];
+			$a_setting[$row['idunit']] = array('statusnilai' => 1); // default true
+		}
+		else if($row['levelunit'] == mUnit::levelprodi) {
+			if(empty($a_setting[$row['idunit']]['statusnilai'])) {
+				foreach($a_parent as $t_idunit)
+					$a_setting[$t_idunit]['statusnilai'] = 0;
+			}
+		}
+	}
+
+	// menggunakan layout
+	Page::useLayout('html');
+?>
+<div class="row">
+	<div class="col-md-12">
+		<div class="box box-primary">
+			<div class="box-body">
+				<!-- table-responsive -->
+				<form method="post" id="form_list">
+				<div class="table-responsive">
+					<table class="table table-bordered table-striped dataTable">
+					<thead>
+						<tr>
+							<th>Program Studi</th>
+							<th>Status Nilai Kelas</th>
+						</tr>
+					</thead>
+					<tbody>
+						<?php
+							if(!empty($a_unit)) {
+								foreach($a_unit as $row) {
+									$t_key = $row['idunit'];
+									
+									$t_label = str_repeat('&nbsp;',$row['levelunit']*4).$row['namaunit'];
+									if($row['levelunit'] != mUnit::levelprodi)
+										$t_label = '<strong>'.$t_label.'</strong>';
+						
+						?>
+						
+						<tr>
+							<td><?php echo $t_label ?></td>
+							<td class="text-center">
+							<?php
+								if($c_update){
+									echo UI::createCheckBoxPick('statusnilai[]',$t_key,(empty($a_setting[$t_key]['statusnilai']) ? false : true));
+									echo empty($a_setting[$t_key]['statusnilai']) ? " Nilai Terbuka" : " <strong>Nilai Terkunci</strong>" ;
+								}
+								else if(!empty($a_setting[$t_key]['statusnilai'])){
+									echo UI::createCheckMark();
+									echo " Nilai Terkunci";
+								}
+							?>
+							</td>
+						</tr>
+						<?php
+								}
+							}
+							else {
+						?>
+						<tr>
+							<td colspan="3" class="text-center">Data prodi belum dimasukkan</td>
+						</tr>
+						<?php } ?>
+					</tbody>
+					</table>
+				</div>
+					<input type="hidden" name="act" id="act" />
+					<input type="hidden" name="key" id="key" />
+				</form>
+				<!-- /.table-responsive -->
+            </div>
+            <!-- /.box-body --> 
+        </div>
+        <!-- /.box --> 
+	</div>
+</div>
+
+<script type="text/javascript">
+
+$(function() {
+	<?php if($c_update) { ?>
+	$("[name='krs[]']").on("ifToggled",function() {
+		$("#key").val(this.value + "/" + (this.checked ? 1 : 0));
+		if(confirm("Perubahan akan mengunci status mahasiswa, anda ingin melanjutkan?"))
+			goSubmit(this,"krs");
+	});
+	$("[name='kprs[]']").on("ifToggled",function() {
+		$("#key").val(this.value + "/" + (this.checked ? 1 : 0));
+		goSubmit(this,"kprs");
+	});
+	$("[name='statusnilai[]']").on("ifToggled",function() {
+		$("#key").val(this.value + "/" + (this.checked ? 1 : 0));
+		goSubmit(this,"statusnilai");
+	});
+	<?php } ?>
+});
+
+</script>

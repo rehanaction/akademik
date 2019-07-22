@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>SIM PMB Universitas Muhammadiyah Gresik - Laporan Data Pendaftar</title>
+		<style>
+		body {
+	margin: 0 auto;
+}
+body, td, th {
+	font-family: 'Source Sans Pro', sans-serif;
+	font-size: 12px;
+}
+td, th {
+	vertical-align: top;
+}
+th {
+	text-align: center;
+}
+.font-normal th {
+	font-weight: normal;
+	vertical-align: middle;
+}
+.kop {
+	border-spacing: 0;
+	border-collapse: collapse;
+}
+.kop td {
+	padding: 0;
+	text-align: center;
+}
+.kop-univ td {
+	font-size: 16px;
+	line-height: 1.1;
+}
+.kop-fak td {
+	font-size: 24px;
+	font-weight: bold;
+	line-height: 1.1;
+}
+.kop-prodi td {
+	font-size: 18px;
+	font-weight: bold;
+	line-height: 1.1;
+	padding-bottom: 5px;
+}
+.header td, .header th {
+	font-size: 16px;
+}
+.mid td, .mid th {
+	font-size: 14px;
+}
+.center td, .center th {
+	text-align: center;
+	vertical-align: middle;
+}
+table.border {
+	border-collapse: collapse;
+}
+table.border td, table.border th {
+	border: 1px solid black;
+}
+tr.noborder td, tr.noborder th {
+	border: none;
+}
+hr {
+	margin: 10px auto;
+	border: 1px solid black;
+	border-width: 1px 0 0 0;
+}
+.text-center {
+	text-align: center;
+}
+.btn-flat {
+	-webkit-border-radius: 0;
+	-moz-border-radius: 0;
+	border-radius: 0;
+	-webkit-box-shadow: none;
+	-moz-box-shadow: none;
+	box-shadow: none;
+	border-width: 1px;
+}
+.bg-info {
+	background-color: #D9EDF7;
+}
+.bg-success {
+	background-color: #DFF0D8;
+}	</style>
+</head>
+<body>
+		<div align="center">
+		<div style="width:950px">
+			<table width="100%" class="kop">
+	<tr class="kop-univ">
+		<td rowspan="4" width="70"><img src="http://siakad.umg.ac.id/unmuhgresikakad/pmb/img/header/logo.png" height="80" /></td>
+		<td></td>
+	</tr>
+	<tr class="kop-univ">
+		<td>UNIVERSITAS MUHAMMADIYAH GRESIK</td>
+	</tr>
+	<tr>
+		<td colspan="2">Alamat Kampus: Jl. Sumatera 101 GKB (Gresik Kota Baru). Telp (031) 3951414, Fax. (031) 3952585</td>
+	</tr>
+	<tr>
+		<td colspan="2" style="border-bottom:1px solid black">Website : www.umg.ac.id</td>
+	</tr>
+</table>
+<meta http-equiv="content-type" content="text/html;charset=iso-8859-1">
+<link rel="icon" type="image/x-icon" href="images/favicon.png">
+<div align="left">
+ <br>	
+	<table style="text-align:left" border = "1" width="950px" cellpadding="5">
+		<thead>
+			<tr>
+								<th> ID Pendaftar</th>
+								<th>Nama Pendaftar</th>
+								<th>NIM Pendaftar</th>
+								<th>Unit Diterima</th>
+								<th>Periode</th>
+								<th>Gelombang</th>
+								<th>Sistemkuliah</th>
+							</tr>
+		</thead>
+		<tbody>
+					<tr>
+									<td> 2017100001</td>
+									<td> RAFIQAH DWI RAHMAHH</td>
+									<td> </td>
+									<td> Pendidikan Agama Islam</td>
+									<td> 20171</td>
+									<td> Gelombang I</td>
+									<td> Pagi</td>
+							</tr>
+			
+					<tr>
+									<td> 2017100423</td>
+									<td> ujicoba sevima5</td>
+									<td> </td>
+									<td> Agroteknologi</td>
+									<td> 20171</td>
+									<td> Gelombang I</td>
+									<td> Pagi</td>
+							</tr>
+			
+				
+		</tbody>
+	</table>
+	
+	
+	</table>
+
+</div>
+		</div>
+	</div>
+	
+	<!-- tambahan -->
+	<script src="/unmuhgresikakad/pmb/js/forrep.js" type="text/javascript"></script>
+	
+	<script type="text/javascript">
+		var list = "/unmuhgresikakad/pmb/repp_pendaftar";
+	</script>
+</body>
+</html>

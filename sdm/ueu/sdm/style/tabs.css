@@ -1,0 +1,239 @@
+#main {
+	border: 1px solid #d2d2d2;
+	clear: both;
+	/*background: #6699CC;*/
+	background: #666;
+	padding-top: 2em;
+	border-bottom-right-radius:5px;
+	border-bottom-left-radius:5px;
+	
+}
+
+#contents {
+	padding: 1.5em;
+	background:#fff;
+	/*background:#f4f2e6;*/
+	min-height: 300px;
+}
+
+#header {
+	position: relative;
+	width: 100%;
+	height: 3em;
+	/* width: 45em; /* a width is required for Opera, older Mozilla browsers, and Konqueror browsers */
+}
+
+#header ul#primary {
+	margin: 0;
+	padding: 0;
+	position: absolute;
+	bottom: -1px;
+	/* width: 45em; /* a width is required for Opera, older Mozilla browsers, and Konqueror browsers */
+}
+
+#header ul#primary li  {
+	display: inline;
+	list-style: none;
+}
+
+#header ul#primary a,#header ul#primary span,#header ul#primary a.current {
+	width: 8em;
+	display: block;
+	float: left;
+	padding: 4px 0;
+	margin: 1px 2px 0 0;
+	text-align: center;
+	font-family: tahoma, verdana, sans-serif;
+	font-size: 11px;
+	/*font-size: 85%;*/
+	text-decoration: none;
+	color: #333;
+	border-top-right-radius:5px;
+	border-top-left-radius:5px;	
+}
+
+#header ul#primary span,#header ul#primary a.current,#header ul#primary a.current:hover {
+	border: 1px solid #666;
+	border-bottom: none;
+	color:#FFFFFF;
+	/*background: #6699CC;*/
+	background: #666;
+	padding-bottom: 6px;
+	margin-top: 0;
+	border-top-right-radius:5px;
+	border-top-left-radius:5px;
+}
+
+#header ul#primary a {
+	/*background: #D4E6F7;*/
+	background: #ccc;
+	border: 1px solid #AAA;
+	border-bottom: none;
+}
+
+#header ul#primary a:hover {
+	margin-top: 0;
+	/*color: #FFF;*/
+	border-color: #666;
+	background: #D4E6F7;
+	padding-bottom: 5px;
+}
+
+#header ul#primary span {
+	border-top-right-radius:5px;
+	border-top-left-radius:5px;
+}
+
+#header ul#secondary {
+	position: absolute;
+	margin: 0;
+	padding: 0;
+	bottom: -1.4em;
+	left: 1px;
+	width: 120em; /* a width is required for Opera, older Mozilla browsers, and Konqueror browsers */
+}
+
+#header ul#secondary li a,#header ul#secondary li span {
+	width: auto;
+	display: block;
+	float: left;
+	padding: 0 10px;
+	margin: 0;
+	text-align: auto;
+	border: none;
+	border-right: 1px dotted #AAA;
+	background: none;
+
+}
+
+#header ul#secondary li a {
+	color: #FFF;
+	text-decoration: underline;
+}
+
+#header ul#secondary li a:hover {
+	color: #FFF;font-weight: bold;
+	background: transparent;
+	padding: 0 10px;
+	border: none;
+	border-right: 1px dotted #AAA;
+}
+
+#header ul#secondary li a:active {
+	color: #FFF;
+	background: transparent;
+}
+
+#header ul#secondary li a.noclick {
+	/* cursor: default; */
+	color: #FFF;
+	font-weight: bold;
+	text-decoration: none;
+}
+
+#header ul#secondary li:last-child a { border: none; }
+
+
+/**secondaryx**/
+#header ul#secondaryx {
+	position: absolute;
+	margin: 0;
+	padding: 0;
+	bottom: -1.4em;
+	left: 1px;
+	width: 50em; /* a width is required for Opera, older Mozilla browsers, and Konqueror browsers */
+}
+
+#header ul#secondaryx li a,#header ul#secondaryx li span {
+	width: auto;
+	display: block;
+	float: left;
+	padding: 0 10px;
+	margin: 0;
+	text-align: auto;
+	border: none;
+	border-right: 1px dotted #AAA;
+	background: none;
+
+}
+
+#header ul#secondaryx li a {
+	color: #FFF;
+	text-decoration: underline;
+}
+
+#header ul#secondaryx li a:hover {
+	color: #FFF;font-weight: bold;
+	background: transparent;
+	padding: 0 10px;
+	border: none;
+	border-right: 1px dotted #AAA;
+}
+
+#header ul#secondaryx li a:active {
+	color: #FFF;
+	background: transparent;
+}
+
+#header ul#secondaryx li a.noclick {
+	/* cursor: default; */
+	color: #FFF;
+	font-weight: bold;
+	text-decoration: none;
+}
+
+#header ul#secondaryx li:last-child a { border: none; }
+
+/**endofsecondaryx**/
+.tabs ul
+{
+    font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 8pt;
+	margin: 0;
+	padding-left: 0;
+	padding-bottom: 24px;
+}
+
+.tabs ul li 
+{
+    display: inline;
+	list-style: none;
+    text-align: center;
+    border: 1px solid #999999;
+	margin: 2px 2px 0 0;
+	float: left;
+	padding: 4px 0px 4px 0px;
+	background-color: #7A888F;
+}
+
+.tabs ul li a
+{
+	color: #FFFFFF;
+	padding: 4px 6px 4px 6px;
+	text-decoration: none;
+}
+
+.tabs ul li.selected 
+{
+	background-color: #015d6c;
+	border-color: #2E9191;
+	color: #FFFF00;
+	font-weight:bold;
+}
+
+.tabs ul li.selected a
+{
+	color: #FFFF00;
+}
+
+.tabs div#items
+{
+	display: none;
+	border: 1px solid #2E9191;
+	padding: 4px 3px 4px 3px;
+}
+
+.tabs div#items table
+{
+	width: 99%;
+}

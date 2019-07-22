@@ -1,0 +1,31 @@
+/* COLORS:
+  #EBF2F9: Main Background
+  #FFFFFF: Sub Background
+  #DDDDDD: Workflow Head Background
+  #D3F5CD: Hover Background
+  #FCF4AA: Selected Background
+  #EEEEEE: Disabled Background
+  #D0D4D8: Main Border
+  #00903B: Arrow Border
+  #EE4037: Title Line Border
+  #647287: List Color */
+
+/* Element Style */
+
+body {
+	font-family:Tahoma,Arial,sans-serif;
+	font-size:12px;
+	margin:0 auto;
+	background:#D0E8D0;
+}
+
+#main_content{
+	width:100%;
+	float:left;
+	min-height:680px;
+}
+
+#wrapper{
+	width:1010px;
+	margin:0 auto;
+}

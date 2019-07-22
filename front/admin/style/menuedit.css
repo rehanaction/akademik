@@ -1,0 +1,62 @@
+.MenuStyle {
+    border-collapse: collapse;
+}
+
+.MenuStyle th, .MenuStyle td {
+    border: 1px solid #CCCCCC;
+}
+
+.MenuStyle th {
+    background-color: #CCCCCC;
+}
+
+.MenuStyle .Hidden {
+    display: none;
+}
+
+.MenuStyle .ImgAct {
+    cursor: pointer;
+    float: right;
+    margin-left: 3px;
+}
+
+.MenuStyle .ImgDisabled {
+    filter:url(style.svg#desaturate);
+}
+
+.MenuStyle .ImgRight {
+    float: right;
+    margin-left: 3px;
+}
+
+.MenuStyle .ImgToggle {
+    cursor: pointer;
+    float: left;
+    margin-right: 3px;
+}
+
+.MenuStyle .SpaceToggle {
+    padding-left: 19px;
+}
+
+.ItemLv0 {
+    background-color: #DDDDDD;
+}
+
+.ItemLv1 {
+    background-color: #EEEEEE;
+    padding-left: 15px;
+}
+
+.ItemLv2 {
+    background-color: #FFFFFF;
+    padding-left: 25px;
+}
+
+.Add {
+    background-color: #D3F5CD;
+}
+
+.Selected {
+    background-color: #FCF4AA;
+}

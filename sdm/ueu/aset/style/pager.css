@@ -1,0 +1,382 @@
+/* Content */
+.SideSubTitle {
+	color: #647287;
+	font-weight: bold;
+	font-size: 11px;
+}
+
+.SideTitle {
+	color: #647287;
+	font-weight: bold;
+	font-size: 16px;
+}
+
+.NewsList td {
+	padding: 3px 0;
+}
+
+.NewsContent {
+	text-align: justify;
+	line-height: 1.5;
+}
+
+.Darken {
+	background-color: rgb(0, 0, 0);
+	opacity: 0.4;
+	/* -moz-opacity: 0.40;
+	filter: alpha(opacity=40); */
+	z-index: 20;
+	height: 100%;
+	width: 100%;
+	background-repeat: repeat;
+	position: fixed;
+	top: 0px;
+	left: 0px;
+}
+
+.Lighten {
+	z-index: 50;
+	height: 100%;
+	width: 100%;
+	background-repeat: repeat;
+	position: fixed;
+	top: 0px;
+	left: 0px;
+}
+
+.AlternateBG {
+	background:#f4f4f4;
+}
+
+.AlternateBG2 {
+	background:#FCF4AA;
+}
+
+.Border {
+	border:1px solid #CCC;
+}
+
+.Break {
+	height:7px;
+}
+
+.BreakSmall {
+	height:3px;
+}
+
+.ControlStyle {
+	border:1px solid #999;
+	font-size:12px;
+}
+
+.acTrue {
+	border: 1px solid #005B58;
+}
+
+.acFalse {
+	border: 1px solid #f00;
+}
+
+
+.DivError {
+	background:#FFBABA;
+	border:1px solid #F93737;
+	padding:5px;
+}
+
+.DivSuccess {
+	background:#D3F5CD;
+	border:1px solid #55D83E;
+	padding:5px;
+}
+
+
+.GridStyle {
+	border-collapse: collapse;
+}
+
+.GridStyle td {
+	border: 1px solid #CCC;
+}
+
+.GridStyle tr:hover:not(.NoHover):not(.DataBG) {
+	background-color: #FFDAB9;
+}
+
+.GridStyle tr:hover:not(.NoHover):not(.DataBG) td{
+	border-right:none;
+	border-left:none;
+}
+
+.GridStyle .HeaderBG {
+	background: #E5E5E5;
+	/* background: linear-gradient(top, #ffffff, #e5e5e5); */
+	border: 1px solid #CCC;
+	font-size: 11px;
+	font-weight: bold;
+	padding: 3px;
+	padding-top: 5px;
+	text-shadow: 0 1px 0 #ffffff;
+	vertical-align: middle;
+}
+
+.GridStyle .LiteHeaderBG {
+	background: #EBF2F9;
+	/* background: linear-gradient(top, #ffffff, #e5e5e5); */
+	border: 1px solid #CCC;
+	font-size: 11px;
+	font-weight: bold;
+	padding: 3px;
+	padding-top: 5px;
+	text-shadow: 0 1px 0 #ffffff;
+	vertical-align: middle;
+}
+
+.NormalBG {
+	background:#FFF;
+}
+
+.GreenBG {
+	background-color:#D2EDD0;
+}
+
+.RedBG {
+	background-color:#FCAAAA;
+}
+
+.YellowBG {
+	background-color:#FCF4AA;
+}
+
+.GridStyle .GridStyleP {
+	background-color:#FCFCFC;
+	border:none;
+	padding:0;
+}
+
+.GridStyle .GridStyleP:hover {
+	background-color:#FCFCFC;
+}
+
+.GridStyle tr:hover .GridStyleP td {
+	border:1px solid #ccc;
+}
+
+.GridStyle .GridStyleP tr:hover td {
+	border-right:none;
+	border-left:none;
+}
+
+.NoGrid td {
+	border:none;
+}
+
+.LeftColumnBG {
+	background:#EBF2F9;
+}
+
+.LeftColumnDiv {
+	float:left;
+}
+
+.MinPadding {
+	margin-top:-2px;
+	margin-bottom:-5px;
+}
+
+.PagerTitle {
+	border-bottom:1px solid #EE4037;
+	color:#647287;
+	font-size:14px;
+	font-weight:bold;
+	padding:9px 0;
+}
+
+.NotNullMark {
+	color:#F00;
+	float:right;
+}
+
+.TDButton {
+    background-color: #4CA4E0;
+    background-image: -moz-linear-gradient(center top , #4CA4E0, #257ebc);
+    border-color: #4081AF #2E69A3 #20559A;
+    border-radius: 4px;
+    border-style: solid;
+    border-width: 1px;
+/*    box-shadow: 0 1px 0 0 #72B9EB inset, 0 1px 2px 0 #B3B3B3;*/
+    color: #FFFFFF;
+    font: 11px/1 "lucida grande",sans-serif;
+    padding: 3px 10px 8px;
+    text-align: center;
+    text-shadow: 0 -1px 1px #3275BC;
+}
+
+.TDButton:active {
+    -moz-border-bottom-colors: none;
+    -moz-border-image: none;
+    -moz-border-left-colors: none;
+    -moz-border-right-colors: none;
+    -moz-border-top-colors: none;
+    background: none repeat scroll 0 0 #3282D3;
+    border-color: #154C8C #154C8C #0E408E;
+    border-style: solid;
+    border-width: 1px;
+    box-shadow: 0 0 6px 3px #1657B5 inset, 0 1px 0 0 white;
+    text-shadow: 0 -1px 1px #2361A4;
+}
+
+.TDButton:hover {
+    background-color: #3E9EE5;
+    background-image: -moz-linear-gradient(center top , #3E9EE5 0%, #206BCB 100%);
+    border-color: #2A73A6 #165899 #07428F;
+    border-style: solid;
+    border-width: 1px;
+    box-shadow: 0 1px 0 0 #62B1E9 inset;
+    cursor: pointer;
+    text-shadow: 0 -1px 1px #1D62AB;
+}
+
+.TDButton img{
+	position:relative;
+	top:5px;
+}
+
+.Expand {
+	font-size:9px;
+	padding:0 3px 3px 3px;
+	white-space:nowrap;
+}
+
+.TRImportant .RightColumnBG {
+	font-weight:bold;
+}
+
+.ULink {
+	color:#0B7CED;
+	cursor:pointer;
+}
+
+.ViewTitle {
+	color:#647287;
+	font-weight:bold;
+	font-size:18px;
+	border-bottom:1px solid #EE4037;
+}
+
+.ViewTitle span{
+	text-align: left;
+	display: block;
+}
+
+.ViewSubTitle {
+	color:#C00;
+}
+
+input[type="text"], input[type="password"]{
+	border-radius:4px;
+	padding:3px;
+	border:1px solid #848484;
+	background:#fff;
+}
+
+input[type="button"] {
+	border-radius:3px;
+	padding:2px 6px;
+	cursor:pointer;
+}
+
+.DataGridStyle {
+	border-collapse: collapse;
+}
+
+.DataGridStyle td {
+	border: none;
+}
+
+.DataGridStyle td.LeftColumnBG {
+	background:#ededed;
+	border-bottom:2px solid #fff;
+}
+
+#div_autocomplete {
+	background-color:#FFFFFF;
+	position:absolute;
+	display:none;
+	border:1px solid #999999;
+	overflow:auto;
+	overflow-x:hidden;
+	z-index: 1000;
+}
+
+#tab_autocomplete {
+	background-color:#FFFFFF;
+}
+
+input.ControlRead {
+	background-color:#EBF2F9;
+	border:1px solid #999;
+	font-size:12px;
+}
+
+input.ControlErr, textarea.ControlErr {
+	background:#FF0;
+	border:1px solid #999;
+	color:#F00;
+	font-size:12px;
+}
+
+.DataBG {
+	padding-bottom: 7px;
+	background: url(../images/bg-pattern-line.png) bottom repeat-x;
+	background-color: #222;
+	color: #FFF;
+	font-weight: bold;
+}
+
+.LeftRibbon:after {
+    border-color: #13314C #13314C transparent transparent;
+    border-style: solid;
+    border-width: 5px 8px;
+    content: " ";
+    height: 0;
+    left: 0;
+    position: absolute;
+    top: 100%;
+    width: 0;
+}
+.LeftRibbon {
+    background-color: #215789;
+    color: #FFFFFF;
+    font-size: 18px;
+    font-weight: bold;
+    margin: 0 5px 15px -25px;
+    padding: 6px 20px;
+    position: relative;
+    width: 230px;
+    right:7px;
+}
+
+
+.LeftRibbonX:after {
+    border-color: #13314C #13314C transparent transparent;
+    border-style: solid;
+    border-width: 5px 8px;
+    content: " ";
+    height: 0;
+    left: 0;
+    position: absolute;
+    top: 100%;
+    width: 0;
+}
+.LeftRibbonX {
+    background-color: #215789;
+    color: #FFFFFF;
+    font-size: 18px;
+    font-weight: bold;
+    margin: 0 5px 15px -30px;
+    padding: 6px 20px;
+    position: relative;
+    width: 230px;
+    right:7px;
+}

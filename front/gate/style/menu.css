@@ -1,0 +1,397 @@
+/* CSS reset */
+body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,form,fieldset,input,textarea,p,blockquote,th,td {
+	margin:0;
+	padding:0;
+}
+html,body {
+	margin:0;
+	padding:0;
+}
+table {
+	border-collapse:collapse;
+	border-spacing:0;
+}
+fieldset,img {
+	border:0;
+}
+input{
+	border:1px solid #b0b0b0;
+	padding:3px 5px 4px;
+	color:#979797;
+	width:190px;
+}
+address,caption,cite,code,dfn,th,var {
+	font-style:normal;
+	font-weight:normal;
+}
+ol,ul {
+	list-style:none;
+}
+caption,th {
+	text-align:left;
+}
+h1,h2,h3,h4,h5,h6 {
+	font-size:100%;
+	font-weight:normal;
+}
+q:before,q:after {
+	content:'';
+}
+abbr,acronym { border:0;
+}
+
+a, div, span{
+	text-decoration: none;
+	font-size:12px;
+}
+.clr{
+	clear: both;
+}
+
+body{
+
+	/*-------- background - FULL--------*/
+	/*--
+	background: url(../images/bg/full_02.jpg) no-repeat top center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+	overflow:hidden;
+	--*/
+
+	/*-------- background - color only--------*/
+	/*-
+	background-color:#680202;
+	--*/
+
+	/*-------- background - Pattern--------*/
+	/*-------pilih background pattern dari bg_01-xx----------*/
+
+	background: url(../images/bg/bg_02.png) repeat;
+	font-family: Helvetica, Tahoma, sans-serif;
+	font-size:12px;
+	color:#484848;
+
+	width:970px;
+	margin:0 auto;
+	padding:0 auto;
+}
+
+#main{
+	height:auto;
+	padding-top:10px;
+	padding-bottom:40px;
+	/*-webkit-border-radius: 6px;
+	 -moz-border-radius: 6px;
+	border-radius:6px;*/
+}
+.well {
+	background:#fff;
+	background:rgba(255, 255, 255, 0.95);
+	padding:20px;
+}
+
+@-webkit-keyframes slideOut{
+	0%{top:-30px; opacity: 0;}
+	100%{top:0px; opacity: 1;}
+}
+@-moz-keyframes slideOut{
+	0%{top:-30px; opacity: 0;}
+	100%{top:0px; opacity: 1;}
+}
+@-o-keyframes slideOut{
+	0%{top:-30px; opacity: 0;}
+	100%{top:0px; opacity: 1;}
+}
+@-ms-keyframes slideOut{
+	0%{top:-30px; opacity: 0;}
+	100%{top:0px; opacity: 1;}
+}
+@keyframes slideOut{
+	0%{top:-30px; opacity: 0;}
+	100%{top:0px; opacity: 1;}
+}
+h1.main_title, .content h2{
+	font-size: 20px;
+	color:#015593;
+	font-weight:bold;
+	padding:0px;
+	margin:0px;
+	padding-bottom:20px;
+}
+#header{
+	float:left;
+	margin-right:20px;
+	background:url(../images/shade.png) no-repeat right center;
+	min-height:360px;
+}
+#navigation {
+	width: 250px;
+	display:block;
+	list-style:none;
+}
+#navigation li{
+	padding-top:10px;
+	height:34px;
+	padding-left:30px;
+	font-weight:bold;
+}
+#navigation li:hover, #navigation li.active {
+	cursor:pointer;
+	font-size:13px;
+	padding:0px;
+	padding-bottom:10px;
+}
+#navigation li:hover span.larrow, #navigation li.active span.larrow{
+	float:left;
+	background:url(../images/left_arrow.png) no-repeat center center;
+	width:6px;
+	height:34px;
+}
+#navigation li:hover span.carrow, #navigation li.active span.carrow{
+	float:left;
+	background:url(../images/center_arrow.png) repeat-x center center;
+	height:26px;
+	width:199px;
+	padding:0px 10px 0px 23px;
+	padding-top:8px;
+}
+#navigation li:hover span.rarrow, #navigation li.active span.rarrow{
+	float:left;
+	background:url(../images/right_arrow.png) no-repeat center center;
+	width:12px;
+	height:34px;
+}
+#navigation li a{
+	color:#737373;
+}
+#navigation li:hover a, #navigation li.active a{
+	color:#fff;
+}
+#navigation li.admin {
+	background:url(../images/icon/admin_small.png) no-repeat left 8px;
+}
+#navigation li.akad {
+	background:url(../images/icon/akad_small.png) no-repeat left 8px;
+}
+#navigation li.mhs {
+	background:url(../images/icon/mhs_small.png) no-repeat left 8px;
+}
+#navigation li.peg {
+	background:url(../images/icon/peg_small.png) no-repeat left 8px;
+}
+#navigation li.pdpt {
+	background:url(../images/icon/pdpt_small.png) no-repeat left 8px;
+}
+#navigation li.pmb {
+	background:url(../images/icon/pmb_small.png) no-repeat left 8px;
+}
+#navigation li.sdm {
+	background:url(../images/icon/peg_small.png) no-repeat left 8px;
+}
+#navigation li.keu {
+	background:url(../images/icon/keu_small.png) no-repeat left 8px;
+}
+#navigation li.aset {
+	background:url(../images/icon/aset_small.png) no-repeat left 8px;
+}
+#navigation li.perpus {
+background: url(../images/icon/perpus_small.png) no-repeat left 8px;
+}
+#navigation li.h2h {
+	background:url(../images/icon/keu-akad_small.png) no-repeat left 10px;
+}
+#navigation li.seminar {
+	background:url(../images/icon/seminar_small.png) no-repeat left 10px;
+}
+#navigation li.pmblite {
+	background:url(../images/icon/pmblite_small.png) no-repeat left 10px;
+}
+.content{
+	float:left;
+	padding-bottom: 10px;
+	width:100%;
+	height:auto;
+}
+.content div#img_admin{
+	background:url(../images/icon/admin.png) no-repeat center center;
+	width:75px;
+	height:75px;
+	margin-right:20px;
+}
+.content div#img_akad{
+	background:url(../images/icon/akad.png) no-repeat center center;
+	width:75px;
+	height:75px;
+	margin-right:20px;
+}
+.content div#img_peg{
+	background:url(../images/icon/peg.png) no-repeat center center;
+	width:75px;
+	height:75px;
+	margin-right:20px;
+}
+.content div#img_pdpt{
+	background:url(../images/icon/pdpt.png) no-repeat center center;
+	width:75px;
+	height:75px;
+	margin-right:20px;
+}
+.content div#img_pmb{
+	background:url(../images/icon/pmb.png) no-repeat center center;
+	width:75px;
+	height:75px;
+	margin-right:20px;
+}
+.content div#img_pmblite{
+	background:url(../images/icon/pmblite.png) no-repeat center center;
+	width:75px;
+	height:75px;
+	margin-right:20px;
+}
+.content div#img_h2h {
+	background:url(../images/icon/keu-akad.png) no-repeat center center;
+	width:75px;
+	height:75px;
+	margin-right:20px;
+}
+.content div#img_mhs{
+	background:url(../images/icon/mhs.png) no-repeat center center;
+	width:75px;
+	height:75px;
+	margin-right:20px;
+}
+.content div#img_seminar{
+	background:url(../images/icon/seminar.png) no-repeat center center;
+	width:75px;
+	height:75px;
+	margin-right:20px;
+}
+.content div#img_profil{
+	background:url(../images/icon/profil.png) no-repeat center center;
+	width:75px;
+	height:75px;
+	margin-right:20px;
+}
+.content div#img_password{
+	background:url(../images/icon/password.png) no-repeat center center;
+	width:75px;
+	height:75px;
+	margin-right:20px;
+}
+.content h2{
+	float:left;
+	padding-top:20px;
+}
+.content span.role_container:hover span {
+	color:red;
+}
+.panel{
+	float:left;
+	width:480px;
+	height: 98%;
+	overflow-y: auto;
+	overflow-x: hidden;
+	margin-top: -150%;
+	opacity: 0;
+	-webkit-transition: opacity .6s ease-in-out;
+	-moz-transition: opacity .6s ease-in-out;
+	-o-transition: opacity .6s ease-in-out;
+	-ms-transition: opacity .6s ease-in-out;
+	transition: opacity .6s ease-in-out;
+}
+.panel:target{
+	opacity: 1;
+	margin-top: 0%;
+}
+.role_box{
+	padding:10px;
+	border:1px solid #ccc;
+	border-radius:4px;
+	float:left;
+	width:455px;
+}
+span.role_container{
+	padding:5px 0px;
+	/* border-bottom:1px solid #ccc; */
+	cursor:pointer;
+}
+/* span.role_container:last-child{
+	border:none;
+} */
+table.role_container td{
+	padding:5px 0px;
+}
+span.rolename{
+	font-weight:bold;
+	color:#015593;
+}
+
+#admin:target ~ #header #navigation #link-admin,
+#akad:target ~ #header #navigation #link-akad,
+#profil:target ~ #header #navigation #link-profil,
+#out:target ~ #header #navigation #link-out{
+	background: #000;
+	color: #fff;
+}
+#bottom{
+	float:left;
+	position:relative;
+
+}
+#bottom span{
+	float:left;
+	margin-right:15px;
+	padding-left:20px;
+	cursor:pointer;
+}
+#bottom span:hover {
+	text-decoration:underline;
+	color:red;
+}
+#bottom span.profil{
+	background:url(../images/icon/profil_small.png) no-repeat left center;
+}
+#bottom span.password{
+	background:url(../images/icon/password_small.png) no-repeat left center;
+}
+#bottom span.out{
+	background:url(../images/icon/out_small.png) no-repeat left center;
+}
+
+.error{
+	color:red;
+}
+.success{
+	color:green;
+}
+
+.logo-menus{height:auto; max-height:125px; overflow:hidden; width:100%; margin:0; padding:0; background:../images/corner.png}
+div.img-menus{height:100px; max-height:100px !important; overflow:hidden; width:50%; background:#FFF;}
+.logo-menu .img-menus img {margin:0; padding:0;}
+
+/*---------Elemen Bawah-------*/
+.login-bottom{
+	background:url(../images/elba/elba_03.png) top no-repeat; display:block; height:35px; position:relative;
+	margin:0 auto;
+	padding:0 auto;
+}
+/*-----*/
+/*---------color id------------*/
+/*---color id 01 #015593---*/
+/*---color id 02 #ffcc2a---*/
+/*---color id 03 #20915E---*/
+/*--coloring--*/
+a{text-decoration:none; color:#FF4800;}
+.teks-redscarlet {color:#015593;}
+.teks-yellow {color:#FF4800;}
+.teks-white {color:#FFF;}
+
+.margin-up10px{margin-top:10px;}
+.margin-up20px{margin-top:20px;}
+.margin-up30px{margin-top:30px;}
+
+.background-01{background:#015593;}
+
+.border-bottom-dotted{height:3px; padding-top:5px;  border-bottom:1px dotted #CCC; width:90%; left:0px;}
