@@ -1000,8 +1000,8 @@ class mGaji extends mModel {
     }
 
     function getProsentasePejabat($conn) {
-        $sql = "select idjnspejabat,proctunjangan from " . static::table('ms_jenispejabat') . " order by idjnspejabat";
-
+        $sql = "select idjnspejabat,proctunjangan from sdm.ms_jenispejabat order by idjnspejabat";
+      
         return Query::arrQuery($conn, $sql);
     }
 
@@ -1995,46 +1995,65 @@ class mGaji extends mModel {
 
         $rs = $conn->Execute($sql);
 
+     
+
         //Jenis tunjangan awal
         $a_tunja = self::tunjanganAwal($conn);
+       
         $a_tunjadet = self::tunjanganAwalDet($conn);
+       
 
         //Komponen T. Prestasi
         $a_hpa = self::getHasilPA($conn);
+      
         $a_prp = self::getProcPrestasi($conn);
+       
         $a_prs = self::getProcSanksi($conn);
+      
         $a_npn = self::getNonPenyesuaianPA($conn);
+       
+        ///
+       
 
         //tarif tunjangan
         $a_tarifTunj = self::getTarifTunj($conn);
+       
 
         //periode tarif sekarang
         $r_periodetarif = self::getLastPeriodeTarif($conn);
+       
 
         //tarif gaji pokok admin
         $a_gapokadmin = self::getTarifGapokAdmin($conn, $r_periodetarif);
+       
 
         //tarif gaji pokok dosen
         $a_gapokdosen = self::getTarifGapokDosen($conn, $r_periodetarif);
+       
 
         //pegawai yang dapat tarif tunjangan tarif parameter
         $a_tunjtarifparam = self::getTunjTarifParam($conn);
+       
 
         //tunjangan yang dikalikan jam kerja
         $a_tunjjamkerja = self::isTunjJamKerja($conn);
+       
 
         //cek apakah tunjangan sudah dibayar
         $a_byr = self::isBayarTunj($conn, $r_periode, $r_periodetarif);
-
+      
         //tunjangan dikalikan hari kerja
         $a_tunjharikerja = self::isKaliHariKerja($conn);
+       
 
         //tunjangan prestasi
         $a_tunjpres = self::getPrestasi($conn);
+       
 
         //mendapatkan jumlah hari kerja
         require_once(Route::getModelPath('presensi'));
         $jmlharikerja = mPresensi::getHariKerja($conn);
+       
 
         while ($row = $rs->FetchRow()) {
             //Dosen dan Administrasi dosen yang punya jam kerja
@@ -2169,11 +2188,13 @@ class mGaji extends mModel {
             $sql .= " and h.idpeg not in ($b_peg)";
 
         $rs = $conn->Execute($sql);
+       
 
         //Jenis tunjangan tetap
         $a_tunj = self::tunjanganTetap($conn);
+        
         $a_tunjdet = self::tunjanganTetapDet($conn);
-
+       
         //tarif tunjangan
         $a_tarifTunj = self::getTarifTunj($conn);
 
@@ -2183,27 +2204,30 @@ class mGaji extends mModel {
         //tarif gaji pokok admin
         $a_gapokadmin = self::getTarifGapokAdmin($conn, $r_periodetarif);
 
+       // print_r($a_gapokadmin);
+       // die();
+
         //tarif gaji pokok dosen
         $a_gapokdosen = self::getTarifGapokDosen($conn, $r_periodetarif);
 
         //prosentase tunjangan masakerja non admin
         $a_procmasakerja = self::getPRocMasaKerja($conn, $r_periodetarif);
-
+        
         //tunjangan masa kerja admin
         $a_tunjmasakerja = self::getTarifMasaKerjaAdm($conn, $r_periodetarif);
-
+      
         //tunjangan yang dikalikan jam kerja
         $a_tunjjamkerja = self::isTunjJamKerja($conn);
-
+       
         //cek apakah tunjangan sudah dibayar
         $a_byr = self::isBayarTunj($conn, $r_periode, $r_periodetarif);
-
+       
         //prosentase status pejabat struktural
         $a_prosentase = self::getProsentasePejabat($conn);
-
+        
         //tunjangan dikalikan hari kerja
         $a_tunjharikerja = self::isKaliHariKerja($conn);
-
+      
         //mendapatkan jumlah hari kerja
         require_once(Route::getModelPath('presensi'));
         $jmlharikerja = mPresensi::getHariKerja($conn);
@@ -2221,6 +2245,8 @@ class mGaji extends mModel {
                 $gapok = $jamkerja * $a_gapokdosen[$row['pendidikan']];
             else
                 $gapok = $a_gapokadmin[$row['pendidikan']]; //gajipokok
+
+          
 
             $record = array();
             $record['periodegaji'] = $r_periode;
@@ -2719,8 +2745,8 @@ class mGaji extends mModel {
 
         //shift sabtu
         $sql = "select p.idpegawai from " . static::table('ms_pegawai') . " p
-					left join " . static::table('pe_rwtharikerja') . " r on cast(r.idpegawai as varchar)+r.kodekelkerja+cast(r.tglberlaku as varchar) =(select  
-                        cast(rr.idpegawai as varchar)+rr.kodekelkerja+cast(rr.tglberlaku as varchar) from " . static::table('pe_rwtharikerja') . " rr where p.idpegawai=rr.idpegawai and rr.isaktif='Y' order by rr.tglberlaku desc limit 1) 
+					left join " . static::table('pe_rwtharikerja') . " r on cast(r.idpegawai as varchar)||r.kodekelkerja||cast(r.tglberlaku as varchar) =(select  
+                        cast(rr.idpegawai as varchar)||rr.kodekelkerja||cast(rr.tglberlaku as varchar) from " . static::table('pe_rwtharikerja') . " rr where p.idpegawai=rr.idpegawai and rr.isaktif='Y' order by rr.tglberlaku desc limit 1) 
 					left join " . static::table('ms_kelkerja') . " k on k.kodekelkerja = r.kodekelkerja
 					where k.sabtu is not null 
 					order by p.idpegawai";
@@ -2732,8 +2758,8 @@ class mGaji extends mModel {
 
         //shift ahad
         $sql = "select p.idpegawai from " . static::table('ms_pegawai') . " p
-                    left join " . static::table('pe_rwtharikerja') . " r on cast(r.idpegawai as varchar)+r.kodekelkerja+cast(r.tglberlaku as varchar) =(select 
-                        cast(rr.idpegawai as varchar)+rr.kodekelkerja+cast(rr.tglberlaku as varchar) from " . static::table('pe_rwtharikerja') . " rr where p.idpegawai=rr.idpegawai and rr.isaktif='Y' order by rr.tglberlaku desc limit 1) 
+                    left join " . static::table('pe_rwtharikerja') . " r on cast(r.idpegawai as varchar)||r.kodekelkerja||cast(r.tglberlaku as varchar) =(select 
+                        cast(rr.idpegawai as varchar)||rr.kodekelkerja||cast(rr.tglberlaku as varchar) from " . static::table('pe_rwtharikerja') . " rr where p.idpegawai=rr.idpegawai and rr.isaktif='Y' order by rr.tglberlaku desc limit 1) 
                     left join " . static::table('ms_kelkerja') . " k on k.kodekelkerja = r.kodekelkerja
                     where k.minggu is not null 
                     order by p.idpegawai";
@@ -2754,7 +2780,7 @@ class mGaji extends mModel {
         $sql = "select coalesce(count(*),0) as hadirsabtu,idpegawai 
 					from " . static::table('pe_presensidet') . "
 					where tglpresensi between '" . $last['tglawalhit'] . "' and '" . $last['tglakhirhit'] . "' and
-					date_part('dw',tglpresensi) = 7 and sjamdatang is not null and sjampulang is not null and kodeabsensi in ('H','T','PD','DK','PK')
+					date_part('dow',tglpresensi) = 7 and sjamdatang is not null and sjampulang is not null and kodeabsensi in ('H','T','PD','DK','PK')
 					group by idpegawai";
         $rs = $conn->Execute($sql);
 
@@ -2766,7 +2792,7 @@ class mGaji extends mModel {
         $sql = "select coalesce(count(*),0) as hadirahad,idpegawai 
 					from " . static::table('pe_presensidet') . "
 					where tglpresensi between '" . $last['tglawalhit'] . "' and '" . $last['tglakhirhit'] . "' and
-					date_part('dw',tglpresensi) = 1 and sjamdatang is not null and sjampulang is not null and kodeabsensi in ('H','T','PD','DK','PK')
+					date_part('dow',tglpresensi) = 1 and sjamdatang is not null and sjampulang is not null and kodeabsensi in ('H','T','PD','DK','PK')
 					group by idpegawai";
         $rs = $conn->Execute($sql);
 
@@ -2873,8 +2899,9 @@ class mGaji extends mModel {
 
         //periode penilaian tahun sebelumnya
         $periodepa = $conn->GetOne("select kodeperiode from " . static::table('pa_periode') . " 
-						where substring(kodeperiode,1,4) < $tahunperiode order by kodeperiode desc limit 1");
+						where substring(kodeperiode,1,4)::integer < $tahunperiode order by kodeperiode desc limit 1");
 
+        
         //acuan periodegaji
         if (!empty($periodepa)) {
             $periodeacuan = $conn->GetOne("select periodegaji from " . static::table('ga_patunjprestasi') . " 
@@ -3113,7 +3140,7 @@ class mGaji extends mModel {
         list($periode, $idpegawai) = explode('|', $key);
 
         $sql = "select g.*,p.nip," . static::schema . ".f_namalengkap(p.gelardepan,p.namadepan,p.namatengah,p.namabelakang,p.gelarbelakang) as namapegawai,
-					js.jabatanstruktural,pd.namapendidikan,	substring(gh.masakerja,1,2)+' thn. ' + substring(gh.masakerja,3,2)+' bln.' as mkgaji,pk.golongan,
+					js.jabatanstruktural,pd.namapendidikan,	substring(gh.masakerja,1,2)||' thn. ' || substring(gh.masakerja,3,2)||' bln.' as mkgaji,pk.golongan,
 					gp.namaperiode,gh.idtipepeg,gh.idjenispegawai,f.jabatanfungsional as fungsional,l.upahlembur
 					from " . static::table('ga_gajipeg') . " g
 					left join " . static::table('ms_pegawai') . " p on p.idpegawai=g.idpegawai
@@ -4055,7 +4082,7 @@ class mGaji extends mModel {
         //Cek apakah hari cuti dalam hari liburan
         $libur = $conn->Execute("select tgllibur from ".self::table('ms_liburdetail')." 
                     where tgllibur between '".$periode['tglawallembur']."' and '".$periode['tglakhirlembur']."' and 
-                    date_part('dw',tgllibur) <> 1 and date_part('dw',tgllibur) <> 7");
+                    date_part('dow',tgllibur) <> 1 and date_part('dow',tgllibur) <> 7");
 
         while($rowl = $libur->FetchRow()){
             $a_libur[$rowl['tgllibur']] = $rowl['tgllibur'];

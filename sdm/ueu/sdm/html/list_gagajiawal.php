@@ -5,7 +5,7 @@
 	
 	// hak akses
 	$a_auth = Modul::getFileAuth();
-//	$conn->debug = true;
+	$conn->debug = true;
 	$c_insert = $a_auth['caninsert'];
 	$c_edit = $a_auth['canupdate'];
 	
@@ -71,7 +71,9 @@
 	if($r_act == 'hitung' and $c_insert) {		
 		$conn->BeginTrans();
 		
+		
 		list($p_posterr,$p_postmsg) = $p_model::hitGajiAwal($conn,$r_periode,$a_sql);
+		
 			
 		$ok = Query::isOK($p_posterr);
 		$conn->CommitTrans($ok);

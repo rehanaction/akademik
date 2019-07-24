@@ -4,7 +4,7 @@
 	
 	// hak akses
 	$a_auth = Modul::getFileAuth();
-	
+	$conn->debug = true;
 	$c_insert = $a_auth['caninsert'];
 	$c_edit = $a_auth['canupdate'];
 	
