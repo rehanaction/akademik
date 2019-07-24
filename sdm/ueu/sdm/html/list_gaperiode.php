@@ -4,7 +4,7 @@
 	
 	// hak akses
 	$a_auth = Modul::getFileAuth();
-	
+	$conn->debug = true;
 	$c_insert = $a_auth['caninsert'];
 	$c_edit = $a_auth['canupdate'];
 	$c_delete = $a_auth['candelete'];
@@ -12,6 +12,7 @@
 	// include
 	require_once(Route::getModelPath('gaji'));
 	require_once(Route::getUIPath('combo'));
+	print_r("rehan");
 		
 	$p_model = mGaji;
 			
@@ -44,7 +45,7 @@
 	$r_page = Page::setPage($_POST['page']);
 	$r_row = Page::setRow($_POST['row']);
 	$r_sort = Page::setSort($_POST['sort']);
-	if (empty($r_sort)) $r_sort = 'tglakhirhit desc';
+	if (empty($r_sort)) $r_sort = 'tglakhirhitung desc';
 	$a_filter = Page::setFilter($_POST['filter']);
 	$a_datafilter = Page::getFilter($a_kolom);
 	
@@ -54,6 +55,8 @@
 	
 	if(empty($p_detailpage))
 		$p_detailpage = Route::getDetailPage();
+
+	
 ?>
 <html>
 <head>
@@ -164,7 +167,7 @@
 						<td<?= $t_align ?>><?= $rowcc ?></td>
 						<?	} ?>
 						<td align="center"><?= CStr::formatDateInd($row['tglawalhit'],false); ?></td>
-						<td align="center"><?= CStr::formatDateInd($row['tglakhirhit'],false); ?></td>
+						<td align="center"><?= CStr::formatDateInd($row['tglakhirhitung'],false); ?></td>
 						<td align="center"><?= CStr::formatDateInd($row['tglawallembur'],false); ?></td>
 						<td align="center"><?= CStr::formatDateInd($row['tglakhirlembur'],false); ?></td>
 						<td align="center"><?= CStr::formatDateInd($row['tglawalpotongan'],false); ?></td>
