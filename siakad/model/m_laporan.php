@@ -934,5 +934,34 @@
 			
 
 		}
+
+		function InquiryRekapPesertaMK($conn,$where){
+			$strwhere = array();
+			$i=0;
+			foreach($where as $key =>$value){
+				if($key=='kodeunit'){
+					if($value!='4302160000'){
+						$strwhere[$i] = $key."='".$value."'";
+					}
+
+				}elseif($key=='isonline'){
+					if($value!=1){
+						$strwhere[$i] = $key."='".$value."'";
+					}
+				}else{
+					$strwhere[$i] = $key."='".$value."'";
+					
+				}
+				$i++;
+			}
+			$arrwhere = implode(" and ",$strwhere);
+
+			//print_r($where['kodeunit']);
+		
+			$sql = "select * from akademik.v_reportkelasperiode where ".$arrwhere." order by kodeunit,isonline asc ";
+			
+			//print_r($sql);
+			return $conn->getArray($sql);
+		}
 }
 ?>

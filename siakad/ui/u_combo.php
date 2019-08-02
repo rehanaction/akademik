@@ -295,5 +295,10 @@
 			
 			return UI::createSelect('jenis',$data,'','ControlStyle');
 		}
+		function JenisKuliah() {
+			$data = array(1=>'-Semua-',-1 => 'Online', 0 => 'Tatap Mukap');
+			
+			return UI::createSelect('isonline',$data,'','ControlStyle');
+		}
 	}
 ?>
