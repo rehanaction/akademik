@@ -525,6 +525,12 @@ class mLaporan {
 		
 		
 	}
+
+	function InquiryPendaftarPeriode($conn)
+	{
+		$sql = "select * from pendaftaran.v_chartpendaftarperiode order by periodedaftar desc";
+		return $conn->getArray($sql);
+	}
 	
 	
 }

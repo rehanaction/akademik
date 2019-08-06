@@ -1,7 +1,7 @@
 <?php
 	// cek akses halaman
 	defined( '__VALID_ENTRANCE' ) or die( 'Akses terbatas' );
-	
+	require_once(Route::getModelPath('laporan'));
 	/*
 	// cek apakah sudah login
 	if(!Modul::isAuthenticated())
@@ -14,6 +14,7 @@
 		
 		Modul::changeRole($r_role,$r_unit);
 	}
+	$a_data = mLaporan::InquiryPendaftarPeriode($conn);
 	
 	// properti halaman
 	$p_title = 'Selamat Datang di SIM Penerimaan Mahasiswa Baru';
@@ -21,10 +22,17 @@
 <html>
 <head>
 	<title><?= $p_title ?></title>
+	<script src="scripts/chartjs/Chart.bundle.js"></script>
 	<meta http-equiv="content-type" content="text/html;charset=iso-8859-1">
 	<link href="style/style.css" rel="stylesheet" type="text/css">
 	<link href="style/pager.css" rel="stylesheet" type="text/css">
 	<link rel="icon" type="image/x-icon" href="images/favicon.png">
+	<style type="text/css">
+            .container {
+                width: 50%;
+                margin: 15px auto;
+            }
+        </style>
 </head>
 <body>
 <?/*
@@ -211,6 +219,76 @@
 <div id="main_content">
 	<?php require_once('inc_header.php'); ?>
 	<div id="wrapper">
+	<div class="SideItem" id="SideItem">
+			<div class="ViewTitle">Chart Penerimaan Mahasiswa Baru</div>
+			<br>
+			<div class="container">
+            <canvas id="myChart" width="100" height="100"></canvas>
+        </div>
+        <script>
+            var ctx = document.getElementById("myChart");
+            var myChart = new Chart(ctx, {
+                type: 'bar',
+                data: {
+                    labels: [<?php foreach($a_data as $val){ echo '"' . pendaftaran::getNamaPeriode($val['periodedaftar']) . '",'; }?> ],
+                    datasets: [{
+                            label: 'Jumlah Pendaftar Nim ',
+                            data: [<?php foreach($a_data as $val2){echo $val2['bayar'].','; } ?>],
+                            backgroundColor: [
+                                'rgba(200, 247, 197, 1)',
+                                'rgba(200, 247, 197, 1)',
+                                'rgba(200, 247, 197, 1)',
+                                'rgba(75, 192, 192, 0.2)',
+                                'rgba(153, 102, 255, 0.2)',
+                                'rgba(255, 159, 64, 0.2)'
+                            ],
+                            borderColor: [
+                                'rgba(99, 132, 0, 1)',
+                                'rgba(99, 132, 0, 1)',
+                                'rgba(99, 132, 0, 1)',
+                                'rgba(75, 192, 192, 1)',
+                                'rgba(153, 102, 255, 1)',
+                                'rgba(255, 159, 64, 1)'
+                            ],
+                            borderWidth: 1
+                        },
+                        {
+                            label: 'Jumlah Pendaftar',
+                            data: [<?php foreach($a_data as $val2){echo $val2['pendaftar'].','; } ?>],
+                            backgroundColor: [
+                                'rgba(255, 246, 143, 1)',
+                                'rgba(255, 246, 143, 1)',
+                                'rgba(255, 246, 143, 1)',
+                                'rgba(75, 192, 192, 0.2)',
+                                'rgba(153, 102, 255, 0.2)',
+                                'rgba(255, 159, 64, 0.2)'
+                            ],
+                            borderColor: [
+                                'rgba(255, 206, 86, 1)',
+                                'rgba(255, 206, 86, 1)',
+                                'rgba(255, 206, 86, 1)',
+                                'rgba(75, 192, 192, 1)',
+                                'rgba(153, 102, 255, 1)',
+                                'rgba(255, 159, 64, 1)'
+                            ],
+                            borderWidth: 1
+                        }
+                        
+                        ]
+                },
+                options: {
+                    scales: {
+                        yAxes: [{
+                                ticks: {
+                                    beginAtZero: true
+                                }
+                            }]
+                    }
+                }
+            });
+        </script>
+			
+		</div>
 		<div class="SideItem" id="SideItem">
 			<div class="ViewTitle">Selamat Datang di SIM Penerimaan Mahasiswa Baru</div>
 			<br>
