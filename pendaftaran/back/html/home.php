@@ -287,7 +287,47 @@
                 }
             });
         </script>
-			
+			<div class="container">
+            <canvas id="myChart2" width="100" height="100"></canvas>
+        </div>
+        <script>
+            var ctx = document.getElementById("myChart2");
+            var myChart = new Chart(ctx, {
+                type: 'bar',
+                data: {
+                    labels: [<?php foreach($a_data as $val){ echo '"' . pendaftaran::getNamaPeriode($val['periodedaftar']) . '",'; }?> ],
+                    datasets: [{
+                            label: 'Jumlah Pendaftar Nim ',
+                            data: [<?php foreach($a_data as $val2){echo round((($val2['bayar']/$val2['pendaftar'])*100)).','; } ?>],
+                            backgroundColor: [
+                                'rgba(200, 247, 197, 1)',
+                                'rgba(200, 247, 197, 1)',
+                                'rgba(200, 247, 197, 1)'
+                               
+                            ],
+                            borderColor: [
+                                'rgba(99, 132, 0, 1)',
+                                'rgba(99, 132, 0, 1)',
+                                'rgba(99, 132, 0, 1)',
+                                
+                            ],
+                            borderWidth: 1
+                        }
+                      
+                        
+                        ]
+                },
+                options: {
+                    scales: {
+                        yAxes: [{
+                                ticks: {
+                                    beginAtZero: true
+                                }
+                            }]
+                    }
+                }
+            });
+        </script>
 		</div>
 		<div class="SideItem" id="SideItem">
 			<div class="ViewTitle">Selamat Datang di SIM Penerimaan Mahasiswa Baru</div>

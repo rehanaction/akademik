@@ -1,6 +1,6 @@
 <?php
 
-	header("Location: https://portal.inaba.ac.id");
+	//header("Location: https://portal.inaba.ac.id");
   
 	defined( '__VALID_ENTRANCE' ) or die( 'Akses terbatas' );
 	

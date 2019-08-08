@@ -7,7 +7,7 @@
 	
 	$c_insert = $a_auth['caninsert'];
 	$c_edit = $a_auth['canupdate'];
-	//$conn->debug = true;
+	$conn->debug = true;
 	// include
 	require_once(Route::getModelPath('gaji'));
 	require_once(Route::getUIPath('combo'));
@@ -98,8 +98,11 @@
 	}
 	else if ($r_act == 'hitung' and $c_edit) {		
 		$conn->BeginTrans();
-		
+	
+		print_r($r_parampotongan);
 		list($p_posterr,$p_postmsg) = $p_model::hitungPotongan($conn, $r_periode, $r_parampotongan, $a_sql);
+		
+	
 		
 		if(!$p_posterr and ($r_potongan=='P00001|T' or $r_potongan=='P00002|T'))
 			list($p_posterr,$p_postmsg) = $p_model::hitungHistoryPotongan($conn, $r_periode, $a_sql);

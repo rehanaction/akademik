@@ -61,8 +61,16 @@
 	}
 	
 	$r_kurikulum = Akademik::getKurikulum();
-	$r_periode = Akademik::getPeriode();
+	if(!empty($_POST['tahun']) && !empty($_POST['semester'])){
+		$r_periode = $_POST['tahun'].$_POST['semester'];
+	}else{
+		$r_periode = Akademik::getPeriode();
+	}
 	$r_periodespa = Akademik::getPeriodeSpa();
+	$r_semester = Modul::setRequest($_POST['semester'],'SEMESTER');
+	$r_tahun = Modul::setRequest($_POST['tahun'],'TAHUN');
+	$l_semester = uCombo::semester($r_semester,false,'semester','onchange="goSubmit()"',false);
+	$l_tahun = uCombo::tahun($r_tahun,true,'tahun','onchange="goSubmit()"',false);
 	
 	//$periodemasuk=$conn->GetOne("select substr(periodemasuk,1,4) from akademik.ms_mahasiswa where nim=''");
 	$a_infomhs = mMahasiswa::getDataSingkat($conn,$r_key);
@@ -199,7 +207,8 @@
 						}else{
 							$d_users=mMengajar::inquiryByusername($conn,$r_key);
 							$key = $course."|".$r_key;
-							mMengajar::syncUserToElearning($conn,$d_users);
+							mMengajar::::InsertUserToElearning($conn_moodle,$d_users);
+							//mMengajar::syncUserToElearning($conn,$d_users);
 							mMengajar::enrolMahasiswa($conn_moodle,$conn,$key);
 						}
 					}
@@ -448,7 +457,7 @@ $a_jadwalpraktukum=mKelasPraktikum::getJadwalPrak($conn,$a_infomhs['kurikulum'],
 		$a_kelas = mKelas::getFormatPerJadwal($a_kelas);
 	else*/
 		$a_kelas = mKelas::getFormatPerSemester($a_kelas);
-
+	
 	$a_data = mKRS::getDataPeriode($conn,$r_key,$r_periode);
 	
 	$key_krs=array();
@@ -556,7 +565,8 @@ foreach($a_jadwalpraktukum as $keyprak=>$val_prak){
 	}
 }
 
-
+$a_combodosen=array();
+$a_combodosen[] = array('label' => 'Periode', 'combo' => $l_semester.' '.$l_tahun);
 //if($_SERVER['REMOTE_ADDR']=='36.85.91.184')
 //print_r($a_jadwalpraktukum);
 ?>

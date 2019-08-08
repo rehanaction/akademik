@@ -46,6 +46,7 @@
 	}
 	
 	$a_data = mUser::getDataAuth($conn,Modul::getUserID());
+	
 
 	$t_datapilih = current($a_data);
 ?>

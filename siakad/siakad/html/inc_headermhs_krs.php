@@ -5,10 +5,18 @@
 		<td><strong>Pilih Mhs</strong></td>
 		<td align="center"><strong>:</strong></td>
 		<td colspan="4">
-			<?= UI::createTextBox('mahasiswa',$a_infomhs['nim'].' - '.$a_infomhs['nama'],'ControlStyle',70,70) ?>
+			<?= UI::createTextBox('mahasiswa',$a_infomhs['nim'].' - '.$a_infomhs['nama'],'ControlStyle',50,50) ?>
 			<input type="hidden" id="npmtemp" name="npmtemp" value="<?= $r_nim ?>">
-			<input type="button" value="Tampilkan" onclick="goSwitch()">
+			<?php if(!empty($a_combodosen)){ ?>
+			<? foreach($a_combodosen as $t_filterdosen) { ?>
+				
+				<strong><?= $t_filterdosen['label'] ?> </strong>
+				<strong> : </strong><?= $t_filterdosen['combo'] ?>		
+		<? } ?>
+		<?php } ?>
+		<input type="button" value="Tampilkan" onclick="goSwitch()">
 		</td>
+	
 	</tr>
 <?	} ?>
 	<tr valign="top" style="height:25px;font-size:14px">
@@ -20,6 +28,7 @@
 			<img src="images/rprev.png" style="cursor:pointer" onclick="goPrevNIM()"> &nbsp;
 			<?	} ?>
 			<?= $a_infomhs['nim'] ?> - <?= $a_infomhs['nama'] ?>
+			
 			<?	if(!Akademik::isMhs()) { ?>
 			&nbsp; <img src="images/rnext.png" style="cursor:pointer" onclick="goNextNIM()">
 			&nbsp;<img src="images/rlast.png" style="cursor:pointer" onclick="goLastNIM()">

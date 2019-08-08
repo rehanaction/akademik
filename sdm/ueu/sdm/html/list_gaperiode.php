@@ -45,7 +45,7 @@
 	$r_page = Page::setPage($_POST['page']);
 	$r_row = Page::setRow($_POST['row']);
 	$r_sort = Page::setSort($_POST['sort']);
-	if (empty($r_sort)) $r_sort = 'tglakhirhitung desc';
+	if (empty($r_sort)) $r_sort = 'tglakhirhit desc';
 	$a_filter = Page::setFilter($_POST['filter']);
 	$a_datafilter = Page::getFilter($a_kolom);
 	
@@ -167,7 +167,7 @@
 						<td<?= $t_align ?>><?= $rowcc ?></td>
 						<?	} ?>
 						<td align="center"><?= CStr::formatDateInd($row['tglawalhit'],false); ?></td>
-						<td align="center"><?= CStr::formatDateInd($row['tglakhirhitung'],false); ?></td>
+						<td align="center"><?= CStr::formatDateInd($row['tglakhirhit'],false); ?></td>
 						<td align="center"><?= CStr::formatDateInd($row['tglawallembur'],false); ?></td>
 						<td align="center"><?= CStr::formatDateInd($row['tglakhirlembur'],false); ?></td>
 						<td align="center"><?= CStr::formatDateInd($row['tglawalpotongan'],false); ?></td>

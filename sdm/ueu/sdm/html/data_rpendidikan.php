@@ -97,11 +97,14 @@
 		
 		$conn->BeginTrans();
 		
-		if(empty($r_subkey))
+		if(empty($r_subkey)){
+			print_r($record);
+			//die();
 			list($p_posterr,$p_postmsg) = $p_model::insertCRecord($conn,$a_input,$record,$r_subkey,$p_dbtable,'',true);
-		else
+
+		}else{
 			list($p_posterr,$p_postmsg) = $p_model::updateCRecord($conn,$a_input,$record,$r_subkey,$p_dbtable,$where);
-			
+		}
 		$ok = Query::isOK($p_posterr);
 		$conn->CommitTrans($ok);
 		

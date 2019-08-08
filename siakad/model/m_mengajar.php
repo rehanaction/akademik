@@ -420,6 +420,42 @@
 				//print_r($resp);
 				//self::UpdateSyncMoodle($conn,$data['userid']);
 			}
+			function InsertUserToElearning($conn_moodle,$data)
+			{
+				$names = explode(' ', $data['userdesc']);
+				$ft = explode('.',$data['username']);
+				$lastname='';
+				for($i=1;$i<=count($names)-1;$i++){
+					$lastname = $lastname.' '.$names[$i];
+				}
+				$usernew = array();
+				$usernew['idnumber'] = $data['userid'];
+				$usernew['username'] = $data['username'];
+				$firstname = $names[0];
+				$usernew['password'] = $data['password'];
+				$usernew['firstname'] = $firstname;
+				$usernew['lastname'] = $lastname;
+				$usernew['email'] = $data['username'].'@moodle.com';
+				$usernew['timezone'] = 'Asia/Jakarta';
+				$usernew['city'] = 'Bandung';
+				$usernew['country'] = 'ID';
+				$fields = array();
+				$val = array();
+				$i = 0;
+				foreach($usernew as $key => $value){
+					$fields[$i] = $key;
+					$val[$i] = "'".$value."'";
+					$i++;
+				}
+	
+				$field = implode(",",$fields);
+				$vals = implode(",",$val);
+				$sql = "insert into mdl_user ($field) values($vals)";
+				$conn_moodle->Execute($sql);
+				return $conn_moodle->ErrorNo();
+	
+	
+			}
 		function getCategory($periode){
 			
 				$token = '847895ee848fdb5fb2d43b275705470c';

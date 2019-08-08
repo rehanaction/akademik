@@ -2610,8 +2610,10 @@ class mGaji extends mModel {
 			
         $tarif = self::getTarifPotKehadiran($conn);
         $last = self::getLastDataPeriodeGaji($conn);
-
+       
         $procpotkehadiran = self::getProcPotKehadiran($conn, $last['tglawalpotongan'], $last['tglakhirpotongan'], $r_sql);
+      
+       
         $totpotkehadiran = $procpotkehadiran['totproc'];
 
         $sql = "select p.idpegawai,m.idjenispegawai from " . static::table('pe_presensidet') . " p
@@ -2622,12 +2624,14 @@ class mGaji extends mModel {
             $sql .= " and p.idpegawai in ($a_peg)";
 			
         $rs = $conn->Execute($sql);
-
+       
         $a_data = array();
         while ($row = $rs->FetchRow()) {
+          
+           
             $a_data[$row['idpegawai']] = $tarif[$row['idjenispegawai']] * ($totpotkehadiran[$row['idpegawai']] / 100);
         }
-
+     
         return $a_data;
     }
 
@@ -3570,6 +3574,8 @@ class mGaji extends mModel {
 		//pegawai yang gajinya sudah dibayar
         $b_peg = self::sudahBayar($conn, $r_periode);
 
+       
+
         //Komponen pinjaman
 		if ($r_potongan == 'PJ001' or $r_potongan == 'PJ002' or $r_potongan == 'PJ003'){
 			$a_sdhbyr = self::isbyrpjm($conn, $r_periode); //cek apakah sudah membayar pinjaman periode gaji hitung
@@ -3578,11 +3584,15 @@ class mGaji extends mModel {
 
         //potongan transport
 		if($r_potongan == 'P00001')
-			$a_PotTransport = self::getPotonganTransport($conn, $r_sql);
+            $a_PotTransport = self::getPotonganTransport($conn, $r_sql);
+           
+
 
         //potongan kehadiran
 		if ($r_potongan == 'P00002')
-			$a_PotKehadiran = self::getPotonganKehadiran($conn, $r_sql);
+            $a_PotKehadiran = self::getPotonganKehadiran($conn, $r_sql);
+       
+           
 
         $sql = "select * from " . static::table('ga_historydatagaji') . "
 					where gajiperiode = '$r_periode'";
@@ -4439,7 +4449,8 @@ class mGaji extends mModel {
 
     function getProcPot($conn, $jam, $kodeabsensi) {
         $procpotongan = $conn->GetOne("SELECT  COALESCE(prosentase,0) as procpotongan FROM " . static::table('ms_potonganhadir') . "
-											WHERE kodeabsensi = '$kodeabsensi' AND $jam > CAST(rangebawah AS NUMERIC(5,2)) ORDER BY CAST(rangebawah AS NUMERIC(5,2)) DESC limit 1");
+                                            WHERE kodeabsensi = '$kodeabsensi' AND $jam > CAST(rangebawah AS NUMERIC(5,2)) ORDER BY CAST(rangebawah AS NUMERIC(5,2)) DESC limit 1");
+       
         return $procpotongan;
     }
 
@@ -4487,9 +4498,12 @@ class mGaji extends mModel {
         }
 
 
-        $sql = "select idpegawai,tglpresensi,kodeabsensi,menitdatang,menitpulang from " . static::table('pe_presensidet') . " 
-					where tglpresensi between '$r_tglmulai' and '$r_tglselesai'";
+        $sql = "select idpegawai,tglpresensi,kodeabsensi,kodeabsensi,sjamdatang::numeric-jamdatang::numeric as menitdatang,sjampulang::numeric-jampulang::numeric as menitpulang from " . static::table('pe_presensidet') . " 
+                    where tglpresensi between '$r_tglmulai' and '$r_tglselesai'";
+       
         $rs = $conn->Execute($sql);
+
+        
 
         if (!empty($a_peg))
             $sql.= "idpegawai in (" . $a_peg . ")";
@@ -4498,12 +4512,13 @@ class mGaji extends mModel {
         $totprochari = array();
         $a_totproc = array();
         while ($row = $rs->FetchRow()) {
+           
             $menitdatang = $row['menitdatang'] / 60;
             $menitpulang = $row['menitpulang'] / 60;
 
             if ($menitdatang > 0)
                 $a_data[$row['idpegawai']][$row['tglpresensi']]['procpotdt'] = self::getProcPot($conn, $menitdatang, 'T');
-            if ($menitpulang < 0)
+            if ($menitpulang > 0)
                 $a_data[$row['idpegawai']][$row['tglpresensi']]['procpotpd'] = self::getProcPot($conn, abs($menitpulang), 'PD');
             if ($row['kodeabsensi'] == 'I' or $row['kodeabsensi'] == 'A' or $row['kodeabsensi'] == 'DK' or $row['kodeabsensi'] == 'PK' or $row['kodeabsensi'] == 'ST')
                 $a_data[$row['idpegawai']][$row['tglpresensi']]['procpotdt'] = self::getProcAbsen($conn, $row['kodeabsensi']);
@@ -4514,9 +4529,11 @@ class mGaji extends mModel {
             }
 
             //proc kehadiran total
+           
             $totprochari[$row['idpegawai']][$row['tglpresensi']] = $a_data[$row['idpegawai']][$row['tglpresensi']]['procpotdt'] + $a_data[$row['idpegawai']][$row['tglpresensi']]['procpotpd'];
             $a_totproc[$row['idpegawai']] += $totprochari[$row['idpegawai']][$row['tglpresensi']];
         }
+     
 
         return array("totproc" => $a_totproc, "totprochari" => $totprochari, "data" => $a_data, "dinas" => $a_dinas);
     }
@@ -4610,6 +4627,20 @@ class mGaji extends mModel {
         $r_periodetarif = self::getLastPeriodeTarif($conn);
 
         $sql = "select * from " . static::table('ms_tariftunjangan') . "
+					where periodetarif='$r_periodetarif' and (kodetunjangan='T00004' or kodetunjangan='T00015' or kodetunjangan='T00019')";
+        $rs = $conn->Execute($sql);
+
+        $a_data = array();
+        while ($row = $rs->FetchRow()) {
+            $a_data[$row['variabel1']] = $row['nominal'];
+        }
+
+        return $a_data;
+    }
+    function getTarifPotKehadiran2($conn) {
+        $r_periodetarif = self::getLastPeriodeTarif($conn);
+
+        $sql = "select * from " . static::table('ms_potonganhadir') . "
 					where periodetarif='$r_periodetarif' and (kodetunjangan='T00004' or kodetunjangan='T00015' or kodetunjangan='T00019')";
         $rs = $conn->Execute($sql);
 
