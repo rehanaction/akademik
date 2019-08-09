@@ -4,6 +4,8 @@
 	
 	// hak akses
 	$a_auth = Modul::getFileAuth();
+	$conn_moodle->debug = true;
+	$conn->debug = true;
 	
 	$c_insert = $a_auth['caninsert'];
 	$c_edit = $a_auth['canupdate'];
@@ -55,7 +57,9 @@
 			$a_data[]=$p_model::inquiryByuserid($conn,$rows);
 		}
 		foreach($a_data as $data){
-			mUser::syncUserToElearning($conn,$data);
+			mUser::InsertUserToElearning($conn_moodle,$data);
+			//die();
+			//mUser::syncUserToElearning($conn,$data);
 			$p_model::UpdateSyncMoodle($conn,$record,$data['userid']);
 		}
 	}
