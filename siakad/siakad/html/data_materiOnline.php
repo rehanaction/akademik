@@ -28,19 +28,28 @@
 	$p_aktivitas = 'Elearning';
 	$p_listpage = Route::getListPage();
 	$pk = $_GET['key'];
+	$key = explode('|',$_REQUEST['params']);
+	$selectUnitOption ='4302100000';
+	//print_r(substr($key[0],0,4));
+	$a_kurikulum = mCombo::tahun();
+	$selectthnOption = substr($key[0],0,4);
+	$a_matakuliah = mKelas::mkKurikulum($conn,substr($key[0],0,4),'4302100000');
+	$selectMkOption = $key[1];
+	$selectsmsOption = substr($key[1],4,1);
 	//print_r($pk);
 	if(!empty($pk))
 	{
 		$a_kurikulum = mCombo::tahun();
 		$data = mBahanajar::v_detailbahanajarbyid($conn,$pk);
 		$a_matakuliah = mKelas::mkKurikulum($conn,$data['thnkurikulum'],$data['kodeunit']);
-		print_r($data);
+		//print_r($data);
 		$selectUnitOption =$data['kodeunit'];
 		$selectthnOption = $data['thnkurikulum'];
 		$selectMkOption = $data['kodemk'];
 		$selectsmsOption = substr($data['periode'],4,1);
 	}else{
 		$dis="";
+	
 
 	}
 

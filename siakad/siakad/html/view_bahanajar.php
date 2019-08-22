@@ -48,6 +48,8 @@
 	$a_kolom = array();
 	$a_kolom[] = array('kolom' => 'kodemk', 'label' => 'Kode');
 	$a_kolom[] = array('kolom' => 'namamk', 'label' => 'Nama MK');
+	$a_kolom[] = array('kolom' => 'isonline', 'label' => 'Status');
+	$a_kolom[] = array('kolom' => 'ispjmk', 'label' => 'Kordinator');
 	
 	$p_colnum = count($a_kolom)+2;
 	
@@ -214,8 +216,13 @@
 	if(!empty($r_unit)) $a_filter[] = $p_model::getListFilter('unit',$r_unit);
 	if(!empty($r_periode)) $a_filter[] = $p_model::getListFilter('periode',$r_periode);
 	if(!empty($r_basis)) $a_filter[] = $p_model::getListFilter('sistemkuliah',$r_basis);
-	
-	$a_data = mBahanajar::v_bahanajar($conn,$r_periode);
+	if(Akademik::isDosen()){
+		$id = Modul::getUserIDPegawai();
+		$a_data = mBahanajar::v_bahanajar($conn,$r_periode,$id);
+	}else{
+		$a_data = mBahanajar::v_bahanajar($conn,$r_periode);
+	}
+
         
 	$p_lastpage = Page::getLastPage();
 	$p_time = Page::getListTime();
@@ -362,7 +369,7 @@
 						
 						$i = 0;
 						foreach($a_data as $row) {
-							$t_key = $p_model::getKeyRow($row);
+							$t_key = $row['periode']."|".$row['kodemk']."|".$row['ispjmk'];
 							
 							$j = 0;
 							$rowc = Page::getColumnRow($a_kolom,$row);
@@ -376,8 +383,8 @@
 					<tr valign="top" class="<?= $rowstyle ?>">
 						<td><font size=1><?= $rowc[$j++] ?></font></td>
 						<td><font size=1><?= $rowc[$j++] ?></font></td>
-					
-					
+						<td><font size=1><?php  if($rowc[$j++]==0){ echo "Tatap Muka"; }else{ echo "E-Learning"; } ?></font></td>
+						<td><font size=1><?php  if($rowc[$j++]==0){ echo "Pengajar"; }else{ echo "Kordinator"; } ?></font></td>
 						<td align="center" class="action"><img id="<?= $t_key ?>" title="Tampilkan Detail" src="images/edit.png" onclick="goDetail(this)" style="cursor:pointer"></td>
 						
 					</tr>

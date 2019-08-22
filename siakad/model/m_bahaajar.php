@@ -13,8 +13,12 @@
 
 
         	// mendapatkan kueri list
-		function v_bahanajar($conn,$periode) {
-            $sql = "select * from ".self::table('v_kelasonline')." where periode='$periode'";
+		function v_bahanajar($conn,$periode,$idpegawai) {
+			if(empty($idpegawai)){
+				$sql = "select * from ".self::table('v_kelasonline')." where periode='$periode'";
+			}else{
+				$sql = "select * from ".self::table('v_kelasonline')." where periode='$periode' and nipdosen='$idpegawai'";
+			}
 			return $conn->GetArray($sql);
         }
 

@@ -7,13 +7,14 @@ $a_auth = Modul::getFileAuth();
 $c_insert = $a_auth['caninsert'];
 $c_edit = $a_auth['canupdate'];
 $c_delete = $a_auth['candelete'];
-$p_title = 'Data Matakuliah Online';
+$p_title = 'Bahan Ajar Matakuliah';
 $p_tbwidth = 950;
 $p_aktivitas = 'Elearning';
 require_once(Route::getModelPath('bahaajar'));
 $p_detailpage = 'data_materiOnline';
 $key = explode('|',$_REQUEST['key']);
-$a_data = mBahanajar::v_detailbahanajar($conn,$key[3],$key[1]);
+$ispjmk = $key[2];
+$a_data = mBahanajar::v_detailbahanajar($conn,$key[0],$key[1]);
 $r_act = $_POST['act'];
 if($r_act=='hapus'){
 	//print_r($_POST);
@@ -79,13 +80,13 @@ if($r_act=='hapus'){
 							<div class="left title">
 								<img id="img_workflow" width="24px" src="images/aktivitas/<?= $p_aktivitas ?>.png" onerror="loadDefaultActImg(this)"> <h1><?= $p_title ?></h1>
 							</div>
-							<?	if(!empty($r_page) or $c_insert) { ?>
+							<?	if(!empty($r_page) or $c_insert or  $ispjmk=='0') { ?>
 							<div class="right">
 								<?	if(!empty($r_page)) { ?>
 								<?php require_once('inc_listnavtop.php'); ?>
 								<?	}
-							if($c_insert) { ?>
-								<div class="addButton" style="float:left;margin-left:10px" onClick="goNew()">+</div>
+							if($c_insert or $ispjmk=='0') { ?>
+								<div class="addButton" style="float:left;margin-left:10px" onClick="goBaru('<?php echo $_REQUEST['key'] ?>')">+</div>
 							<?	} ?>
 							</div>
 							<?	}
@@ -197,6 +198,10 @@ function goPerbaharui(elem) {
 	location.href = "index.php?page=data_materiOnline"+"&key=" + elem.id;
 	//window.open(location.href,'_BLANK');
 	//goSubmitBlank(location.href);
+}
+function goBaru($key) {
+	//alert($key);
+	location.href = detailpage + "&params=" + key.value;
 }
 
 <?	if(!empty($r_page)) { ?>
